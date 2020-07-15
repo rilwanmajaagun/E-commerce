@@ -1,0 +1,14 @@
+{"level":"info","message":"Application listen on port 3000","service":"user-service"}
+{"level":"info","message":"Application listen on port 3000","service":"user-service"}
+{"level":"info","message":"Application listen on port 3000"}
+{"message":"Hello again distributed logs","level":"info"}
+{"level":"info","message":"Application listen on port 3000"}
+{"level":"info","message":"Application listen on port 3000"}
+{"level":"info","message":"Application listen on port 3000"}
+{"message":"Application listen on port 3000","level":"info"}
+{"message":"Application listen on port 3000","level":"info"}
+{"message":"Application listen on port 3000","level":"info","service":"user-service"}
+{"message":"Application listen on port 3000","level":"info","service":"user-service"}
+{"message":"Application listen on port 3000","level":"info"}
+{"message":"Application listen on port 3000","level":"info"}
+{"message":"Application listen on port 3000","level":"info"}

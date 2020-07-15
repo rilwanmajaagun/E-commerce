@@ -4,9 +4,9 @@
   "description": "e-commerce end point",
   "main": "index.js",
   "scripts": {
-    "pretest": "eslint --ignore-path .gitignore",
     "start": "nodemon --exec babel-node src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint --ext js ."
   },
   "repository": {
     "type": "git",
@@ -19,14 +19,29 @@
   },
   "homepage": "https://github.com/rilwanmajaagun/e-commerce#readme",
   "dependencies": {
-    "dotenv": "^8.2.0"
+    "@hapi/joi": "^17.1.1",
+    "bcrypt": "^5.0.0",
+    "bluebird": "^3.7.2",
+    "body-parser": "^1.19.0",
+    "db-migrate": "^0.11.11",
+    "db-migrate-pg": "^1.2.2",
+    "dotenv": "^8.2.0",
+    "http-status": "^1.4.2",
+    "jsonwebtoken": "^8.5.1",
+    "pg-promise": "^10.5.8",
+    "redis": "^3.0.2",
+    "uuid": "^8.2.0",
+    "winston": "^3.3.3"
   },
   "devDependencies": {
     "@babel/core": "^7.10.4",
     "@babel/node": "^7.10.4",
     "@babel/preset-env": "^7.10.4",
+    "babel-eslint": "^10.1.0",
     "eslint": "^7.4.0",
-    "eslint-config-strongloop": "^2.1.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "express": "^4.17.1",
     "nodemon": "^2.0.4"
   }
 }

@@ -1,6 +1,8 @@
 import 'dotenv/config';
 import status from 'http-status';
-import { app, logger, client } from './config';
+import {
+    app, logger, client, userRouter
+} from './config';
 import route from './config/route';
 
 const port = process.env.ECOMMERCE_PORT || 3000;
@@ -17,5 +19,5 @@ app.get('/', (req, res) => {
         res.send(msg, status.OK);
     });
 });
-
 app.use('/api/v1', route);
+app.use('/', userRouter);

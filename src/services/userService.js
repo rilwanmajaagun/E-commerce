@@ -26,12 +26,7 @@ const checkIfUserExist = async(body) => {
     return data;
 };
 
-const updateUsersToken = async(token, email) => {
-    db.none(userQuery.updateUsersToken, [token, email]);
-};
-
 export default {
     createUser,
-    checkIfUserExist,
-    updateUsersToken
+    checkIfUserExist
 };

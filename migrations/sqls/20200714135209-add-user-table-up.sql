@@ -7,7 +7,6 @@ CREATE TABLE IF NOT EXISTS users(
   phone_number varchar,
   password varchar not null,
   salt varchar not null,
-  confirmation_token varchar,
   is_admin boolean default false,
   is_active boolean default false,
   created_at timestamp default NOW(),

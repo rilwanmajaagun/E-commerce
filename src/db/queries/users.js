@@ -11,11 +11,19 @@ export default {
     )
     VALUES ($1, $2, $3, $4, $5, $6,$7) RETURNING * 
     `,
+    createFaceBookUser: `
+    INSERT INTO users(
+        id,
+        first_name,
+        last_name,
+        email,
+        password,
+        salt,
+        is_active
+    )
+    VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING * 
+    `,
     getUser: `
     SELECT * FROM users WHERE email=($1);
-`,
-    updateUsersToken: `
-    UPDATE users SET confirmation_token=($1)
-    WHERE email=($2);
 `
 };

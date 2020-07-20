@@ -20,7 +20,15 @@ const Helpers = {
         }, key,
         { expiresIn: '1h' });
         return token;
+    },
+    async comparePassword(password, hash) {
+        const match = await bcrypt.compare(password, hash);
+        return match;
+    },
+    async decodeToken(token) {
+        return jwt.verify(token, process.env.SECRET_KEY);
     }
+
 };
 
 export default Helpers;

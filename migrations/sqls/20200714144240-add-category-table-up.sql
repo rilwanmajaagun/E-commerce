@@ -1,7 +1,6 @@
-/* Replace with your SQL commands */
 CREATE TABLE IF NOT EXISTS category(
-id uuid PRIMARY KEY,
-name varchar not null,
+id uuid,
+name varchar not null PRIMARY KEY,
 created_at timestamp DEFAULT Now(),
 updated_at timestamp
-  );
+);

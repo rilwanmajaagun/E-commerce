@@ -20,13 +20,26 @@ const createUser = async(body) => {
     return db.any(userQuery.createUser, payload);
 };
 
-const checkIfUserExist = async(body) => {
-    const { email } = body;
+const checkIfUserExist = async(email) => {
     const data = await db.oneOrNone(userQuery.getUser, [email]);
     return data;
 };
 
+const activateUser = async(email) => {
+    const data = await db.oneOrNone(userQuery.activateUser, [email]);
+    return data;
+};
+
+const resetPassword = async(email, body) => {
+    const { password } = body;
+    const hashedPassword = hash.hashPassword(password);
+    const payload = [hashedPassword.hash, email];
+    return db.oneOrNone(userQuery.resetPassword, payload);
+};
+
 export default {
     createUser,
-    checkIfUserExist
+    checkIfUserExist,
+    activateUser,
+    resetPassword
 };

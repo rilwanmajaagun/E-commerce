@@ -9,7 +9,4 @@ client.on('error', (error) => {
     logger.error(error);
 });
 
-client.set('key', 'value', redis.print);
-client.get('key', redis.print);
-
 export default client;

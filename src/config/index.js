@@ -4,11 +4,13 @@ import logger from './logger';
 import client from './redis';
 // eslint-disable-next-line import/no-cycle
 import userRouter from './passport';
+import sendMail from './mailgun';
 
 export {
     config as default,
     app,
     logger,
     client,
-    userRouter
+    userRouter,
+    sendMail
 };

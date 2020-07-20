@@ -21,6 +21,44 @@ const schema = {
             .required(),
         password: joi.string()
             .required()
+    }),
+    email: joi.object({
+        email: joi.string()
+            .email()
+            .required()
+    }),
+    products: joi.object({
+        product_name: joi.string()
+            .required(),
+        category: joi.string()
+            .required(),
+        quantity: joi.number()
+            .required(),
+        price: joi.number()
+            .required()
+
+    }),
+    product: joi.object({
+        product_name: joi.string()
+            .required()
+    }),
+    category: joi.object({
+        category: joi.string()
+            .required()
+    }),
+    updateCategory: joi.object({
+        name: joi.string()
+            .required(),
+        new_name: joi.string()
+            .required()
+    }),
+    updateProducts: joi.object({
+        product_name: joi.string(),
+        category: joi.string(),
+        quantity: joi.number(),
+        price: joi.number(),
+        status: joi.string().valid('in_stock', 'out_of_stock'),
+        id: joi.string().uuid()
     })
 };
 

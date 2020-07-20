@@ -1,3 +1,11 @@
-import userMiddleware from './userMiddlerware';
+import userAuth from './userAuth';
+import categoryAuth from './categoryAuth';
+import validator from './validator';
+import productAuth from './producAuth';
 
-export default userMiddleware;
+export {
+    userAuth,
+    categoryAuth,
+    validator,
+    productAuth
+};

@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import userService from './userService';
 import categoryService from './categoryService';
 import redisService from './redis';

@@ -1,8 +1,9 @@
+import 'dotenv/config';
 import logger from './logger';
 
-const api_key = 'bf6d23bb088b03f3b5044ffbdb226b0a-a83a87a9-e6fb73a8';
-const domain = 'sandboxd968473cf3a74284b23e410fee7065e6.mailgun.org';
-const mailgun = require('mailgun-js')({ apiKey: api_key, domain });
+const apiKey = process.env.API_KEY;
+const domain = process.env.DOMIAN;
+const mailgun = require('mailgun-js')({ apiKey, domain });
 
 const verifyMail = (name, email, token) => {
     const data = {

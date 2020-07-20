@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import { v4 as uuidv4 } from 'uuid';
 import { userQuery, db } from '../db';
 import { hash } from '../utils';

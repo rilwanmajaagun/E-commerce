@@ -1,4 +1,5 @@
 import status from 'http-status';
+// eslint-disable-next-line import/no-cycle
 import { userService } from '../services';
 import { hash } from '../utils';
 
@@ -118,11 +119,26 @@ const adminAuthorization = async(req, res, next) => {
     next();
 };
 
+const socialMeadiAuth = async(request, res) => {
+    const token = await hash.generateToken(request.user.first_name, request.user.email);
+    res.status(status.OK).send({
+        message: 'successful',
+        data: {
+            id: request.user.id,
+            first_name: request.user.first_name,
+            last_name: request.user.last_name,
+            email: request.user.email,
+            token
+        }
+    });
+};
+
 export default {
     signup,
     login,
     confrimationToken,
     verifyToken,
     is_active,
-    adminAuthorization
+    adminAuthorization,
+    socialMeadiAuth
 };

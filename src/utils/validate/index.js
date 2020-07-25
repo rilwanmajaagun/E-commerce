@@ -59,6 +59,18 @@ const schema = {
         price: joi.number(),
         status: joi.string().valid('in_stock', 'out_of_stock'),
         id: joi.string().uuid()
+    }),
+    createOrder: joi.object({
+        quantity: joi.number()
+            .required(),
+        product_name: joi.string()
+            .required()
+    }),
+    updateStatus: joi.object({
+        id: joi.string()
+            .uuid(),
+        order_status: joi.string().valid('pending', 'shipped')
+
     })
 };
 

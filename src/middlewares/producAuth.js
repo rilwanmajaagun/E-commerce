@@ -1,4 +1,5 @@
 import status from 'http-status';
+// eslint-disable-next-line import/no-cycle
 import { productSerivce, categoryService } from '../services';
 
 const selectProduct = async(req, res, next) => {
@@ -55,8 +56,47 @@ const CheckProductByid = async(req, res, next) => {
     next();
 };
 
+// const productStatus = async(req, res, next) => {
+//     try {
+//         const product = await productSerivce.checkStatusAndQuantity(req.body);
+//         if (product.status === 'out_of_stock') {
+//             return res.status(status.BAD_REQUEST).send({
+//                 message: 'product is out of stock pls check back later'
+//             });
+//         }
+//         if (product.quantity < req.body.quantity) {
+//             return res.status(status.BAD_REQUEST).send({
+//                 message: `only ${product.quantity} left `
+//             });
+//         }
+//     } catch (error) {
+//         return res.status(status.INTERNAL_SERVER_ERROR).send({
+//             message: status[500]
+//         });
+//     } next();
+// };
+
+const updateQauntity = async(req, res, next) => {
+    try {
+        const product = await productSerivce.checkStatusAndQuantity(req.body);
+        const newQunatity = product.quantity - 1;
+        let status;
+        if (newQunatity === 0) {
+            status = 'out_of_stock';
+        } else {
+            status = 'in_stock';
+        }
+        await productSerivce.updateQuantityAndStatus(newQunatity, status, req.body);
+    } catch (error) {
+        return res.status(status.INTERNAL_SERVER_ERROR).send({
+            message: status[500]
+        });
+    } next();
+};
+
 export default {
     selectProduct,
     CheckProduct,
-    CheckProductByid
+    CheckProductByid,
+    updateQauntity
 };

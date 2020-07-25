@@ -1,4 +1,5 @@
 import status from 'http-status';
+// eslint-disable-next-line import/no-cycle
 import { categoryService } from '../services';
 
 const selectCategory = async(req, res, next) => {

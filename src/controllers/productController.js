@@ -1,9 +1,13 @@
 import status from 'http-status';
 import { productSerivce } from '../services';
 import { client } from '../config';
+import { aws } from '../middlewares';
 
 const addProduct = async(req, res) => {
     try {
+        const myfile = req.file;
+        const picture = await aws.uploadImage(myfile);
+        req.body.product_image = picture.Location;
         const product = await productSerivce.addProduct(req.body);
         return product ?
             res.status(status.CREATED).send({

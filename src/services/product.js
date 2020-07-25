@@ -8,25 +8,31 @@ const addProduct = async(body) => {
         product_name,
         category,
         quantity,
-        price
+        price,
+        product_image
     } = body;
     const payload = [
         id,
         product_name,
         category,
         quantity,
-        price];
+        price,
+        product_image
+    ];
     const product = await db.any(productQuery.createProduct, payload);
     return product;
 };
+
 const selectProduct = async(body) => {
     const { product_name } = body;
     return db.oneOrNone(productQuery.getProductByProduct_name, [product_name]);
 };
+
 const selectProductByid = async(body) => {
     const { id } = body;
     return db.oneOrNone(productQuery.getProductByid, [id]);
 };
+
 const getAllProduct = async() => db.manyOrNone(productQuery.getAllProduct);
 
 const getProductBycategory = async(body) => {
@@ -52,6 +58,13 @@ const updateProduct = async(body) => {
     return product;
 };
 
+const checkStatusAndQuantity = async(product_name) => {
+    const product = await db.oneOrNone(productQuery.checkProductStatus, [product_name]);
+    return product;
+};
+
+const updateQuantityAndStatus = async(quantity, status, product_name) => db.none(productQuery.updateQuantityAndStatu, [quantity, status, product_name]);
+
 export default {
     addProduct,
     selectProduct,
@@ -60,5 +73,7 @@ export default {
     getAllProductBycategories,
     deleteProduct,
     updateProduct,
-    selectProductByid
+    selectProductByid,
+    checkStatusAndQuantity,
+    updateQuantityAndStatus
 };

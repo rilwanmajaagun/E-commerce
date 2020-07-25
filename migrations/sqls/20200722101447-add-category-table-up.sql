@@ -1,3 +1,4 @@
+/* Replace with your SQL commands */
 CREATE TABLE IF NOT EXISTS category(
 id uuid,
 name varchar not null PRIMARY KEY,

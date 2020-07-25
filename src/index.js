@@ -1,7 +1,7 @@
 import 'dotenv/config';
 import status from 'http-status';
 import {
-    app, logger, client, userRouter
+    app, logger, client
 } from './config';
 import route from './config/route';
 
@@ -20,4 +20,3 @@ app.get('/', (req, res) => {
     });
 });
 app.use('/api/v1', route);
-app.use('/', userRouter);

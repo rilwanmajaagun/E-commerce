@@ -5,6 +5,8 @@ import client from './redis';
 // eslint-disable-next-line import/no-cycle
 import userRouter from './passport';
 import sendMail from './mailgun';
+// eslint-disable-next-line import/no-cycle
+import userRouters from './Googleauth';
 
 export {
     config as default,
@@ -12,5 +14,6 @@ export {
     logger,
     client,
     userRouter,
-    sendMail
+    sendMail,
+    userRouters
 };

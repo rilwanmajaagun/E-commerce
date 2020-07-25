@@ -89,6 +89,27 @@ const updateProduct = async(req, res, next) => {
     next();
 };
 
+const createOrder = async(req, res, next) => {
+    try {
+        await schema.updateProducts.validateAsync(req.body);
+    } catch (error) {
+        return res.status(status.BAD_REQUEST).send({
+            message: error.details[0].message.replace(/[\"]/gi, '')
+        });
+    }
+    next();
+};
+const updateOrderStatus = async(req, res, next) => {
+    try {
+        await schema.updateStatus.validateAsync(req.body);
+    } catch (error) {
+        return res.status(status.BAD_REQUEST).send({
+            message: error.details[0].message.replace(/[\"]/gi, '')
+        });
+    }
+    next();
+};
+
 export default {
     signup,
     login,
@@ -97,5 +118,8 @@ export default {
     searchProduct,
     getProductBycategory,
     category,
-    updateProduct
+    updateProduct,
+    createOrder,
+    updateOrderStatus
+
 };

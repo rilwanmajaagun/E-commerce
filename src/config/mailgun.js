@@ -2,12 +2,12 @@ import 'dotenv/config';
 import logger from './logger';
 
 const apiKey = process.env.API_KEY;
-const domain = process.env.DOMIAN;
+const domain = process.env.DOMAIN;
 const mailgun = require('mailgun-js')({ apiKey, domain });
 
 const verifyMail = (name, email, token) => {
     const data = {
-        from: 'E-commerce <majaagunoyinkolade@gmail.com>',
+        from: 'E-commerce <rilwan30@yahoo.com>',
         to: `${email}`,
         subject: `Hi ${name} please verify your E-commerce account`,
         text: `Hi,Thanks for using E-commerce! Please confirm your email address by clicking on the link below.
@@ -22,7 +22,7 @@ const verifyMail = (name, email, token) => {
 
 const welcomeMail = (name, email) => {
     const data = {
-        from: 'E-commerce <majaagunoyinkolade@gmail.com>',
+        from: 'E-commerce <rilwan30@yahoo.com>',
         to: `${email}`,
         subject: `Welcome ${name}`,
         text: `Hi ${name} Your account has been activated`
@@ -48,7 +48,7 @@ const resetPassword = (name, email, token) => {
 
 const resetSuccessful = (name, email) => {
     const data = {
-        from: 'E-commerce <majaagunoyinkolade@gmail.com>',
+        from: 'E-commerce <rilwan30@yahoo.com>',
         to: `${email}`,
         subject: `Hi ${name}`,
         text: 'Hi, Rest your password has been Reset successfully'

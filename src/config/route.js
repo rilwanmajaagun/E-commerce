@@ -1,7 +1,10 @@
 import { Router } from 'express';
-import { userController, categorController, productController } from '../controllers';
+import { multer } from '../utils';
 import {
-    userAuth, categoryAuth, validator, productAuth
+    userController, categorController, productController, orderController, payment
+} from '../controllers';
+import {
+    userAuth, categoryAuth, validator, productAuth, orderAuth
 } from '../middlewares';
 
 const router = new Router();
@@ -13,7 +16,7 @@ router.post('/category', userAuth.verifyToken, userAuth.adminAuthorization, cate
 router.get('/category', categorController.selectAllCategory);
 router.get('/auth/confrimation', userAuth.verifyToken, userAuth.is_active, userController.activateUser);
 router.post('/auth/confirmation', validator.checkEmail, userAuth.confrimationToken, userController.confrimationToken);
-router.post('/product', userAuth.verifyToken, userAuth.adminAuthorization, validator.product, productAuth.selectProduct, productController.addProduct);
+router.post('/product', userAuth.verifyToken, userAuth.adminAuthorization, multer.upload, validator.product, productAuth.selectProduct, productController.addProduct);
 router.get('/product', productController.selectAllProduct);
 router.post('/search/Product', validator.searchProduct, productAuth.CheckProduct, productController.getSpecifyProduct);
 router.post('/select/product/category', validator.getProductBycategory, productController.selectProductBycategory);
@@ -24,5 +27,11 @@ router.post('/auth/reset-password', userAuth.verifyToken, userController.resetPa
 router.delete('/category', userAuth.verifyToken, userAuth.adminAuthorization, categoryAuth.CheckCategory, categorController.deleteCategory);
 router.put('/category', userAuth.verifyToken, userAuth.adminAuthorization, validator.category, categoryAuth.CheckCategory, categorController.updateCategory);
 router.put('/product', userAuth.verifyToken, userAuth.adminAuthorization, validator.updateProduct, productAuth.CheckProductByid, productController.updateProduct);
+router.post('/order', userAuth.verifyToken, validator.createOrder, orderAuth.productStatus, orderController.createOrder);
+router.patch('/cancelorder', userAuth.verifyToken, orderAuth.checkOrderStatus, orderController.cancelOrder);
+router.patch('/updateOrder', validator.updateOrderStatus, orderAuth.selectOrder, orderController.UpdateOrderStatus);
+router.post('/bankpayment', payment.bankPayment);
+router.post('/cardpayment/:order_id', userAuth.verifyToken, payment.cardPayment);
+router.get('/verifypayment/:reference', payment.verifyPayment);
 
 export default router;

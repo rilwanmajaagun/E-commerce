@@ -32,6 +32,6 @@ router.patch('/cancelorder', userAuth.verifyToken, orderAuth.checkOrderStatus, o
 router.patch('/updateOrder', validator.updateOrderStatus, orderAuth.selectOrder, orderController.UpdateOrderStatus);
 router.post('/bankpayment', payment.bankPayment);
 router.post('/cardpayment/:order_id', userAuth.verifyToken, payment.cardPayment);
-router.get('/verifypayment/:reference', payment.verifyPayment);
+router.get('/verifypayment/:reference', userAuth.verifyToken, userAuth.adminAuthorization, payment.verifyPayment);
 
 export default router;

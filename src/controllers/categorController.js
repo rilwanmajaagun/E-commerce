@@ -5,19 +5,19 @@ import { client } from '../config';
 const createCategory = async(req, res) => {
     try {
         const category = await categoryService.createCategory(req.body);
-        return res.send({
-            meassage: 'category created successfully',
+        return res.status(status.CREATED).send({
+            message: 'category created successfully',
             data: {
                 id: category.id,
                 name: category.name,
                 created_at: category.created_at
             }
-        }, status.CREATED);
+        });
     } catch (e) {
-        return res.send({
+        return res.status(status.INTERNAL_SERVER_ERROR).send({
             message: status[500],
             data: null
-        }, status.INTERNAL_SERVER_ERROR);
+        });
     }
 };
 
@@ -26,7 +26,7 @@ const selectAllCategory = async(req, res) => {
         client.get('allcategory', async(error, result) => {
             if (result) {
                 return res.status(status.OK).send({
-                    message: 'Fetched categories sucessfully',
+                    message: 'All categories selected sucessfully',
                     data: JSON.parse(result)
                 });
             }

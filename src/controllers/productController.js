@@ -13,7 +13,15 @@ const addProduct = async(req, res) => {
             res.status(status.CREATED).send({
                 message:
             'product Added Sucessfully',
-                data: product
+                data: {
+                    id: product.id,
+                    product_name: product.product_name,
+                    category: product.category,
+                    status: product.status,
+                    quantity: product.quantity,
+                    price: product.price,
+                    product_image: product.product_name
+                }
             }) :
             res.status(status.BAD_REQUEST).send({
                 message: 'Error adding product',
@@ -59,7 +67,7 @@ const selectAllProduct = async(req, res) => {
                 client.set('allProduct', JSON.stringify(product));
                 client.expire('allProduct', 300); /*  expires in five minute*/
                 return res.status(status.OK).send({
-                    message: 'successfully fetch all product',
+                    message: 'successfully fetched all product',
                     data: product
 
                 });

@@ -19,7 +19,7 @@ const addProduct = async(body) => {
         price,
         product_image
     ];
-    const product = await db.any(productQuery.createProduct, payload);
+    const product = await db.one(productQuery.createProduct, payload);
     return product;
 };
 

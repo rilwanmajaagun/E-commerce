@@ -15,11 +15,13 @@ const selectProduct = async(req, res, next) => {
             return res.status(status.BAD_REQUEST).send({ message: 'product already exist' });
         }
     } catch (e) {
+        console.log(e);
         return res.status(status.INTERNAL_SERVER_ERROR).send({ message: status[500] });
     } next();
 };
 
 const CheckProduct = async(req, res, next) => {
+    console.log('herere');
     try {
         const product = await productSerivce.selectProduct(req.body);
         if (!product) {
@@ -28,6 +30,7 @@ const CheckProduct = async(req, res, next) => {
             });
         }
     } catch (e) {
+        console.log(e);
         return res.status(status.INTERNAL_SERVER_ERROR).send({
             message: status[500]
         });

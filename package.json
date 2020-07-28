@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon --exec babel-node src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "pretest": "npm run posttest && db-migrate up && db-migrate up:seeds",
+    "test": "ECOMMERCE_NODE_ENV=test mocha --require @babel/register test/index.js --exit",
+    "posttest": "db-migrate reset:seeds && db-migrate reset ",
     "lint": "eslint --ext js ."
   },
   "repository": {
@@ -26,12 +28,14 @@
     "bcrypt": "^5.0.0",
     "bluebird": "^3.7.2",
     "body-parser": "^1.19.0",
+    "chai-http": "^4.3.0",
     "cookie-parser": "^1.4.5",
     "db-migrate": "^0.11.11",
     "db-migrate-pg": "^1.2.2",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
+    "faker": "^4.1.0",
     "http-status": "^1.4.2",
     "jsonwebtoken": "^8.5.1",
     "mailgun-js": "^0.22.0",
@@ -42,17 +46,23 @@
     "paystack": "^2.0.1",
     "pg-promise": "^10.5.8",
     "redis": "^3.0.2",
+    "supertest": "^4.0.2",
     "uuid": "^8.2.0",
     "winston": "^3.3.3"
   },
   "devDependencies": {
     "@babel/core": "^7.10.4",
     "@babel/node": "^7.10.4",
+    "@babel/plugin-transform-runtime": "^7.10.5",
     "@babel/preset-env": "^7.10.4",
+    "@babel/register": "^7.10.5",
     "babel-eslint": "^10.1.0",
+    "chai": "^4.2.0",
     "eslint": "^7.4.0",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-plugin-import": "^2.22.0",
+    "mocha": "^8.0.1",
+    "nock": "^13.0.2",
     "nodemon": "^2.0.4"
   }
 }

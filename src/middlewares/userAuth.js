@@ -12,10 +12,10 @@ const signup = async(req, res, next) => {
                 message: 'user already exist'
             });
         }
+        next();
     } catch (error) {
         return res.status(status.INTERNAL_SERVER_ERROR).send(status[500]);
     }
-    next();
 };
 
 const login = async(req, res, next) => {
@@ -113,7 +113,7 @@ const adminAuthorization = async(req, res, next) => {
         }
     } catch (error) {
         res.status(status.BAD_REQUEST).send({
-            message: error
+            message: error.message
         });
     }
     next();

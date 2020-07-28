@@ -14,9 +14,11 @@ app.listen(port, () => {
 app.get('/', (req, res) => {
     client.ping((err, msg) => {
         if (err) {
-            return res.send(status.INTERNAL_SERVER_ERROR);
+            return res.status(status.INTERNAL_SERVER_ERROR).send(status[500]);
         }
-        res.send(msg, status.OK);
+        return res.status(status.OK).send({ mesaage: msg });
     });
 });
 app.use('/api/v1', route);
+
+export default app;

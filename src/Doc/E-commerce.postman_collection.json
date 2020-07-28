@@ -1,0 +1,2292 @@
+{
+	"info": {
+		"_postman_id": "5f87e9a2-c286-44e4-903c-6ed1b7fc2308",
+		"name": "E-commerce",
+		"description": "# Introduction\nWhat does your API do?\n\n# Overview\nThings that the developers should know about\n\n# Authentication\nWhat is the preferred way of using the API?\n\n# Error Codes\nWhat errors and status codes can a user expect?\n\n# Rate limit\nIs there a limit to the number of requests an user can send?",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Sign up",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"first_name\": \"Bofili\",\n    \"last_name\": \"Adaksa\",\n    \"email\": \"bofili1067@mado34.com\",\n    \"password\": \"12344556r\",\n    \"phone_number\": \"08202444432\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/v1/auth/register",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Sign up",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\": \"Bofili\",\n    \"last_name\": \"Adaksa\",\n    \"email\": \"bofili1067@mado34.com\",\n    \"password\": \"12344556r\",\n    \"phone_number\": \"08202444432\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/v1/auth/register",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "376"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"178-tKmRN9JWAN6FHWPwiyoBhXjoynQ\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Jul 2020 01:26:36 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"user created sucessfully\",\n    \"data\": {\n        \"id\": \"2de8ae80-d165-49b4-9109-449e36ae76d3\",\n        \"email\": \"bofili1067@mado34.com\",\n        \"date_created\": \"2020-07-28T01:26:36.779Z\",\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiQm9maWxpIiwiZW1haWwiOiJib2ZpbGkxMDY3QG1hZG8zNC5jb20iLCJpYXQiOjE1OTU4OTk1OTYsImV4cCI6MTU5NTkwMzE5Nn0.5V0yDp6laJnEjNZ0qH8nB4ycw7AMcTbtLykZ1HJYonQ\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Verify Email",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiUmlsd2FuIiwiZW1haWwiOiJtYWphYWd1bm95aW5rb2xhZGVAZ21haWwuY29tIiwiaWF0IjoxNTk1MDU4OTMyLCJleHAiOjE1OTUwNjI1MzJ9.QvMgLPhPNRVjvNtrPOeDRZmv2VeNIJ4ETpmQp6gRfpc",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/auth/confirmation?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiQm9maWxpIiwiZW1haWwiOiJib2ZpbGkxMDY3QG1hZG8zNC5jb20iLCJpYXQiOjE1OTU4OTg1NjQsImV4cCI6MTU5NTkwMjE2NH0.rjfAsCOZtZR5SeCFu-y7-Mu4VBn6R9p56YtdzUMdpjU",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"confirmation"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiQm9maWxpIiwiZW1haWwiOiJib2ZpbGkxMDY3QG1hZG8zNC5jb20iLCJpYXQiOjE1OTU4OTg1NjQsImV4cCI6MTU5NTkwMjE2NH0.rjfAsCOZtZR5SeCFu-y7-Mu4VBn6R9p56YtdzUMdpjU"
+						}
+					]
+				},
+				"description": "Verify emial with the link sent to the register email address. If not Verified users won't be allow to login. "
+			},
+			"response": [
+				{
+					"name": "Verify Email",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiUmlsd2FuIiwiZW1haWwiOiJtYWphYWd1bm95aW5rb2xhZGVAZ21haWwuY29tIiwiaWF0IjoxNTk1MDU4OTMyLCJleHAiOjE1OTUwNjI1MzJ9.QvMgLPhPNRVjvNtrPOeDRZmv2VeNIJ4ETpmQp6gRfpc",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/auth/confirmation?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiQm9maWxpIiwiZW1haWwiOiJib2ZpbGkxMDY3QG1hZG8zNC5jb20iLCJpYXQiOjE1OTU4OTg1NjQsImV4cCI6MTU5NTkwMjE2NH0.rjfAsCOZtZR5SeCFu-y7-Mu4VBn6R9p56YtdzUMdpjU",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"confirmation"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiQm9maWxpIiwiZW1haWwiOiJib2ZpbGkxMDY3QG1hZG8zNC5jb20iLCJpYXQiOjE1OTU4OTg1NjQsImV4cCI6MTU5NTkwMjE2NH0.rjfAsCOZtZR5SeCFu-y7-Mu4VBn6R9p56YtdzUMdpjU"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "31"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1f-Uq/0k4+GRS83EZBiMacSkmhF4/w\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Jul 2020 01:11:05 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Account activated\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"bofili1067@mado34.com\",\n    \"password\": \"12344556r\"\n} ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"bofili1067@mado34.com\",\n    \"password\": \"12344556r\"\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "369"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"171-JouXxlOfz1iXpCZmMFMBxTNJuF8\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Jul 2020 01:15:31 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"login successful\",\n    \"data\": {\n        \"id\": \"e3a48f7a-1a38-4e37-a469-81c513f312ba\",\n        \"first_name\": \"Bofili\",\n        \"last_name\": \"Adaksa\",\n        \"email\": \"bofili1067@mado34.com\",\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiQm9maWxpIiwiZW1haWwiOiJib2ZpbGkxMDY3QG1hZG8zNC5jb20iLCJpYXQiOjE1OTU4OTg5MzEsImV4cCI6MTU5NTkwMjUzMX0.CCKMhYZbyKCMISYDI4zCWVbWNr3-iukKxeTBj6VkDDs\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Get activation link",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"bofili1067@mado34.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/auth/confirmation",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"confirmation"
+					]
+				},
+				"description": "Request for verification link "
+			},
+			"response": [
+				{
+					"name": "Get verification link",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"bofili1067@mado34.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/auth/confirmation",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"confirmation"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "18"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"12-grXGM8QmAJ4VV4+r58JSP2zb5HY\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Jul 2020 01:28:48 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"sent\"\n}"
+				}
+			]
+		},
+		{
+			"name": "forget Password",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"bofili1067@mado34.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/auth/forgot-password",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"forgot-password"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "forget Password",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"bofili1067@mado34.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/auth/forgot-password",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"forgot-password"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "29"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1d-j92JtJVC2Kxk2fFXtc77ycYPnZA\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Jul 2020 01:20:23 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"reset link sent\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Reset Password",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"password\":\"123456\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/auth/reset-password?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiQm9maWxpIiwiZW1haWwiOiJib2ZpbGkxMDY3QG1hZG8zNC5jb20iLCJpYXQiOjE1OTU4OTg5MzEsImV4cCI6MTU5NTkwMjUzMX0.CCKMhYZbyKCMISYDI4zCWVbWNr3-iukKxeTBj6VkDDs",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"reset-password"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiQm9maWxpIiwiZW1haWwiOiJib2ZpbGkxMDY3QG1hZG8zNC5jb20iLCJpYXQiOjE1OTU4OTg5MzEsImV4cCI6MTU5NTkwMjUzMX0.CCKMhYZbyKCMISYDI4zCWVbWNr3-iukKxeTBj6VkDDs"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Reset Password",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\":\"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/auth/reset-password?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiQm9maWxpIiwiZW1haWwiOiJib2ZpbGkxMDY3QG1hZG8zNC5jb20iLCJpYXQiOjE1OTU4OTg5MzEsImV4cCI6MTU5NTkwMjUzMX0.CCKMhYZbyKCMISYDI4zCWVbWNr3-iukKxeTBj6VkDDs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"reset-password"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiQm9maWxpIiwiZW1haWwiOiJib2ZpbGkxMDY3QG1hZG8zNC5jb20iLCJpYXQiOjE1OTU4OTg5MzEsImV4cCI6MTU5NTkwMjUzMX0.CCKMhYZbyKCMISYDI4zCWVbWNr3-iukKxeTBj6VkDDs"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "41"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"29-Y3SDdaD7zenFofjpHQtfJ4zVZrI\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Jul 2020 01:22:14 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"password reset successfully\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Create category",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiT3lpbmtvbGFkZSIsImVtYWlsIjoibWFqYWFndW5veWlua29sYWRlQGdtYWlsLmNvbSIsImlhdCI6MTU5NTg5NzY2MSwiZXhwIjoxNTk1OTAxMjYxfQ.ZV0pGeMQgT46t5v-JQt6NTGnn4RDUD_34vyd0xSozeM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"fashion\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/category",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"category"
+					]
+				},
+				"description": "Admin only. Use admin token\nA category must be created before any product should be added"
+			},
+			"response": [
+				{
+					"name": "Create category",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiT3lpbmtvbGFkZSIsImVtYWlsIjoibWFqYWFndW5veWlua29sYWRlQGdtYWlsLmNvbSIsImlhdCI6MTU5NTg5NzY2MSwiZXhwIjoxNTk1OTAxMjYxfQ.ZV0pGeMQgT46t5v-JQt6NTGnn4RDUD_34vyd0xSozeM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"fashion\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/category",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"category"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "153"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"99-ALbovJLqC9WYagJI3wlyXwQY3vY\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Jul 2020 00:54:57 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"category created successfully\",\n    \"data\": {\n        \"id\": \"40c1d0e2-ccda-4036-932e-238be840725f\",\n        \"name\": \"fashion\",\n        \"created_at\": \"2020-07-28T00:54:57.019Z\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Get all categories",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/category",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"category"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get all categories",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/category",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"category"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "180"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"b4-+qHB71vfCu3w6Hihy+ElecEwwHA\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Jul 2020 01:30:15 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"All categories selected sucessfully \",\n    \"data\": [\n        {\n            \"id\": \"40c1d0e2-ccda-4036-932e-238be840725f\",\n            \"name\": \"fashion\",\n            \"created_at\": \"2020-07-28T00:54:57.019Z\",\n            \"updated_at\": null\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Update category",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiT3lpbmtvbGFkZSIsImVtYWlsIjoibWFqYWFndW5veWlua29sYWRlQGdtYWlsLmNvbSIsImlhdCI6MTU5NTkyNTkzNSwiZXhwIjoxNTk1OTI5NTM1fQ.Ti_mSloDcbTRuar-9WfcFoKrVEsK2M9Z3RdF95ANFfE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"fashion\",\n    \"new_name\": \"Beauty\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/category",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"category"
+					]
+				},
+				"description": "Admin only. Use the Admin token. "
+			},
+			"response": [
+				{
+					"name": "Update category",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiT3lpbmtvbGFkZSIsImVtYWlsIjoibWFqYWFndW5veWlua29sYWRlQGdtYWlsLmNvbSIsImlhdCI6MTU5NTkyNTkzNSwiZXhwIjoxNTk1OTI5NTM1fQ.Ti_mSloDcbTRuar-9WfcFoKrVEsK2M9Z3RdF95ANFfE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"fashion\",\n    \"new_name\": \"Beauty\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/category",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"category"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "40"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"28-zHFCz7SJsqu/t+75IpD035W6uCs\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Jul 2020 09:12:54 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Beauty updated sucessfully\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Add product",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiT3lpbmtvbGFkZSIsImVtYWlsIjoibWFqYWFndW5veWlua29sYWRlQGdtYWlsLmNvbSIsImlhdCI6MTU5NTg5NzY2MSwiZXhwIjoxNTk1OTAxMjYxfQ.ZV0pGeMQgT46t5v-JQt6NTGnn4RDUD_34vyd0xSozeM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": []
+						},
+						{
+							"key": "product_name",
+							"value": "Vans  OLD SKOOL - BOYS YOUTH",
+							"contentType": "application/json",
+							"type": "text"
+						},
+						{
+							"key": "category",
+							"value": "fashion",
+							"contentType": "application/json",
+							"type": "text"
+						},
+						{
+							"key": "quantity",
+							"value": "10",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "2000",
+							"type": "text"
+						}
+					],
+					"options": {
+						"formdata": {}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/product",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"product"
+					]
+				},
+				"description": "Admin only. Use the Admin token.\nAdd products under the existing category. The product name should be unique"
+			},
+			"response": [
+				{
+					"name": "Add product",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiT3lpbmtvbGFkZSIsImVtYWlsIjoibWFqYWFndW5veWlua29sYWRlQGdtYWlsLmNvbSIsImlhdCI6MTU5NTg5NzY2MSwiZXhwIjoxNTk1OTAxMjYxfQ.ZV0pGeMQgT46t5v-JQt6NTGnn4RDUD_34vyd0xSozeM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "product_name",
+									"value": "Vans  OLD SKOOL - BOYS YOUTH",
+									"contentType": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "fashion",
+									"contentType": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "2000",
+									"type": "text"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/product",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"product"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "269"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"10d-EDFWF/I9kJJEh41EiY9ozVcF3b0\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Jul 2020 00:58:55 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"product Added Sucessfully\",\n    \"data\": [\n        {\n            \"id\": \"3287c306-1b90-4522-b341-2f6a1644bc85\",\n            \"product_name\": \"Vans  OLD SKOOL - BOYS YOUTH\",\n            \"category\": \"fashion\",\n            \"status\": \"in_stock\",\n            \"quantity\": 10,\n            \"price\": 2000,\n            \"created_at\": \"2020-07-28T00:58:55.098Z\",\n            \"product_image\": null\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Update product",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiT3lpbmtvbGFkZSIsImVtYWlsIjoibWFqYWFndW5veWlua29sYWRlQGdtYWlsLmNvbSIsImlhdCI6MTU5NTkyNTkzNSwiZXhwIjoxNTk1OTI5NTM1fQ.Ti_mSloDcbTRuar-9WfcFoKrVEsK2M9Z3RdF95ANFfE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"product_name\":\"D&G\",\n        \"id\": \"ea896a4b-65f7-4e17-b94a-0035b63e5542\",\n        \"category\":\"fashion\",\n        \"status\": \"in_stock\"\n       \n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/product",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"product"
+					]
+				},
+				"description": "Admin only. Use the Admin token. \nUpdate product with product id. \nThe product can only be updated when no order has been placed.\n"
+			},
+			"response": [
+				{
+					"name": "Update product",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiT3lpbmtvbGFkZSIsImVtYWlsIjoibWFqYWFndW5veWlua29sYWRlQGdtYWlsLmNvbSIsImlhdCI6MTU5NTkyNTkzNSwiZXhwIjoxNTk1OTI5NTM1fQ.Ti_mSloDcbTRuar-9WfcFoKrVEsK2M9Z3RdF95ANFfE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"product_name\":\"D&G\",\n        \"id\": \"ea896a4b-65f7-4e17-b94a-0035b63e5542\",\n        \"category\":\"fashion\",\n        \"status\": \"in_stock\"\n       \n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/product",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"product"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "119"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"77-OCCHf+p0LFan50lCkelZOe10F80\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Jul 2020 09:08:40 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"product updated sucessfully\",\n    \"data\": {\n        \"product_name\": \"D&G\",\n        \"category\": \"fashion\",\n        \"quantity\": 10,\n        \"price\": 2000\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Product by category",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"category\": \"fashion\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/select/product/category",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"select",
+						"product",
+						"category"
+					]
+				},
+				"description": "Get all product under a specific category"
+			},
+			"response": [
+				{
+					"name": "Get Product by category",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"category\": \"fashion\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/select/product/category",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"select",
+								"product",
+								"category"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "152"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"98-ETK7KY8dU0ErMxFp3siz4zpYI84\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Jul 2020 01:02:59 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Product found\",\n    \"data\": [\n        {\n            \"product_name\": \"Vans  OLD SKOOL - BOYS YOUTH\",\n            \"category\": \"fashion\",\n            \"quantity\": 10,\n            \"price\": 2000,\n            \"status\": \"in_stock\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Get all Product",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiUmlsd2FuIiwiZW1haWwiOiJtYWphYWd1bm95aW5rb2xhZGVAZ21haWwuY29tIiwiaWF0IjoxNTk1MDg5ODg3LCJleHAiOjE1OTUwOTM0ODd9.yM12ombRrA7w5vHg1ViMTRKKuWRnb0QSDZDjhcgnq68",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiUmlsd2FuIiwiZW1haWwiOiJtYWphYWd1bm95aW5rb2xhZGVAZ21haWwuY29tIiwiaWF0IjoxNTk1MDg5ODg3LCJleHAiOjE1OTUwOTM0ODd9.yM12ombRrA7w5vHg1ViMTRKKuWRnb0QSDZDjhcgnq6",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/product",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"product"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get all Product",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiUmlsd2FuIiwiZW1haWwiOiJtYWphYWd1bm95aW5rb2xhZGVAZ21haWwuY29tIiwiaWF0IjoxNTk1MDg5ODg3LCJleHAiOjE1OTUwOTM0ODd9.yM12ombRrA7w5vHg1ViMTRKKuWRnb0QSDZDjhcgnq6",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/product",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"product"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "498"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1f2-0XRmpuOKhOMJVlwVulbtZ2ArZs4\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Jul 2020 01:05:52 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"successfully fetched all product\",\n    \"data\": [\n        {\n            \"id\": \"3287c306-1b90-4522-b341-2f6a1644bc85\",\n            \"product_name\": \"Vans  OLD SKOOL - BOYS YOUTH\",\n            \"category\": \"fashion\",\n            \"status\": \"in_stock\",\n            \"quantity\": 10,\n            \"price\": 2000,\n            \"created_at\": \"2020-07-28T00:58:55.098Z\",\n            \"product_image\": null\n        },\n        {\n            \"id\": \"ea896a4b-65f7-4e17-b94a-0035b63e5542\",\n            \"product_name\": \"Vans  OLD SKOOL - BOYS YOUTHs\",\n            \"category\": \"fashion\",\n            \"status\": \"in_stock\",\n            \"quantity\": 10,\n            \"price\": 2000,\n            \"created_at\": \"2020-07-28T01:05:15.726Z\",\n            \"product_image\": null\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Get all product order by category",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/product/category",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"product",
+						"category"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get all product order by category",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/product/category",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"product",
+								"category"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "285"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"11d-WD07nTWR8+FwEHoj/AkWxaQvNB8\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Jul 2020 09:02:44 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"successfully fetch all product\",\n    \"data\": [\n        {\n            \"product_name\": \"Vans  OLD SKOOL - BOYS YOUTHs\",\n            \"category\": \"fashion\",\n            \"quantity\": 10,\n            \"price\": 2000,\n            \"status\": \"in_stock\"\n        },\n        {\n            \"product_name\": \"Vans  OLD SKOOL - BOYS YOUTH\",\n            \"category\": \"fashion\",\n            \"quantity\": 8,\n            \"price\": 2000,\n            \"status\": \"in_stock\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete Category",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoicmlsd2FuIiwiZW1haWwiOiJtYWphYWd1bm95aW5rb2xhZGVAZ21haWwuY29tIiwiaWF0IjoxNTk1OTIzMjE5LCJleHAiOjE1OTU5MjY4MTl9.mDNLpzKAT4wg79qS_B5IDjuy3ECXwv3NLtw0oM3n4Qc",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"fashion\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/category",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"category"
+					]
+				},
+				"description": "Admin only. Use the Admin token.\nThe category should only be deleted if no Product has been added. "
+			},
+			"response": [
+				{
+					"name": "Delete Category",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoicmlsd2FuIiwiZW1haWwiOiJtYWphYWd1bm95aW5rb2xhZGVAZ21haWwuY29tIiwiaWF0IjoxNTk1OTIzMjE5LCJleHAiOjE1OTU5MjY4MTl9.mDNLpzKAT4wg79qS_B5IDjuy3ECXwv3NLtw0oM3n4Qc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"fashion\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/category",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"category"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "42"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2a-JpSAjAFZym2YVRCqJwxO274Lo1g\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Jul 2020 08:05:20 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"fashion Deleted successfully\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get specific Product",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"product_name\": \"Vans  OLD SKOOL - BOYS YOUTH\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/search/Product",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"search",
+						"Product"
+					]
+				},
+				"description": "Search for a specific product "
+			},
+			"response": [
+				{
+					"name": "Get specific Product",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"product_name\": \"Vans  OLD SKOOL - BOYS YOUTH\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/search/Product",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"search",
+								"Product"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "145"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"91-R9vTVlWsyCUXH9IQWOCMV/E4NcY\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Jul 2020 01:31:43 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Product found\",\n    \"data\": {\n        \"product\": \"Vans  OLD SKOOL - BOYS YOUTH\",\n        \"category\": \"fashion\",\n        \"status\": \"in_stock\",\n        \"quantity\": 10,\n        \"price\": 2000\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete Product",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoicmlsd2FuIiwiZW1haWwiOiJtYWphYWd1bm95aW5rb2xhZGVAZ21haWwuY29tIiwiaWF0IjoxNTk1OTIzMjE5LCJleHAiOjE1OTU5MjY4MTl9.mDNLpzKAT4wg79qS_B5IDjuy3ECXwv3NLtw0oM3n4Qc",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"product_name\": \"chain\"\n}\n    ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/product",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"product"
+					]
+				},
+				"description": "Admin only. Use the Admin token.\nThe product should only be deleted when it has been ordered. "
+			},
+			"response": [
+				{
+					"name": "Delete Product",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoicmlsd2FuIiwiZW1haWwiOiJtYWphYWd1bm95aW5rb2xhZGVAZ21haWwuY29tIiwiaWF0IjoxNTk1OTIzMjE5LCJleHAiOjE1OTU5MjY4MTl9.mDNLpzKAT4wg79qS_B5IDjuy3ECXwv3NLtw0oM3n4Qc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"product_name\": \"chain\"\n}\n    ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/product",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"product"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "40"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"28-XWM0fmV9UEkapDMlqrZenn4KftE\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Jul 2020 08:08:56 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"chain Deleted successfully\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Order product",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiQm9maWxpIiwiZW1haWwiOiJib2ZpbGkxMDY3QG1hZG8zNC5jb20iLCJpYXQiOjE1OTU5MjQyMzUsImV4cCI6MTU5NTkyNzgzNX0.9xRP-6B8pnjVyFu55N_QVg1M9UND4iefPzPMt_SWTgU",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"quantity\" : \"1\",\n    \"product_name\" : \"Vans  OLD SKOOL - BOYS YOUTH\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/order",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"order"
+					]
+				},
+				"description": "order product. product_name must be an already existing product"
+			},
+			"response": [
+				{
+					"name": "Order product",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiQm9maWxpIiwiZW1haWwiOiJib2ZpbGkxMDY3QG1hZG8zNC5jb20iLCJpYXQiOjE1OTU5MjQyMzUsImV4cCI6MTU5NTkyNzgzNX0.9xRP-6B8pnjVyFu55N_QVg1M9UND4iefPzPMt_SWTgU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"quantity\" : \"1\",\n    \"product_name\" : \"Vans  OLD SKOOL - BOYS YOUTH\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/order",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"order"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "343"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"157-Pxcg2lyArcDUNctbt2JRFb14EDg\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Jul 2020 08:19:04 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"your order as been placed\",\n    \"data\": {\n        \"id\": \"80de2c3c-d70a-4362-8a45-4ac56e06708d\",\n        \"user_id\": \"2de8ae80-d165-49b4-9109-449e36ae76d3\",\n        \"user_name\": \"Bofili Adaksa\",\n        \"quantity\": 1,\n        \"order_status\": \"pending\",\n        \"cancelled\": false,\n        \"product_name\": \"Vans  OLD SKOOL - BOYS YOUTH\",\n        \"email\": \"bofili1067@mado34.com\",\n        \"created_at\": \"2020-07-28T08:19:04.770Z\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Cancel order",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiQm9maWxpIiwiZW1haWwiOiJib2ZpbGkxMDY3QG1hZG8zNC5jb20iLCJpYXQiOjE1OTU5MjQyMzUsImV4cCI6MTU5NTkyNzgzNX0.9xRP-6B8pnjVyFu55N_QVg1M9UND4iefPzPMt_SWTgU",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"80de2c3c-d70a-4362-8a45-4ac56e06708d\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/cancelorder",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"cancelorder"
+					]
+				},
+				"description": "Order can only be cancel when order status is pending. \nThe user who create order can cancel the order.\n"
+			},
+			"response": [
+				{
+					"name": "Cancel order",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiQm9maWxpIiwiZW1haWwiOiJib2ZpbGkxMDY3QG1hZG8zNC5jb20iLCJpYXQiOjE1OTU5MjQyMzUsImV4cCI6MTU5NTkyNzgzNX0.9xRP-6B8pnjVyFu55N_QVg1M9UND4iefPzPMt_SWTgU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"80de2c3c-d70a-4362-8a45-4ac56e06708d\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/cancelorder",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"cancelorder"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "43"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2b-zCck8Hgwjt2a8MxwC7143nr0HL8\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Jul 2020 08:27:43 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"your order has been cancelled\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Card Payment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiQm9maWxpIiwiZW1haWwiOiJib2ZpbGkxMDY3QG1hZG8zNC5jb20iLCJpYXQiOjE1OTU5MjQyMzUsImV4cCI6MTU5NTkyNzgzNX0.9xRP-6B8pnjVyFu55N_QVg1M9UND4iefPzPMt_SWTgU",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"bofili1067@mado34.com\",\n    \"amount\": \"100000\",\n    \"card\": {\n        \"cvv\":\"408\",\n        \"number\": \"4084084084084081\",\n       \"expiry_month\": \"01\",\n        \"expiry_year\": \"99\"\n    },\n    \"pin\": \"000\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/cardpayment/80de2c3c-d70a-4362-8a45-4ac56e06708d",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"cardpayment",
+						"80de2c3c-d70a-4362-8a45-4ac56e06708d"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				},
+				"description": "Order payment using paystack. Pass order is as params. "
+			},
+			"response": [
+				{
+					"name": "Card Payment",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiQm9maWxpIiwiZW1haWwiOiJib2ZpbGkxMDY3QG1hZG8zNC5jb20iLCJpYXQiOjE1OTU5MjQyMzUsImV4cCI6MTU5NTkyNzgzNX0.9xRP-6B8pnjVyFu55N_QVg1M9UND4iefPzPMt_SWTgU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"bofili1067@mado34.com\",\n    \"amount\": \"100000\",\n    \"card\": {\n        \"cvv\":\"408\",\n        \"number\": \"4084084084084081\",\n       \"expiry_month\": \"01\",\n        \"expiry_year\": \"99\"\n    },\n    \"pin\": \"000\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/cardpayment/80de2c3c-d70a-4362-8a45-4ac56e06708d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"cardpayment",
+								"80de2c3c-d70a-4362-8a45-4ac56e06708d"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1253"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"4e5-syo8ql9L+VfuSMZFt7C/VJ/WKII\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Jul 2020 08:34:42 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 758220462,\n    \"domain\": \"test\",\n    \"status\": \"success\",\n    \"reference\": \"xv8c0l8f5azekgw\",\n    \"amount\": 100000,\n    \"message\": null,\n    \"gateway_response\": \"Successful\",\n    \"paid_at\": \"2020-07-28T08:34:42.000Z\",\n    \"created_at\": \"2020-07-28T08:34:42.000Z\",\n    \"channel\": \"card\",\n    \"currency\": \"NGN\",\n    \"ip_address\": \"52.31.139.75\",\n    \"metadata\": {\n        \"custom_fields\": [\n            {\n                \"value\": \"makurdi\",\n                \"display_name\": \"Donation for\",\n                \"variable_name\": \"donation_for\"\n            }\n        ]\n    },\n    \"log\": null,\n    \"fees\": 1500,\n    \"fees_split\": null,\n    \"authorization\": {\n        \"authorization_code\": \"AUTH_arj4ae361c\",\n        \"bin\": \"408408\",\n        \"last4\": \"4081\",\n        \"exp_month\": \"01\",\n        \"exp_year\": \"2099\",\n        \"channel\": \"card\",\n        \"card_type\": \"visa \",\n        \"bank\": \"TEST BANK\",\n        \"country_code\": \"NG\",\n        \"brand\": \"visa\",\n        \"reusable\": true,\n        \"signature\": \"SIG_Is3ATjwfpqHJ6rtA9RMy\",\n        \"account_name\": null,\n        \"receiver_bank_account_number\": null,\n        \"receiver_bank\": null\n    },\n    \"customer\": {\n        \"id\": 27379838,\n        \"first_name\": null,\n        \"last_name\": null,\n        \"email\": \"bofili1067@mado34.com\",\n        \"customer_code\": \"CUS_7q28nktu6xlq1wd\",\n        \"phone\": null,\n        \"metadata\": null,\n        \"risk_action\": \"default\",\n        \"international_format_phone\": null\n    },\n    \"plan\": null,\n    \"split\": {},\n    \"order_id\": \"80de2c3c-d70a-4362-8a45-4ac56e06708d\",\n    \"paidAt\": \"2020-07-28T08:34:42.000Z\",\n    \"createdAt\": \"2020-07-28T08:34:42.000Z\",\n    \"requested_amount\": 100000,\n    \"transaction_date\": \"2020-07-28T08:34:42.000Z\",\n    \"plan_object\": {},\n    \"subaccount\": {}\n}"
+				}
+			]
+		},
+		{
+			"name": "Update Order Status",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoicmlsd2FuIiwiZW1haWwiOiJtYWphYWd1bm95aW5rb2xhZGVAZ21haWwuY29tIiwiaWF0IjoxNTk1OTIzMjE5LCJleHAiOjE1OTU5MjY4MTl9.mDNLpzKAT4wg79qS_B5IDjuy3ECXwv3NLtw0oM3n4Qc",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"80de2c3c-d70a-4362-8a45-4ac56e06708d\",\n    \"order_status\": \"pending\"\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/updateorder",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"updateorder"
+					]
+				},
+				"description": "Admin only. Use the Admin token.Order status can only be pending or shipped"
+			},
+			"response": [
+				{
+					"name": "Update Order Status",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoicmlsd2FuIiwiZW1haWwiOiJtYWphYWd1bm95aW5rb2xhZGVAZ21haWwuY29tIiwiaWF0IjoxNTk1OTIzMjE5LCJleHAiOjE1OTU5MjY4MTl9.mDNLpzKAT4wg79qS_B5IDjuy3ECXwv3NLtw0oM3n4Qc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"80de2c3c-d70a-4362-8a45-4ac56e06708d\",\n    \"order_status\": \"pending\"\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/updateorder",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"updateorder"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "55"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"37-Ad+AIYB92T6nRHi3MTf+uGAE8Wk\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Jul 2020 08:41:30 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"product order as been updated sucessfully\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Verify Order Payment",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiT3lpbmtvbGFkZSIsImVtYWlsIjoibWFqYWFndW5veWlua29sYWRlQGdtYWlsLmNvbSIsImlhdCI6MTU5NTkyNTkzNSwiZXhwIjoxNTk1OTI5NTM1fQ.Ti_mSloDcbTRuar-9WfcFoKrVEsK2M9Z3RdF95ANFfE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/verifypayment/xv8c0l8f5azekgw",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"verifypayment",
+						"xv8c0l8f5azekgw"
+					]
+				},
+				"description": "Admin only. Use Admin token. "
+			},
+			"response": [
+				{
+					"name": "Verify Order Payment",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiT3lpbmtvbGFkZSIsImVtYWlsIjoibWFqYWFndW5veWlua29sYWRlQGdtYWlsLmNvbSIsImlhdCI6MTU5NTkyNTkzNSwiZXhwIjoxNTk1OTI5NTM1fQ.Ti_mSloDcbTRuar-9WfcFoKrVEsK2M9Z3RdF95ANFfE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/verifypayment/xv8c0l8f5azekgw",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"verifypayment",
+								"xv8c0l8f5azekgw"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1219"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"4c3-ztDm0WtMTMfxuTDKcw2YFCDheD8\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Jul 2020 08:52:40 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 758220462,\n    \"domain\": \"test\",\n    \"status\": \"success\",\n    \"reference\": \"xv8c0l8f5azekgw\",\n    \"amount\": 100000,\n    \"message\": null,\n    \"gateway_response\": \"Successful\",\n    \"paid_at\": \"2020-07-28T08:34:42.000Z\",\n    \"created_at\": \"2020-07-28T08:34:42.000Z\",\n    \"channel\": \"card\",\n    \"currency\": \"NGN\",\n    \"ip_address\": \"52.31.139.75\",\n    \"metadata\": {\n        \"custom_fields\": [\n            {\n                \"value\": \"makurdi\",\n                \"display_name\": \"Donation for\",\n                \"variable_name\": \"donation_for\"\n            }\n        ]\n    },\n    \"log\": null,\n    \"fees\": 1500,\n    \"fees_split\": null,\n    \"authorization\": {\n        \"authorization_code\": \"AUTH_arj4ae361c\",\n        \"bin\": \"408408\",\n        \"last4\": \"4081\",\n        \"exp_month\": \"01\",\n        \"exp_year\": \"2099\",\n        \"channel\": \"card\",\n        \"card_type\": \"visa \",\n        \"bank\": \"TEST BANK\",\n        \"country_code\": \"NG\",\n        \"brand\": \"visa\",\n        \"reusable\": true,\n        \"signature\": \"SIG_Is3ATjwfpqHJ6rtA9RMy\",\n        \"account_name\": null,\n        \"receiver_bank_account_number\": null,\n        \"receiver_bank\": null\n    },\n    \"customer\": {\n        \"id\": 27379838,\n        \"first_name\": null,\n        \"last_name\": null,\n        \"email\": \"bofili1067@mado34.com\",\n        \"customer_code\": \"CUS_7q28nktu6xlq1wd\",\n        \"phone\": null,\n        \"metadata\": null,\n        \"risk_action\": \"default\",\n        \"international_format_phone\": null\n    },\n    \"plan\": null,\n    \"split\": {},\n    \"order_id\": null,\n    \"paidAt\": \"2020-07-28T08:34:42.000Z\",\n    \"createdAt\": \"2020-07-28T08:34:42.000Z\",\n    \"requested_amount\": 100000,\n    \"transaction_date\": \"2020-07-28T08:34:42.000Z\",\n    \"plan_object\": {},\n    \"subaccount\": {}\n}"
+				}
+			]
+		}
+	],
+	"protocolProfileBehavior": {}
+}

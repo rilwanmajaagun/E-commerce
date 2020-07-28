@@ -37,8 +37,8 @@ const resetPassword = (name, email, token) => {
     const data = {
         from: 'E-commerce <majaagunoyinkolade@gmail.com>',
         to: `${email}`,
-        subject: `Hi ${name} Rest your Password`,
-        text: `Hi, Rest your password using this link http://localhost:3000/api/v1/auth/reset-password?token=${token}`
+        subject: `Hi ${name} Reset your Password`,
+        text: `Hi, Reset your password using this link http://localhost:3000/api/v1/auth/reset-password?token=${token}`
     };
 
     return mailgun.messages().send(data, (error, body) => {
@@ -51,7 +51,7 @@ const resetSuccessful = (name, email) => {
         from: 'E-commerce <rilwan30@yahoo.com>',
         to: `${email}`,
         subject: `Hi ${name}`,
-        text: 'Hi, Rest your password has been Reset successfully'
+        text: 'Hi, Reset your password has been Reset successfully'
     };
     return mailgun.messages().send(data, (error, body) => {
         logger.info(body);

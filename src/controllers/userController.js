@@ -5,16 +5,19 @@ import { sendMail } from '../config';
 
 const createUsers = async(req, res) => {
     try {
-        const newUser = await userService.createUser(req.body);
-        const token = await hash.generateToken(newUser[0].first_name, newUser[0].email);
-        sendMail.verifyMail(newUser[0].first_name, newUser[0].email, token);
-        return newUser ?
+        const {
+            id, first_name, email, created_at
+        } = await userService.createUser(req.body);
+        const token = await hash.generateToken(first_name, email);
+        sendMail.verifyMail(first_name, email, token);
+        return id ?
             res.status(status.CREATED).send({
                 message: 'user created sucessfully',
                 data: {
-                    id: newUser[0].id,
-                    email: newUser[0].email,
-                    date_created: newUser[0].created_at
+                    id,
+                    email,
+                    date_created: created_at,
+                    token
                 }
             }) :
             res.status(status.BAD_REQUEST).send({
@@ -106,7 +109,7 @@ const forgetPassword = async(req, res) => {
         if (user) {
             const token = await hash.generateToken(user.first_name, user.email);
             sendMail.resetPassword(user.first_name, user.email, token);
-            return res.status(status.OK).send({ message: 'rest link send' });
+            return res.status(status.OK).send({ message: 'reset link sent' });
         }
         return res.status(status.BAD_REQUEST).send({ message: 'user not found' });
     } catch (error) {

@@ -4,12 +4,16 @@
   "description": "e-commerce end point",
   "main": "index.js",
   "scripts": {
-    "start": "babel-node src/index.js",
+    "start": "node  build/index.js",
     "pretest": "npm run posttest && db-migrate up && db-migrate up:seeds",
     "test": "ECOMMERCE_NODE_ENV=test mocha --require @babel/register test/index.js --exit",
     "posttest": "db-migrate reset:seeds && db-migrate reset ",
     "dev:start": "nodemon --exec babel-node src/index.js",
-    "lint": "eslint --ext js ."
+    "lint": "eslint --ext js .",
+    "build": "babel src -d --out-dir build",
+    "prestart": "db-migrate up",
+    "heroku-postbuild": "npm run build"
+
   },
   "repository": {
     "type": "git",
@@ -22,6 +26,7 @@
   },
   "homepage": "https://github.com/rilwanmajaagun/e-commerce#readme",
   "dependencies": {
+    "@babel/cli": "^7.10.5",
     "@hapi/joi": "^17.1.1",
     "@sendgrid/mail": "^7.2.2",
     "aws-sdk": "^2.720.0",
@@ -57,6 +62,7 @@
     "@babel/plugin-transform-runtime": "^7.10.5",
     "@babel/preset-env": "^7.10.4",
     "@babel/register": "^7.10.5",
+    "babel-cli": "^6.26.0",
     "babel-eslint": "^10.1.0",
     "chai": "^4.2.0",
     "eslint": "^7.4.0",

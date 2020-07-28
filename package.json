@@ -4,10 +4,11 @@
   "description": "e-commerce end point",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --exec babel-node src/index.js",
+    "start": "babel-node src/index.js",
     "pretest": "npm run posttest && db-migrate up && db-migrate up:seeds",
     "test": "ECOMMERCE_NODE_ENV=test mocha --require @babel/register test/index.js --exit",
     "posttest": "db-migrate reset:seeds && db-migrate reset ",
+    "dev:start": "nodemon --exec babel-node src/index.js",
     "lint": "eslint --ext js ."
   },
   "repository": {

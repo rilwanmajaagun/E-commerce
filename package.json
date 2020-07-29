@@ -8,12 +8,11 @@
     "pretest": "npm run posttest && db-migrate up && db-migrate up:seeds",
     "test": "ECOMMERCE_NODE_ENV=test mocha --require @babel/register test/index.js --exit",
     "posttest": "db-migrate reset:seeds && db-migrate reset ",
-    "dev:start": "nodemon --exec babel-node src/index.js",
+    "dev:start": "nodemon --require @babel/register src/index.js",
     "lint": "eslint --ext js .",
     "build": "babel src -d --out-dir build",
     "prestart": "db-migrate up",
     "heroku-postbuild": "npm run build"
-
   },
   "repository": {
     "type": "git",
@@ -57,12 +56,12 @@
     "winston": "^3.3.3"
   },
   "devDependencies": {
+    "@babel/cli": "^7.0.0",
     "@babel/core": "^7.10.4",
-    "@babel/node": "^7.10.4",
+    "@babel/node": "^7.0.0",
     "@babel/plugin-transform-runtime": "^7.10.5",
     "@babel/preset-env": "^7.10.4",
     "@babel/register": "^7.10.5",
-    "babel-cli": "^6.26.0",
     "babel-eslint": "^10.1.0",
     "chai": "^4.2.0",
     "eslint": "^7.4.0",

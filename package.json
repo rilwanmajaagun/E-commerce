@@ -4,7 +4,7 @@
   "description": "e-commerce end point",
   "main": "index.js",
   "scripts": {
-    "start": "node  ./build/index.js",
+    "start": "node  build/index.js",
     "pretest": "npm run posttest && db-migrate up && db-migrate up:seeds",
     "test": "ECOMMERCE_NODE_ENV=test mocha --require @babel/register test/index.js --exit",
     "posttest": "db-migrate reset:seeds && db-migrate reset ",

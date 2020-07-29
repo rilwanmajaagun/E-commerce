@@ -11,7 +11,6 @@
     "dev:start": "nodemon --require @babel/register src/index.js",
     "lint": "eslint --ext js .",
     "build": "babel src -d --out-dir build",
-    "prestart": "db-migrate up",
     "heroku-postbuild": "npm run build"
   },
   "repository": {

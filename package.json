@@ -4,15 +4,14 @@
   "description": "e-commerce end point",
   "main": "index.js",
   "scripts": {
-    "start": "node  src/index.js",
+    "start": "node  ./build/index.js",
     "pretest": "npm run posttest && db-migrate up && db-migrate up:seeds",
     "test": "ECOMMERCE_NODE_ENV=test mocha --require @babel/register test/index.js --exit",
     "posttest": "db-migrate reset:seeds && db-migrate reset ",
     "dev:start": "nodemon --require @babel/register src/index.js",
     "lint": "eslint --ext js .",
     "build": "babel src -d --out-dir build",
-    "heroku-postbuild": "npm run build",
-    "type": "module"
+    "heroku-postbuild": "npm run build"
   },
   "repository": {
     "type": "git",

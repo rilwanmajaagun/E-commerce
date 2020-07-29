@@ -10,8 +10,7 @@
     "posttest": "db-migrate reset:seeds && db-migrate reset ",
     "dev:start": "nodemon --require @babel/register src/index.js",
     "lint": "eslint --ext js .",
-    "build": "babel src -d --out-dir build",
-    "heroku-postbuild": "npm run build"
+    "build": "babel src -d --out-dir build"
   },
   "repository": {
     "type": "git",

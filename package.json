@@ -25,6 +25,7 @@
   "homepage": "https://github.com/rilwanmajaagun/e-commerce#readme",
   "dependencies": {
     "@babel/cli": "^7.10.5",
+    "@babel/runtime": "^7.10.5",
     "@hapi/joi": "^17.1.1",
     "@sendgrid/mail": "^7.2.2",
     "aws-sdk": "^2.720.0",

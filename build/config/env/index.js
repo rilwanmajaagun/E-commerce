@@ -18,5 +18,5 @@ var _default = {
   development: _development["default"],
   test: _test["default"],
   production: _production["default"]
-}[NODE_ENV || 'development'];
+}[NODE_ENV || 'production'];
 exports["default"] = _default;

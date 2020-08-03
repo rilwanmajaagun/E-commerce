@@ -19,17 +19,19 @@ var port = process.env.ECOMMERCE_PORT || 3000;
 
 _config2.app.listen(port, function () {
   _config2.logger.info("Application listen on port ".concat(port));
-});
+}); // app.get('/', (req, res) => {
+//     client.ping((err, msg) => {
+//         if (err) {
+//             return res.status(status.INTERNAL_SERVER_ERROR).send(status[500]);
+//         }
+//         return res.status(status.OK).send({ mesaage: msg });
+//     });
+// });
+
 
 _config2.app.get('/', function (req, res) {
-  _config2.client.ping(function (err, msg) {
-    if (err) {
-      return res.status(_httpStatus["default"].INTERNAL_SERVER_ERROR).send(_httpStatus["default"][500]);
-    }
-
-    return res.status(_httpStatus["default"].OK).send({
-      mesaage: msg
-    });
+  res.status(_httpStatus["default"].OK).send({
+    message: 'Hello'
   });
 });
 

@@ -1,7 +1,7 @@
 import status from 'http-status';
 import { userService } from '../services';
 import { hash } from '../utils';
-import { sendMail } from '../config';
+import { mailing } from '../config';
 
 const createUsers = async(req, res) => {
     try {
@@ -9,7 +9,7 @@ const createUsers = async(req, res) => {
             id, first_name, email, created_at
         } = await userService.createUser(req.body);
         const token = await hash.generateToken(first_name, email);
-        sendMail.verifyMail(first_name, email, token);
+        mailing.signupMail(email, first_name, token);
         return id ?
             res.status(status.CREATED).send({
                 message: 'user created sucessfully',
@@ -72,7 +72,7 @@ const activateUser = async(req, res) => {
     const { email } = res.locals.user;
     try {
         const user = await userService.activateUser(email);
-        sendMail.welcomeMail(user.first_name, user.email);
+        mailing.welcomeMail(user.first_name, user.email);
         return user ?
             res.status(status.OK).send({
                 message: 'Account activated'
@@ -90,7 +90,7 @@ const confrimationToken = async(req, res) => {
     try {
         const user = await userService.checkIfUserExist(email);
         const token = await hash.generateToken(user.first_name, user.email);
-        sendMail.verifyMail(user.first_name, user.email, token);
+        mailing.verifyMail(user.email, user.first_name, token);
         return user ?
             res.status(status.CREATED).send({ message: 'sent' }) :
             res.status(status.BAD_REQUEST).send({ message: 'Error sending confrimation code' });
@@ -108,7 +108,7 @@ const forgetPassword = async(req, res) => {
         const user = await userService.checkIfUserExist(email);
         if (user) {
             const token = await hash.generateToken(user.first_name, user.email);
-            sendMail.resetPassword(user.first_name, user.email, token);
+            mailing.forgetPasswordMail(user.first_name, user.email, token);
             return res.status(status.OK).send({ message: 'reset link sent' });
         }
         return res.status(status.BAD_REQUEST).send({ message: 'user not found' });
@@ -125,7 +125,7 @@ const resetPassword = async(req, res) => {
     try {
         const user = await userService.resetPassword(email, req.body);
         if (user) {
-            sendMail.resetSuccessful(user.first_name, user.email);
+            mailing.resetSuccessful(user.first_name, user.email);
             return res.status(status.OK).send({ message: 'password reset successfully' });
         } return res.status(status.BAD_REQUEST).send({ message: 'Error reseting password' });
     } catch (error) {

@@ -24,6 +24,7 @@ describe('e-commerce', () => {
             password: faker.random.alphaNumeric(8),
             phone_number: faker.random.number(110000000000)
         };
+        console.log(user);
         request(app)
             .post('/api/v1/auth/register')
             .send(user)

@@ -5,7 +5,7 @@ import passport from 'passport';
 import strategy from 'passport-facebook';
 import { db, userQuery } from '../db';
 import { userService } from '../services';
-import app from './express';
+import app from '../config/express';
 import { userAuth } from '../middlewares';
 
 const FacebookStrategy = strategy.Strategy;

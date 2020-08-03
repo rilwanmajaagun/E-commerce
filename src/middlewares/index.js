@@ -5,6 +5,7 @@ import validator from './validator';
 import productAuth from './producAuth';
 import orderAuth from './orderAuth';
 import aws from './aws';
+import sendcode from './twoAuth';
 
 export {
     userAuth,
@@ -12,5 +13,6 @@ export {
     validator,
     productAuth,
     orderAuth,
-    aws
+    aws,
+    sendcode
 };

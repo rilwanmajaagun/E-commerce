@@ -15,13 +15,11 @@ const selectProduct = async(req, res, next) => {
             return res.status(status.BAD_REQUEST).send({ message: 'product already exist' });
         }
     } catch (e) {
-        console.log(e);
         return res.status(status.INTERNAL_SERVER_ERROR).send({ message: status[500] });
     } next();
 };
 
 const CheckProduct = async(req, res, next) => {
-    console.log('herere');
     try {
         const product = await productSerivce.selectProduct(req.body);
         if (!product) {
@@ -30,7 +28,6 @@ const CheckProduct = async(req, res, next) => {
             });
         }
     } catch (e) {
-        console.log(e);
         return res.status(status.INTERNAL_SERVER_ERROR).send({
             message: status[500]
         });
@@ -58,26 +55,6 @@ const CheckProductByid = async(req, res, next) => {
     }
     next();
 };
-
-// const productStatus = async(req, res, next) => {
-//     try {
-//         const product = await productSerivce.checkStatusAndQuantity(req.body);
-//         if (product.status === 'out_of_stock') {
-//             return res.status(status.BAD_REQUEST).send({
-//                 message: 'product is out of stock pls check back later'
-//             });
-//         }
-//         if (product.quantity < req.body.quantity) {
-//             return res.status(status.BAD_REQUEST).send({
-//                 message: `only ${product.quantity} left `
-//             });
-//         }
-//     } catch (error) {
-//         return res.status(status.INTERNAL_SERVER_ERROR).send({
-//             message: status[500]
-//         });
-//     } next();
-// };
 
 const updateQauntity = async(req, res, next) => {
     try {

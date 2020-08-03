@@ -6,7 +6,6 @@ const {
     ECOMMERCE_NODE_ENV: NODE_ENV
 } = process.env;
 
-
 export default {
     development,
     test,

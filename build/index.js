@@ -15,7 +15,7 @@ var _config2 = require("./config");
 
 var _route = _interopRequireDefault(require("./config/route"));
 
-var port = process.env.ECOMMERCE_PORT || 3000;
+var port = process.env.ECOMMERCE_PORT || process.env.PORT || 3000;
 
 _config2.app.listen(port, function () {
   _config2.logger.info("Application listen on port ".concat(port));

@@ -5,7 +5,7 @@ import {
 } from './config';
 import route from './config/route';
 
-const port = process.env.ECOMMERCE_PORT || 3000;
+const port = process.env.ECOMMERCE_PORT || process.env.PORT || 3000;
 
 app.listen(port, () => {
     logger.info(`Application listen on port ${port}`);

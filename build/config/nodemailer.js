@@ -19,6 +19,8 @@ var _nodemailer = _interopRequireDefault(require("nodemailer"));
 
 var _bull = _interopRequireDefault(require("./bull"));
 
+var _logger = _interopRequireDefault(require("./logger"));
+
 var mailGenerator = new _mailgen["default"]({
   theme: 'default',
   product: {
@@ -49,8 +51,12 @@ var sendmail = function sendmail(mailOptions) {
   return new Promise(function (resolve, reject) {
     transporter.sendMail(mailOptions, function (error, info) {
       if (error) {
+        _logger["default"].info(error);
+
         reject(error);
       } else {
+        _logger["default"].info(info.response);
+
         resolve(info.response);
       }
     });

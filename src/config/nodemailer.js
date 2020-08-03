@@ -2,6 +2,7 @@ import 'dotenv/config';
 import Mailgen from 'mailgen';
 import nodemailer from 'nodemailer';
 import sendMailQueue from './bull';
+import logger from './logger';
 
 const mailGenerator = new Mailgen({
     theme: 'default',
@@ -32,8 +33,10 @@ const option = (email, subject, html) => {
 const sendmail = (mailOptions) => new Promise((resolve, reject) => {
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
+            logger.info(error);
             reject(error);
         } else {
+            logger.info(info.response);
             resolve(info.response);
         }
     });

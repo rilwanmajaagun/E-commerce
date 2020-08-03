@@ -6,7 +6,7 @@
         "ENV": "ECOMMERCE_DATABASE_TEST_URL"
     },
     "production": {
-        "ENV": "ECOMMERCE_DATABASE_URL"
+        "ENV": "DATABASE_URL"
     },
     "defaultEnv": {
         "ENV": "ECOMMERCE_NODE_ENV"

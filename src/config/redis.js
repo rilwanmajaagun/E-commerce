@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import redis from 'redis';
 import logger from './logger';
 

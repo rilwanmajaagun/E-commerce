@@ -11,12 +11,17 @@ app.listen(port, () => {
     logger.info(`Application listen on port ${port}`);
 });
 
+// app.get('/', (req, res) => {
+//     client.ping((err, msg) => {
+//         if (err) {
+//             return res.status(status.INTERNAL_SERVER_ERROR).send(status[500]);
+//         }
+//         return res.status(status.OK).send({ mesaage: msg });
+//     });
+// });
 app.get('/', (req, res) => {
-    client.ping((err, msg) => {
-        if (err) {
-            return res.status(status.INTERNAL_SERVER_ERROR).send(status[500]);
-        }
-        return res.status(status.OK).send({ mesaage: msg });
+    res.status(status.OK).send({
+        message: 'Hello'
     });
 });
 app.use('/api/v1', route);

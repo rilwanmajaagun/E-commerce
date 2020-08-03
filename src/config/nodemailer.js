@@ -2,13 +2,12 @@ import 'dotenv/config';
 import Mailgen from 'mailgen';
 import nodemailer from 'nodemailer';
 import sendMailQueue from './bull';
-import logger from './logger';
 
 const mailGenerator = new Mailgen({
     theme: 'default',
     product: {
         name: 'E-commerce',
-        link: 'http://localhost:3000/'
+        link: 'https://dry-wildwood-70605.herokuapp.com/'
     }
 });
 
@@ -56,7 +55,7 @@ async function signupMail(email, first_name, token) {
                 button: {
                     color: '#22BC66',
                     text: 'Confrim your account',
-                    link: `http://localhost:3000/api/v1/auth/confirmation?token=${token}`
+                    link: `https://dry-wildwood-70605.herokuapp.com/api/v1/auth/confirmation?token=${token}`
                 }
             }
         }
@@ -80,7 +79,7 @@ async function verifyMail(email, first_name, token) {
                 button: {
                     color: '#22BC66',
                     text: 'Confrim your account',
-                    link: `http://localhost:3000/api/v1/auth/confirmation?token=${token}`
+                    link: `https://dry-wildwood-70605.herokuapp.com/api/v1/auth/confirmation?token=${token}`
                 }
             }
         }
@@ -100,7 +99,7 @@ async function forgetPasswordMail(first_name, email, token) {
                 button: {
                     color: '#DC4D2F',
                     text: 'Rest your Password',
-                    link: `http://localhost:3000/api/v1/auth/reset-password?token=${token}`
+                    link: `https://dry-wildwood-70605.herokuapp.com/api/v1/auth/reset-password?token=${token}`
                 }
             }
         }
@@ -137,7 +136,6 @@ async function resetSuccessful(first_name, email) {
 // consumer
 sendMailQueue.process(async(job) => {
     const respo = await sendmail(job.data);
-    console.log(respo);
     return respo;
 });
 

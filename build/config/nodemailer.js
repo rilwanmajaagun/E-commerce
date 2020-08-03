@@ -19,13 +19,11 @@ var _nodemailer = _interopRequireDefault(require("nodemailer"));
 
 var _bull = _interopRequireDefault(require("./bull"));
 
-var _logger = _interopRequireDefault(require("./logger"));
-
 var mailGenerator = new _mailgen["default"]({
   theme: 'default',
   product: {
     name: 'E-commerce',
-    link: 'http://localhost:3000/'
+    link: 'https://dry-wildwood-70605.herokuapp.com/'
   }
 });
 
@@ -84,7 +82,7 @@ function _signupMail() {
                   button: {
                     color: '#22BC66',
                     text: 'Confrim your account',
-                    link: "http://localhost:3000/api/v1/auth/confirmation?token=".concat(token)
+                    link: "https://dry-wildwood-70605.herokuapp.com/api/v1/auth/confirmation?token=".concat(token)
                   }
                 }
               }
@@ -135,7 +133,7 @@ function _verifyMail() {
                   button: {
                     color: '#22BC66',
                     text: 'Confrim your account',
-                    link: "http://localhost:3000/api/v1/auth/confirmation?token=".concat(token)
+                    link: "https://dry-wildwood-70605.herokuapp.com/api/v1/auth/confirmation?token=".concat(token)
                   }
                 }
               }
@@ -186,7 +184,7 @@ function _forgetPasswordMail() {
                   button: {
                     color: '#DC4D2F',
                     text: 'Rest your Password',
-                    link: "http://localhost:3000/api/v1/auth/reset-password?token=".concat(token)
+                    link: "https://dry-wildwood-70605.herokuapp.com/api/v1/auth/reset-password?token=".concat(token)
                   }
                 }
               }
@@ -315,10 +313,9 @@ _bull["default"].process( /*#__PURE__*/function () {
 
           case 2:
             respo = _context.sent;
-            console.log(respo);
             return _context.abrupt("return", respo);
 
-          case 5:
+          case 4:
           case "end":
             return _context.stop();
         }

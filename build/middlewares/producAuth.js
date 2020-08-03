@@ -57,21 +57,20 @@ var selectProduct = /*#__PURE__*/function () {
             }));
 
           case 13:
-            _context.next = 19;
+            _context.next = 18;
             break;
 
           case 15:
             _context.prev = 15;
             _context.t0 = _context["catch"](2);
-            console.log(_context.t0);
             return _context.abrupt("return", res.status(_httpStatus["default"].INTERNAL_SERVER_ERROR).send({
               message: _httpStatus["default"][500]
             }));
 
-          case 19:
+          case 18:
             next();
 
-          case 20:
+          case 19:
           case "end":
             return _context.stop();
         }
@@ -91,16 +90,15 @@ var CheckProduct = /*#__PURE__*/function () {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
-            console.log('herere');
-            _context2.prev = 1;
-            _context2.next = 4;
+            _context2.prev = 0;
+            _context2.next = 3;
             return _services.productSerivce.selectProduct(req.body);
 
-          case 4:
+          case 3:
             product = _context2.sent;
 
             if (product) {
-              _context2.next = 7;
+              _context2.next = 6;
               break;
             }
 
@@ -108,27 +106,26 @@ var CheckProduct = /*#__PURE__*/function () {
               message: 'product does not exist'
             }));
 
-          case 7:
-            _context2.next = 13;
+          case 6:
+            _context2.next = 11;
             break;
 
-          case 9:
-            _context2.prev = 9;
-            _context2.t0 = _context2["catch"](1);
-            console.log(_context2.t0);
+          case 8:
+            _context2.prev = 8;
+            _context2.t0 = _context2["catch"](0);
             return _context2.abrupt("return", res.status(_httpStatus["default"].INTERNAL_SERVER_ERROR).send({
               message: _httpStatus["default"][500]
             }));
 
-          case 13:
+          case 11:
             next();
 
-          case 14:
+          case 12:
           case "end":
             return _context2.stop();
         }
       }
-    }, _callee2, null, [[1, 9]]);
+    }, _callee2, null, [[0, 8]]);
   }));
 
   return function CheckProduct(_x4, _x5, _x6) {
@@ -200,26 +197,7 @@ var CheckProductByid = /*#__PURE__*/function () {
   return function CheckProductByid(_x7, _x8, _x9) {
     return _ref3.apply(this, arguments);
   };
-}(); // const productStatus = async(req, res, next) => {
-//     try {
-//         const product = await productSerivce.checkStatusAndQuantity(req.body);
-//         if (product.status === 'out_of_stock') {
-//             return res.status(status.BAD_REQUEST).send({
-//                 message: 'product is out of stock pls check back later'
-//             });
-//         }
-//         if (product.quantity < req.body.quantity) {
-//             return res.status(status.BAD_REQUEST).send({
-//                 message: `only ${product.quantity} left `
-//             });
-//         }
-//     } catch (error) {
-//         return res.status(status.INTERNAL_SERVER_ERROR).send({
-//             message: status[500]
-//         });
-//     } next();
-// };
-
+}();
 
 var updateQauntity = /*#__PURE__*/function () {
   var _ref4 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee4(req, res, next) {

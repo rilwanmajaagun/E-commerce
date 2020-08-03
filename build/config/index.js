@@ -32,19 +32,31 @@ Object.defineProperty(exports, "client", {
 Object.defineProperty(exports, "userRouter", {
   enumerable: true,
   get: function get() {
-    return _passport["default"];
-  }
-});
-Object.defineProperty(exports, "sendMail", {
-  enumerable: true,
-  get: function get() {
-    return _mailgun["default"];
+    return _facebookAuth["default"];
   }
 });
 Object.defineProperty(exports, "userRouters", {
   enumerable: true,
   get: function get() {
     return _Googleauth["default"];
+  }
+});
+Object.defineProperty(exports, "mailing", {
+  enumerable: true,
+  get: function get() {
+    return _nodemailer["default"];
+  }
+});
+Object.defineProperty(exports, "sendMailQueue", {
+  enumerable: true,
+  get: function get() {
+    return _bull["default"];
+  }
+});
+Object.defineProperty(exports, "nexmo", {
+  enumerable: true,
+  get: function get() {
+    return _twoFactorauth["default"];
   }
 });
 
@@ -56,8 +68,12 @@ var _logger = _interopRequireDefault(require("./logger"));
 
 var _redis = _interopRequireDefault(require("./redis"));
 
-var _passport = _interopRequireDefault(require("./passport"));
+var _facebookAuth = _interopRequireDefault(require("../controllers/facebookAuth"));
 
-var _mailgun = _interopRequireDefault(require("./mailgun"));
+var _Googleauth = _interopRequireDefault(require("../controllers/Googleauth"));
 
-var _Googleauth = _interopRequireDefault(require("./Googleauth"));
+var _nodemailer = _interopRequireDefault(require("./nodemailer"));
+
+var _bull = _interopRequireDefault(require("./bull"));
+
+var _twoFactorauth = _interopRequireDefault(require("./twoFactorauth"));

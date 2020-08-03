@@ -9,15 +9,13 @@ exports["default"] = void 0;
 
 require("dotenv/config");
 
-var _redis = _interopRequireDefault(require("redis"));
+var _bull = _interopRequireDefault(require("bull"));
 
 var _logger = _interopRequireDefault(require("./logger"));
 
-// const REDIS_PORT = process.env.REDIS_PORT || 6379;
-var client = _redis["default"].createClient(process.env.REDIS_URL);
-
-client.on('error', function (error) {
-  _logger["default"].error(error);
+var sendMailQueue = new _bull["default"]('sendMail', process.env.REDIS_URL);
+sendMailQueue.on('completed', function (job, result) {
+  _logger["default"].info("Job completed with result ".concat(result));
 });
-var _default = client;
+var _default = sendMailQueue;
 exports["default"] = _default;

@@ -43,7 +43,7 @@ var createUsers = /*#__PURE__*/function () {
           case 10:
             token = _context.sent;
 
-            _config.sendMail.verifyMail(first_name, email, token);
+            _config.mailing.signupMail(email, first_name, token);
 
             return _context.abrupt("return", id ? res.status(_httpStatus["default"].CREATED).send({
               message: 'user created sucessfully',
@@ -182,7 +182,7 @@ var activateUser = /*#__PURE__*/function () {
           case 4:
             user = _context4.sent;
 
-            _config.sendMail.welcomeMail(user.first_name, user.email);
+            _config.mailing.welcomeMail(user.first_name, user.email);
 
             return _context4.abrupt("return", user ? res.status(_httpStatus["default"].OK).send({
               message: 'Account activated'
@@ -231,7 +231,7 @@ var confrimationToken = /*#__PURE__*/function () {
           case 7:
             token = _context5.sent;
 
-            _config.sendMail.verifyMail(user.first_name, user.email, token);
+            _config.mailing.verifyMail(user.email, user.first_name, token);
 
             return _context5.abrupt("return", user ? res.status(_httpStatus["default"].CREATED).send({
               message: 'sent'
@@ -286,7 +286,7 @@ var forgetPassword = /*#__PURE__*/function () {
           case 8:
             token = _context6.sent;
 
-            _config.sendMail.resetPassword(user.first_name, user.email, token);
+            _config.mailing.forgetPasswordMail(user.first_name, user.email, token);
 
             return _context6.abrupt("return", res.status(_httpStatus["default"].OK).send({
               message: 'reset link sent'
@@ -338,7 +338,7 @@ var resetPassword = /*#__PURE__*/function () {
               break;
             }
 
-            _config.sendMail.resetSuccessful(user.first_name, user.email);
+            _config.mailing.resetSuccessful(user.first_name, user.email);
 
             return _context7.abrupt("return", res.status(_httpStatus["default"].OK).send({
               message: 'password reset successfully'

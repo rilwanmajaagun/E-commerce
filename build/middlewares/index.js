@@ -41,6 +41,12 @@ Object.defineProperty(exports, "aws", {
     return _aws["default"];
   }
 });
+Object.defineProperty(exports, "sendcode", {
+  enumerable: true,
+  get: function get() {
+    return _twoAuth["default"];
+  }
+});
 
 var _userAuth = _interopRequireDefault(require("./userAuth"));
 
@@ -53,3 +59,5 @@ var _producAuth = _interopRequireDefault(require("./producAuth"));
 var _orderAuth = _interopRequireDefault(require("./orderAuth"));
 
 var _aws = _interopRequireDefault(require("./aws"));
+
+var _twoAuth = _interopRequireDefault(require("./twoAuth"));

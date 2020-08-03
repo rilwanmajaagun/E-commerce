@@ -5,12 +5,6 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-Object.defineProperty(exports, "response", {
-  enumerable: true,
-  get: function get() {
-    return _response["default"];
-  }
-});
 Object.defineProperty(exports, "hash", {
   enumerable: true,
   get: function get() {
@@ -29,8 +23,6 @@ Object.defineProperty(exports, "multer", {
     return _multer["default"];
   }
 });
-
-var _response = _interopRequireDefault(require("./response"));
 
 var _hash = _interopRequireDefault(require("./hash/hash"));
 

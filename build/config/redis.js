@@ -7,6 +7,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 
+require("dotenv/config");
+
 var _redis = _interopRequireDefault(require("redis"));
 
 var _logger = _interopRequireDefault(require("./logger"));

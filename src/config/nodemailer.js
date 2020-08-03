@@ -33,10 +33,8 @@ const option = (email, subject, html) => {
 const sendmail = (mailOptions) => new Promise((resolve, reject) => {
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
-            logger.info(error);
             reject(error);
         } else {
-            logger.info(info.response);
             resolve(info.response);
         }
     });
@@ -139,6 +137,7 @@ async function resetSuccessful(first_name, email) {
 // consumer
 sendMailQueue.process(async(job) => {
     const respo = await sendmail(job.data);
+    console.log(respo);
     return respo;
 });
 

@@ -51,12 +51,8 @@ var sendmail = function sendmail(mailOptions) {
   return new Promise(function (resolve, reject) {
     transporter.sendMail(mailOptions, function (error, info) {
       if (error) {
-        _logger["default"].info(error);
-
         reject(error);
       } else {
-        _logger["default"].info(info.response);
-
         resolve(info.response);
       }
     });
@@ -319,9 +315,10 @@ _bull["default"].process( /*#__PURE__*/function () {
 
           case 2:
             respo = _context.sent;
+            console.log(respo);
             return _context.abrupt("return", respo);
 
-          case 4:
+          case 5:
           case "end":
             return _context.stop();
         }

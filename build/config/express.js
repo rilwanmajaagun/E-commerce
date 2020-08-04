@@ -19,6 +19,8 @@ var _expressSession = _interopRequireDefault(require("express-session"));
 
 var _passport = _interopRequireDefault(require("passport"));
 
+var _cors = _interopRequireDefault(require("cors"));
+
 // eslint-disable-next-line import/no-extraneous-dependencies
 var app = (0, _express["default"])();
 app.use(_bodyParser["default"].json());
@@ -58,5 +60,6 @@ _passport["default"].deserializeUser( /*#__PURE__*/function () {
   };
 }());
 
+app.use((0, _cors["default"])());
 var _default = app;
 exports["default"] = _default;

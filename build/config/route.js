@@ -40,5 +40,6 @@ router.post('/cardpayment/:order_id', _middlewares.userAuth.verifyToken, _contro
 router.get('/verifypayment/:reference', _middlewares.userAuth.verifyToken, _middlewares.userAuth.adminAuthorization, _controllers.payment.verifyPayment);
 router.post('/sendcode', _middlewares.sendcode.sendCode);
 router.post('/checkcode', _middlewares.sendcode.checkCode);
+router.get('/download', _controllers.downloadCsv);
 var _default = router;
 exports["default"] = _default;

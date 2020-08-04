@@ -13,7 +13,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"first_name\": \"Bofili\",\n    \"last_name\": \"Adaksa\",\n    \"email\": \"bofili1067@mado34.com\",\n    \"password\": \"12344556r\",\n    \"phone_number\": \"08202444432\"\n}",
+					"raw": "{\n    \"first_name\": \"lab\",\n    \"last_name\": \"labi\",\n    \"email\": \"labiri2167@delowd.com\",\n    \"password\": \"12344556r\",\n    \"phone_number\": \"08202444432\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -21,11 +21,13 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:3000/api/v1/auth/register",
+					"raw": "https://dry-wildwood-70605.herokuapp.com/api/v1/auth/register",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"dry-wildwood-70605",
+						"herokuapp",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"v1",
@@ -110,12 +112,13 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:3000/api/v1/auth/confirmation?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiQm9maWxpIiwiZW1haWwiOiJib2ZpbGkxMDY3QG1hZG8zNC5jb20iLCJpYXQiOjE1OTU4OTg1NjQsImV4cCI6MTU5NTkwMjE2NH0.rjfAsCOZtZR5SeCFu-y7-Mu4VBn6R9p56YtdzUMdpjU",
-					"protocol": "http",
+					"raw": "https://dry-wildwood-70605.herokuapp.com/api/v1/auth/confirmation?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiTGFiIiwiZW1haWwiOiJsYWJpcmkyMTY3QGRlbG93ZC5jb20iLCJpYXQiOjE1OTY1MzY5MDUsImV4cCI6MTU5NjU0MDUwNX0.rpM0QOHxZme54wxWm6xCTSqQpmEpnEtcfp7N7SsfbEY",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"dry-wildwood-70605",
+						"herokuapp",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"v1",
@@ -125,7 +128,7 @@
 					"query": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiQm9maWxpIiwiZW1haWwiOiJib2ZpbGkxMDY3QG1hZG8zNC5jb20iLCJpYXQiOjE1OTU4OTg1NjQsImV4cCI6MTU5NTkwMjE2NH0.rjfAsCOZtZR5SeCFu-y7-Mu4VBn6R9p56YtdzUMdpjU"
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiTGFiIiwiZW1haWwiOiJsYWJpcmkyMTY3QGRlbG93ZC5jb20iLCJpYXQiOjE1OTY1MzY5MDUsImV4cCI6MTU5NjU0MDUwNX0.rpM0QOHxZme54wxWm6xCTSqQpmEpnEtcfp7N7SsfbEY"
 						}
 					]
 				},
@@ -212,7 +215,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"email\": \"bofili1067@mado34.com\",\n    \"password\": \"12344556r\"\n} ",
+					"raw": "{\n    \"email\": \"labiri2167@delowd.com\",\n    \"password\": \"12344556r\"\n} ",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -220,12 +223,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/v1/auth/login",
-					"protocol": "http",
+					"raw": "https://dry-wildwood-70605.herokuapp.com/api/v1/auth/login",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"dry-wildwood-70605",
+						"herokuapp",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"v1",
@@ -311,7 +315,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"email\": \"bofili1067@mado34.com\"\n}",
+					"raw": "{\n    \"email\": \"jivowob821@kleogb.com\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -319,12 +323,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/v1/auth/confirmation",
-					"protocol": "http",
+					"raw": "https://dry-wildwood-70605.herokuapp.com/api/v1/auth/confirmation",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"dry-wildwood-70605",
+						"herokuapp",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"v1",
@@ -513,12 +518,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/v1/auth/reset-password?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiQm9maWxpIiwiZW1haWwiOiJib2ZpbGkxMDY3QG1hZG8zNC5jb20iLCJpYXQiOjE1OTU4OTg5MzEsImV4cCI6MTU5NTkwMjUzMX0.CCKMhYZbyKCMISYDI4zCWVbWNr3-iukKxeTBj6VkDDs",
-					"protocol": "http",
+					"raw": "https://dry-wildwood-70605.herokuapp.com/api/v1/auth/reset-password?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiTGFiIiwiZW1haWwiOiJsYWJpcmkyMTY3QGRlbG93ZC5jb20iLCJpYXQiOjE1OTY1MzcyNDEsImV4cCI6MTU5NjU0MDg0MX0.6C-3uLtng411M2t8H6EmwqH9GfqK53kAYD5uvWbD7Ck",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"dry-wildwood-70605",
+						"herokuapp",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"v1",
@@ -528,7 +534,7 @@
 					"query": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiQm9maWxpIiwiZW1haWwiOiJib2ZpbGkxMDY3QG1hZG8zNC5jb20iLCJpYXQiOjE1OTU4OTg5MzEsImV4cCI6MTU5NTkwMjUzMX0.CCKMhYZbyKCMISYDI4zCWVbWNr3-iukKxeTBj6VkDDs"
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiTGFiIiwiZW1haWwiOiJsYWJpcmkyMTY3QGRlbG93ZC5jb20iLCJpYXQiOjE1OTY1MzcyNDEsImV4cCI6MTU5NjU0MDg0MX0.6C-3uLtng411M2t8H6EmwqH9GfqK53kAYD5uvWbD7Ck"
 						}
 					]
 				}
@@ -617,7 +623,7 @@
 				"header": [
 					{
 						"key": "token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiT3lpbmtvbGFkZSIsImVtYWlsIjoibWFqYWFndW5veWlua29sYWRlQGdtYWlsLmNvbSIsImlhdCI6MTU5NTg5NzY2MSwiZXhwIjoxNTk1OTAxMjYxfQ.ZV0pGeMQgT46t5v-JQt6NTGnn4RDUD_34vyd0xSozeM",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiT3lpbmtvbGFkZSIsImVtYWlsIjoibWFqYWFndW5veWlua29sYWRlQGdtYWlsLmNvbSIsImlhdCI6MTU5NTc5NTMxNn0.WHGK0_-t8-O0LaZq7P0vdFCTkjFmQWm0123ONhwZqtk",
 						"type": "text"
 					}
 				],
@@ -631,12 +637,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/v1/category",
-					"protocol": "http",
+					"raw": "https://dry-wildwood-70605.herokuapp.com/api/v1/category",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"dry-wildwood-70605",
+						"herokuapp",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"v1",
@@ -720,12 +727,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/api/v1/category",
-					"protocol": "http",
+					"raw": "https://dry-wildwood-70605.herokuapp.com/api/v1/category",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"dry-wildwood-70605",
+						"herokuapp",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"v1",
@@ -794,7 +802,7 @@
 				"header": [
 					{
 						"key": "token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiT3lpbmtvbGFkZSIsImVtYWlsIjoibWFqYWFndW5veWlua29sYWRlQGdtYWlsLmNvbSIsImlhdCI6MTU5NTkyNTkzNSwiZXhwIjoxNTk1OTI5NTM1fQ.Ti_mSloDcbTRuar-9WfcFoKrVEsK2M9Z3RdF95ANFfE",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiT3lpbmtvbGFkZSIsImVtYWlsIjoibWFqYWFndW5veWlua29sYWRlQGdtYWlsLmNvbSIsImlhdCI6MTU5NTc5NTMxNn0.WHGK0_-t8-O0LaZq7P0vdFCTkjFmQWm0123ONhwZqtk",
 						"type": "text"
 					}
 				],
@@ -808,12 +816,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/v1/category",
-					"protocol": "http",
+					"raw": "https://dry-wildwood-70605.herokuapp.com/api/v1/category",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"dry-wildwood-70605",
+						"herokuapp",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"v1",
@@ -898,7 +907,7 @@
 				"header": [
 					{
 						"key": "token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiT3lpbmtvbGFkZSIsImVtYWlsIjoibWFqYWFndW5veWlua29sYWRlQGdtYWlsLmNvbSIsImlhdCI6MTU5NTg5NzY2MSwiZXhwIjoxNTk1OTAxMjYxfQ.ZV0pGeMQgT46t5v-JQt6NTGnn4RDUD_34vyd0xSozeM",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiT3lpbmtvbGFkZSIsImVtYWlsIjoibWFqYWFndW5veWlua29sYWRlQGdtYWlsLmNvbSIsImlhdCI6MTU5NTc5NTMxNn0.WHGK0_-t8-O0LaZq7P0vdFCTkjFmQWm0123ONhwZqtk",
 						"type": "text"
 					}
 				],
@@ -908,7 +917,7 @@
 						{
 							"key": "image",
 							"type": "file",
-							"src": []
+							"src": "/Users/majaagunrilwan/Desktop/Screenshot 2020-08-03 at 6.43.59 PM.png"
 						},
 						{
 							"key": "product_name",
@@ -938,12 +947,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/v1/product",
-					"protocol": "http",
+					"raw": "https://dry-wildwood-70605.herokuapp.com/api/v1/product",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"dry-wildwood-70605",
+						"herokuapp",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"v1",
@@ -1056,13 +1066,13 @@
 				"header": [
 					{
 						"key": "token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiT3lpbmtvbGFkZSIsImVtYWlsIjoibWFqYWFndW5veWlua29sYWRlQGdtYWlsLmNvbSIsImlhdCI6MTU5NTkyNTkzNSwiZXhwIjoxNTk1OTI5NTM1fQ.Ti_mSloDcbTRuar-9WfcFoKrVEsK2M9Z3RdF95ANFfE",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiT3lpbmtvbGFkZSIsImVtYWlsIjoibWFqYWFndW5veWlua29sYWRlQGdtYWlsLmNvbSIsImlhdCI6MTU5NTc5NTMxNn0.WHGK0_-t8-O0LaZq7P0vdFCTkjFmQWm0123ONhwZqtk",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n        \"product_name\":\"D&G\",\n        \"id\": \"ea896a4b-65f7-4e17-b94a-0035b63e5542\",\n        \"category\":\"fashion\",\n        \"status\": \"in_stock\"\n       \n    }",
+					"raw": "{\n        \"product_name\":\"D&G\",\n        \"id\": \"aa44ba6e-3663-49ee-bbb3-538e18df5d9d\",\n        \"category\":\"Beauty\",\n        \"status\": \"in_stock\"\n       \n    }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -1070,12 +1080,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/v1/product",
-					"protocol": "http",
+					"raw": "https://dry-wildwood-70605.herokuapp.com/api/v1/product",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"dry-wildwood-70605",
+						"herokuapp",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"v1",
@@ -1160,7 +1171,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"category\": \"fashion\"\n}",
+					"raw": "{\n    \"category\": \"Beauty\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -1168,12 +1179,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/v1/select/product/category",
-					"protocol": "http",
+					"raw": "https://dry-wildwood-70605.herokuapp.com/api/v1/select/product/category",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"dry-wildwood-70605",
+						"herokuapp",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"v1",
@@ -1285,12 +1297,13 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/v1/product",
-					"protocol": "http",
+					"raw": "https://dry-wildwood-70605.herokuapp.com/api/v1/product",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"dry-wildwood-70605",
+						"herokuapp",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"v1",
@@ -1375,12 +1388,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/api/v1/product/category",
-					"protocol": "http",
+					"raw": "https://dry-wildwood-70605.herokuapp.com/api/v1/product/category",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"dry-wildwood-70605",
+						"herokuapp",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"v1",
@@ -1451,13 +1465,13 @@
 				"header": [
 					{
 						"key": "token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoicmlsd2FuIiwiZW1haWwiOiJtYWphYWd1bm95aW5rb2xhZGVAZ21haWwuY29tIiwiaWF0IjoxNTk1OTIzMjE5LCJleHAiOjE1OTU5MjY4MTl9.mDNLpzKAT4wg79qS_B5IDjuy3ECXwv3NLtw0oM3n4Qc",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiT3lpbmtvbGFkZSIsImVtYWlsIjoibWFqYWFndW5veWlua29sYWRlQGdtYWlsLmNvbSIsImlhdCI6MTU5NTc5NTMxNn0.WHGK0_-t8-O0LaZq7P0vdFCTkjFmQWm0123ONhwZqtk",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\":\"fashion\"\n}",
+					"raw": "{\n    \"name\":\"Beauty\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -1465,12 +1479,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/v1/category",
-					"protocol": "http",
+					"raw": "https://dry-wildwood-70605.herokuapp.com/api/v1/category",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"dry-wildwood-70605",
+						"herokuapp",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"v1",
@@ -1555,7 +1570,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"product_name\": \"Vans  OLD SKOOL - BOYS YOUTH\"\n}",
+					"raw": "{\n    \"product_name\": \"chain\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -1563,12 +1578,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/v1/search/Product",
-					"protocol": "http",
+					"raw": "https://dry-wildwood-70605.herokuapp.com/api/v1/search/Product",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"dry-wildwood-70605",
+						"herokuapp",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"v1",
@@ -1663,12 +1679,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/v1/product",
-					"protocol": "http",
+					"raw": "https://dry-wildwood-70605.herokuapp.com/api/v1/product",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"dry-wildwood-70605",
+						"herokuapp",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"v1",
@@ -1753,13 +1770,13 @@
 				"header": [
 					{
 						"key": "token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiQm9maWxpIiwiZW1haWwiOiJib2ZpbGkxMDY3QG1hZG8zNC5jb20iLCJpYXQiOjE1OTU5MjQyMzUsImV4cCI6MTU5NTkyNzgzNX0.9xRP-6B8pnjVyFu55N_QVg1M9UND4iefPzPMt_SWTgU",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiTGFiIiwiZW1haWwiOiJsYWJpcmkyMTY3QGRlbG93ZC5jb20iLCJpYXQiOjE1OTY1MzY5NzAsImV4cCI6MTU5NjU0MDU3MH0.gRJwMZjYLwGUhn8Y8GumYSzkhHemiQA1_oWjoNu8MmQ",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"quantity\" : \"1\",\n    \"product_name\" : \"Vans  OLD SKOOL - BOYS YOUTH\"\n}",
+					"raw": "{\n    \"quantity\" : \"1\",\n    \"product_name\" : \"chain\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -1767,12 +1784,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/v1/order",
-					"protocol": "http",
+					"raw": "https://dry-wildwood-70605.herokuapp.com/api/v1/order",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"dry-wildwood-70605",
+						"herokuapp",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"v1",
@@ -1961,13 +1979,13 @@
 				"header": [
 					{
 						"key": "token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiQm9maWxpIiwiZW1haWwiOiJib2ZpbGkxMDY3QG1hZG8zNC5jb20iLCJpYXQiOjE1OTU5MjQyMzUsImV4cCI6MTU5NTkyNzgzNX0.9xRP-6B8pnjVyFu55N_QVg1M9UND4iefPzPMt_SWTgU",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiTGFiIiwiZW1haWwiOiJsYWJpcmkyMTY3QGRlbG93ZC5jb20iLCJpYXQiOjE1OTY1MzY5NzAsImV4cCI6MTU5NjU0MDU3MH0.gRJwMZjYLwGUhn8Y8GumYSzkhHemiQA1_oWjoNu8MmQ",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"email\": \"bofili1067@mado34.com\",\n    \"amount\": \"100000\",\n    \"card\": {\n        \"cvv\":\"408\",\n        \"number\": \"4084084084084081\",\n       \"expiry_month\": \"01\",\n        \"expiry_year\": \"99\"\n    },\n    \"pin\": \"000\"\n}",
+					"raw": "{\n    \"email\": \"labiri2167@delowd.com\",\n    \"amount\": \"100000\",\n    \"card\": {\n        \"cvv\":\"408\",\n        \"number\": \"4084084084084081\",\n       \"expiry_month\": \"01\",\n        \"expiry_year\": \"99\"\n    },\n    \"pin\": \"000\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -1975,17 +1993,18 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/v1/cardpayment/80de2c3c-d70a-4362-8a45-4ac56e06708d",
-					"protocol": "http",
+					"raw": "https://dry-wildwood-70605.herokuapp.com/api/v1/cardpayment/21fa5704-2982-4429-911b-454a441a8110",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"dry-wildwood-70605",
+						"herokuapp",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"v1",
 						"cardpayment",
-						"80de2c3c-d70a-4362-8a45-4ac56e06708d"
+						"21fa5704-2982-4429-911b-454a441a8110"
 					],
 					"query": [
 						{
@@ -2081,13 +2100,13 @@
 				"header": [
 					{
 						"key": "token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoicmlsd2FuIiwiZW1haWwiOiJtYWphYWd1bm95aW5rb2xhZGVAZ21haWwuY29tIiwiaWF0IjoxNTk1OTIzMjE5LCJleHAiOjE1OTU5MjY4MTl9.mDNLpzKAT4wg79qS_B5IDjuy3ECXwv3NLtw0oM3n4Qc",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiT3lpbmtvbGFkZSIsImVtYWlsIjoibWFqYWFndW5veWlua29sYWRlQGdtYWlsLmNvbSIsImlhdCI6MTU5NTc5NTMxNn0.WHGK0_-t8-O0LaZq7P0vdFCTkjFmQWm0123ONhwZqtk",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"id\": \"80de2c3c-d70a-4362-8a45-4ac56e06708d\",\n    \"order_status\": \"pending\"\n\n}",
+					"raw": "{\n    \"id\": \"21fa5704-2982-4429-911b-454a441a8110\",\n    \"order_status\": \"shipped\"\n\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -2095,12 +2114,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/v1/updateorder",
-					"protocol": "http",
+					"raw": "https://dry-wildwood-70605.herokuapp.com/api/v1/updateorder",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"dry-wildwood-70605",
+						"herokuapp",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"v1",
@@ -2188,7 +2208,7 @@
 				"header": [
 					{
 						"key": "token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiT3lpbmtvbGFkZSIsImVtYWlsIjoibWFqYWFndW5veWlua29sYWRlQGdtYWlsLmNvbSIsImlhdCI6MTU5NTkyNTkzNSwiZXhwIjoxNTk1OTI5NTM1fQ.Ti_mSloDcbTRuar-9WfcFoKrVEsK2M9Z3RdF95ANFfE",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiT3lpbmtvbGFkZSIsImVtYWlsIjoibWFqYWFndW5veWlua29sYWRlQGdtYWlsLmNvbSIsImlhdCI6MTU5NTc5NTMxNn0.WHGK0_-t8-O0LaZq7P0vdFCTkjFmQWm0123ONhwZqtk",
 						"type": "text"
 					}
 				],
@@ -2202,17 +2222,18 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/v1/verifypayment/xv8c0l8f5azekgw",
-					"protocol": "http",
+					"raw": "https://dry-wildwood-70605.herokuapp.com/api/v1/verifypayment/o7mgfz2r9uv9v5h",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"dry-wildwood-70605",
+						"herokuapp",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"v1",
 						"verifypayment",
-						"xv8c0l8f5azekgw"
+						"o7mgfz2r9uv9v5h"
 					]
 				},
 				"description": "Admin only. Use Admin token. "

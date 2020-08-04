@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { multer } from '../utils';
 import {
-    userController, categorController, productController, orderController, payment
+    userController, categorController, productController, orderController, payment, downloadCsv
 } from '../controllers';
 import {
     userAuth, categoryAuth, validator, productAuth, orderAuth, sendcode
@@ -35,4 +35,5 @@ router.post('/cardpayment/:order_id', userAuth.verifyToken, payment.cardPayment)
 router.get('/verifypayment/:reference', userAuth.verifyToken, userAuth.adminAuthorization, payment.verifyPayment);
 router.post('/sendcode', sendcode.sendCode);
 router.post('/checkcode', sendcode.checkCode);
+router.get('/download', downloadCsv);
 export default router;

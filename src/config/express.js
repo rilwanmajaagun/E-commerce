@@ -3,6 +3,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import session from 'express-session';
 import passport from 'passport';
+import cors from 'cors';
 
 const app = express();
 app.use(bodyParser.json());
@@ -20,5 +21,6 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser(async(user, done) => done(null, user));
+app.use(cors());
 
 export default app;

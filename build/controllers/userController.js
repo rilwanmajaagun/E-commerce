@@ -49,6 +49,7 @@ var createUsers = /*#__PURE__*/function () {
               message: 'user created sucessfully',
               data: {
                 id: id,
+                first_name: first_name,
                 email: email,
                 date_created: created_at,
                 token: token

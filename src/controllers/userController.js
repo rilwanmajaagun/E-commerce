@@ -15,6 +15,7 @@ const createUsers = async(req, res) => {
                 message: 'user created sucessfully',
                 data: {
                     id,
+                    first_name,
                     email,
                     date_created: created_at,
                     token

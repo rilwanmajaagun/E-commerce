@@ -23,7 +23,7 @@ const CheckProduct = async(req, res, next) => {
     try {
         const product = await productSerivce.selectProduct(req.body);
         if (!product) {
-            return res.status(status.CONFLICT).send({
+            return res.status(status.BAD_REQUEST).send({
                 message: 'product does not exist'
             });
         }

@@ -102,7 +102,7 @@ var CheckProduct = /*#__PURE__*/function () {
               break;
             }
 
-            return _context2.abrupt("return", res.status(_httpStatus["default"].CONFLICT).send({
+            return _context2.abrupt("return", res.status(_httpStatus["default"].BAD_REQUEST).send({
               message: 'product does not exist'
             }));
 

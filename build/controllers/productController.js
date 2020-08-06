@@ -96,7 +96,8 @@ var getSpecifyProduct = /*#__PURE__*/function () {
                 category: product.category,
                 status: product.status,
                 quantity: product.quantity,
-                price: product.price
+                price: product.price,
+                product_image: product_image
               }
             }));
 

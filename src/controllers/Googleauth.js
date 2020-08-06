@@ -7,6 +7,7 @@ import { db, userQuery } from '../db';
 import { userService } from '../services';
 import app from '../config/express';
 import { userAuth } from '../middlewares';
+import Axios from 'axios';
 
 const GoogleStrategy = strategy.Strategy;
 
@@ -34,7 +35,7 @@ async(accessToken, refreshToken, profile, done) => {
     }
 }));
 
-app.get('/google', passport.authenticate('google', { scope: ['openid', 'email', 'profile'] }));
+app.get('/api/v1/google', passport.authenticate('google', { scope: ['openid', 'email', 'profile'] }));
 
 app.get('/auth/google/callback', passport.authenticate('google', {
     failureRedirect: '/failed'

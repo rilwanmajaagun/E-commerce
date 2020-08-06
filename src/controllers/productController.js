@@ -45,7 +45,8 @@ const getSpecifyProduct = async(req, res) => {
                 category: product.category,
                 status: product.status,
                 quantity: product.quantity,
-                price: product.price
+                price: product.price,
+                product_image
             }
         });
     } catch (error) {

@@ -98,7 +98,7 @@ _express["default"].get('/google', _passport["default"].authenticate('google', {
 _express["default"].get('/auth/google/callback', _passport["default"].authenticate('google', {
   failureRedirect: '/failed'
 }), function (req, res) {
-  res.redirect("https://".concat(process.env.CLIENT_URL));
+  res.redirect("http://".concat(process.env.CLIENT_URL));
 });
 
 _express["default"].get('/successs', /*#__PURE__*/function () {

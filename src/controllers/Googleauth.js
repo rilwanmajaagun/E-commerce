@@ -40,7 +40,7 @@ app.get('/google', passport.authenticate('google', { scope: ['openid', 'email', 
 app.get('/auth/google/callback', passport.authenticate('google', {
     failureRedirect: '/failed'
 }), (req, res) => {
-    res.redirect(`https://${process.env.CLIENT_URL}`);
+    res.redirect(`http://${process.env.CLIENT_URL}`);
 });
 
 app.get('/successs', async (req, res) => userAuth.socialMeadiAuth(req, res));

@@ -7,7 +7,7 @@ import { db, userQuery } from '../db';
 import { userService } from '../services';
 import app from '../config/express';
 import { userAuth } from '../middlewares';
-import Axios from 'axios';
+import cors from 'cors';
 
 const GoogleStrategy = strategy.Strategy;
 
@@ -34,6 +34,7 @@ async(accessToken, refreshToken, profile, done) => {
         done(error);
     }
 }));
+app.use(cors());
 
 app.get('/api/v1/google', passport.authenticate('google', { scope: ['openid', 'email', 'profile'] }));
 

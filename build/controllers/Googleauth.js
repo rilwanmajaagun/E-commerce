@@ -22,7 +22,7 @@ var _express = _interopRequireDefault(require("../config/express"));
 
 var _middlewares = require("../middlewares");
 
-var _axios = _interopRequireDefault(require("axios"));
+var _cors = _interopRequireDefault(require("cors"));
 
 /* eslint-disable import/no-cycle */
 var GoogleStrategy = _passportGoogleOauth["default"].Strategy;
@@ -88,6 +88,8 @@ _passport["default"].use(new GoogleStrategy({
     return _ref.apply(this, arguments);
   };
 }()));
+
+_express["default"].use((0, _cors["default"])());
 
 _express["default"].get('/api/v1/google', _passport["default"].authenticate('google', {
   scope: ['openid', 'email', 'profile']

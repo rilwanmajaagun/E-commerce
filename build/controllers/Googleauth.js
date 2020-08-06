@@ -91,14 +91,14 @@ _passport["default"].use(new GoogleStrategy({
 
 _express["default"].use((0, _cors["default"])());
 
-_express["default"].get('/api/v1/google', _passport["default"].authenticate('google', {
+_express["default"].get('/google', _passport["default"].authenticate('google', {
   scope: ['openid', 'email', 'profile']
 }));
 
 _express["default"].get('/auth/google/callback', _passport["default"].authenticate('google', {
   failureRedirect: '/failed'
 }), function (req, res) {
-  res.redirect('/successs');
+  res.redirect("https://".concat(process.env.CLIENT_URL));
 });
 
 _express["default"].get('/successs', /*#__PURE__*/function () {

@@ -34,17 +34,17 @@ passport.use(new GoogleStrategy({
             done(error);
         }
     }));
-app.use(cors());
 app.get('/google', passport.authenticate('google', { scope: ['openid', 'email', 'profile'] }));
 
 app.get('/auth/google/callback', passport.authenticate('google', {
-    failureRedirect: '/failed'
-}), (req, res) => {
-    res.redirect(`http://${process.env.CLIENT_URL}`);
+    failureRedirect: `http://${process.env.CLIENT_URL}/signup`
+}),async (req, res) => {
+   const token = await userAuth.socialMeadiAuth(req)
+    res.redirect(`http://${process.env.CLIENT_URL}?token=${token}`);
 });
 
-app.get('/successs', async (req, res) => userAuth.socialMeadiAuth(req, res));
+// app.get('/successs', async (req, res) => userAuth.socialMeadiAuth(req, res));
 
-app.get('/failed', (req, res) => {
-    res.send('failed attempt');
-});
+// app.get('/failed', (req, res) => {
+//     res.send('failed attempt');
+// });

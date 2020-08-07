@@ -119,18 +119,19 @@ const adminAuthorization = async(req, res, next) => {
     next();
 };
 
-const socialMeadiAuth = async(request, res) => {
+const socialMeadiAuth = async(request) => {
     const token = await hash.generateToken(request.user.first_name, request.user.email);
-    res.status(status.OK).send({
-        message: 'successful',
-        data: {
-            id: request.user.id,
-            first_name: request.user.first_name,
-            last_name: request.user.last_name,
-            email: request.user.email,
-            token
-        }
-    });
+    return token;
+    // res.status(status.OK).send({
+    //     message: 'successful',
+    //     data: {
+    //         id: request.user.id,
+    //         first_name: request.user.first_name,
+    //         last_name: request.user.last_name,
+    //         email: request.user.email,
+    //         token
+    //     }
+    // });
 };
 
 export default {

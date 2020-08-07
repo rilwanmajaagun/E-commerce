@@ -357,7 +357,7 @@ var adminAuthorization = /*#__PURE__*/function () {
 }();
 
 var socialMeadiAuth = /*#__PURE__*/function () {
-  var _ref7 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee7(request, res) {
+  var _ref7 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee7(request) {
     var token;
     return _regenerator["default"].wrap(function _callee7$(_context7) {
       while (1) {
@@ -368,16 +368,7 @@ var socialMeadiAuth = /*#__PURE__*/function () {
 
           case 2:
             token = _context7.sent;
-            res.status(_httpStatus["default"].OK).send({
-              message: 'successful',
-              data: {
-                id: request.user.id,
-                first_name: request.user.first_name,
-                last_name: request.user.last_name,
-                email: request.user.email,
-                token: token
-              }
-            });
+            return _context7.abrupt("return", token);
 
           case 4:
           case "end":
@@ -387,7 +378,7 @@ var socialMeadiAuth = /*#__PURE__*/function () {
     }, _callee7);
   }));
 
-  return function socialMeadiAuth(_x19, _x20) {
+  return function socialMeadiAuth(_x19) {
     return _ref7.apply(this, arguments);
   };
 }();

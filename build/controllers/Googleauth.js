@@ -89,27 +89,27 @@ _passport["default"].use(new GoogleStrategy({
   };
 }()));
 
-_express["default"].use((0, _cors["default"])());
-
 _express["default"].get('/google', _passport["default"].authenticate('google', {
   scope: ['openid', 'email', 'profile']
 }));
 
 _express["default"].get('/auth/google/callback', _passport["default"].authenticate('google', {
-  failureRedirect: '/failed'
-}), function (req, res) {
-  res.redirect("http://".concat(process.env.CLIENT_URL));
-});
-
-_express["default"].get('/successs', /*#__PURE__*/function () {
+  failureRedirect: "http://".concat(process.env.CLIENT_URL, "/signup")
+}), /*#__PURE__*/function () {
   var _ref2 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee2(req, res) {
+    var token;
     return _regenerator["default"].wrap(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
-            return _context2.abrupt("return", _middlewares.userAuth.socialMeadiAuth(req, res));
+            _context2.next = 2;
+            return _middlewares.userAuth.socialMeadiAuth(req);
 
-          case 1:
+          case 2:
+            token = _context2.sent;
+            res.redirect("http://".concat(process.env.CLIENT_URL, "?token=").concat(token));
+
+          case 4:
           case "end":
             return _context2.stop();
         }
@@ -120,8 +120,7 @@ _express["default"].get('/successs', /*#__PURE__*/function () {
   return function (_x5, _x6) {
     return _ref2.apply(this, arguments);
   };
-}());
-
-_express["default"].get('/failed', function (req, res) {
-  res.send('failed attempt');
-});
+}()); // app.get('/successs', async (req, res) => userAuth.socialMeadiAuth(req, res));
+// app.get('/failed', (req, res) => {
+//     res.send('failed attempt');
+// });

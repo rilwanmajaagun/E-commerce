@@ -46,6 +46,27 @@ const checkUser = async(req, res) => {
     }
 };
 
+const  userDetails = async(req, res) => {
+    const { email } = res.locals.user;
+    try {
+        const user = await userService.checkIfUserExist(email);
+        return res.status(status.OK).send({
+            message: 'login successful',
+            data: {
+                id: user.id,
+                first_name: user.first_name,
+                last_name: user.last_name,
+                email: user.email,
+            }
+        });
+    } catch (e) {
+        res.status(status.INTERNAL_SERVER_ERROR).send({
+            message: status[500],
+            data: null
+        });
+    }
+};
+
 const login = async(req, res) => {
     const { email } = req.body;
     try {
@@ -140,6 +161,7 @@ const resetPassword = async(req, res) => {
 export default {
     createUsers,
     checkUser,
+    userDetails,
     login,
     activateUser,
     confrimationToken,

@@ -12,6 +12,7 @@ const router = new Router();
 router.post('/auth/register', validator.signup, userAuth.signup, userController.createUsers);
 router.post('/check', userController.checkUser);
 router.post('/auth/login', validator.login, userAuth.login, userController.login);
+router.get('/auth/userdetails',userAuth.verifyToken, userController.userDetails )
 router.post('/category', userAuth.verifyToken, userAuth.adminAuthorization, categoryAuth.selectCategory, categorController.createCategory);
 router.get('/category', categorController.selectAllCategory);
 router.get('/auth/confirmation', userAuth.verifyToken, userAuth.is_active, userController.activateUser);

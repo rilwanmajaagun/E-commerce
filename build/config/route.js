@@ -17,6 +17,7 @@ var router = new _express.Router();
 router.post('/auth/register', _middlewares.validator.signup, _middlewares.userAuth.signup, _controllers.userController.createUsers);
 router.post('/check', _controllers.userController.checkUser);
 router.post('/auth/login', _middlewares.validator.login, _middlewares.userAuth.login, _controllers.userController.login);
+router.get('/auth/userdetails', _middlewares.userAuth.verifyToken, _controllers.userController.userDetails);
 router.post('/category', _middlewares.userAuth.verifyToken, _middlewares.userAuth.adminAuthorization, _middlewares.categoryAuth.selectCategory, _controllers.categorController.createCategory);
 router.get('/category', _controllers.categorController.selectAllCategory);
 router.get('/auth/confirmation', _middlewares.userAuth.verifyToken, _middlewares.userAuth.is_active, _controllers.userController.activateUser);

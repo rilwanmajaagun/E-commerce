@@ -10,7 +10,8 @@ export default {
     )VALUES ($1, $2, $3, $4, $5, $6) RETURNING * 
     `,
     getProductByProduct_name: `
-    SELECT * FROM product WHERE product_name = ($1)
+    SELECT * FROM product
+    WHERE  product_name LIKE ($1);
     `,
     getAllProduct: `
     SELECT * FROM product

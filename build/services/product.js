@@ -53,15 +53,21 @@ var addProduct = /*#__PURE__*/function () {
 
 var selectProduct = /*#__PURE__*/function () {
   var _ref2 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee2(body) {
-    var product_name;
+    var product_name, name, product;
     return _regenerator["default"].wrap(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
             product_name = body.product_name;
-            return _context2.abrupt("return", _db.db.oneOrNone(_db.productQuery.getProductByProduct_name, [product_name]));
 
-          case 2:
+            name = function name(product_name) {
+              return product_name.charAt(0).toUpperCase() + product_name.slice(1);
+            };
+
+            product = "".concat(name(product_name), "%");
+            return _context2.abrupt("return", _db.db.oneOrNone(_db.productQuery.getProductByProduct_name, [product]));
+
+          case 4:
           case "end":
             return _context2.stop();
         }

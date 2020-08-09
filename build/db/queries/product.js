@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 exports["default"] = void 0;
 var _default = {
   createProduct: "\n    INSERT INTO product(\n        id,\n        product_name,\n        category,\n        quantity,\n        price,\n        product_image\n    )VALUES ($1, $2, $3, $4, $5, $6) RETURNING * \n    ",
-  getProductByProduct_name: "\n    SELECT * FROM product WHERE product_name = ($1)\n    ",
+  getProductByProduct_name: "\n    SELECT * FROM product\n    WHERE  product_name LIKE ($1);\n    ",
   getAllProduct: "\n    SELECT * FROM product\n    ",
   getProductByCategories: "\n    SELECT product_name, category, product.quantity, product.price, product.status, product_image\n    FROM product WHERE category = ($1)\n    ",
   getAllProductByCategory: "\n    SELECT product_name, category, product.quantity, product.price, product.status \n    FROM product ORDER BY category;\n    ",

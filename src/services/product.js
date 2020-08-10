@@ -9,7 +9,8 @@ const addProduct = async(body) => {
         category,
         quantity,
         price,
-        product_image
+        product_image,
+        description
     } = body;
     const payload = [
         id,
@@ -17,7 +18,8 @@ const addProduct = async(body) => {
         category,
         quantity,
         price,
-        product_image
+        product_image,
+        description
     ];
     const product = await db.one(productQuery.createProduct, payload);
     return product;

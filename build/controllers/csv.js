@@ -17,6 +17,8 @@ var _httpStatus = _interopRequireDefault(require("http-status"));
 
 var _services = require("../services");
 
+var _config = _interopRequireDefault(require("../config"));
+
 var downloadCsv = /*#__PURE__*/function () {
   var _ref = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(req, res) {
     var product, json2csvParser, csv;
@@ -39,7 +41,8 @@ var downloadCsv = /*#__PURE__*/function () {
           case 11:
             _context.prev = 11;
             _context.t0 = _context["catch"](0);
-            console.log(_context.t0);
+
+            _config["default"].info(_context.t0);
 
           case 14:
           case "end":

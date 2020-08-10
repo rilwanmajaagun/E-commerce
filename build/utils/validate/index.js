@@ -28,7 +28,8 @@ var schema = {
     product_name: _joi["default"].string().required(),
     category: _joi["default"].string().required(),
     quantity: _joi["default"].number().required(),
-    price: _joi["default"].number().required()
+    price: _joi["default"].number().required(),
+    description: _joi["default"].string()
   }),
   product: _joi["default"].object({
     product_name: _joi["default"].string().required()

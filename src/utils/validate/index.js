@@ -35,7 +35,8 @@ const schema = {
         quantity: joi.number()
             .required(),
         price: joi.number()
-            .required()
+            .required(),
+        description: joi.string()
 
     }),
     product: joi.object({

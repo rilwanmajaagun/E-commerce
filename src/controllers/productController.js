@@ -20,7 +20,8 @@ const addProduct = async(req, res) => {
                     status: product.status,
                     quantity: product.quantity,
                     price: product.price,
-                    product_image: product.product_name
+                    product_image: product.product_name,
+                    description: product.product_description
                 }
             }) :
             res.status(status.BAD_REQUEST).send({
@@ -47,7 +48,8 @@ const getSpecifyProduct = async(req, res) => {
                 status: product.status,
                 quantity: product.quantity,
                 price: product.price,
-                image: product.product_image
+                image: product.product_image,
+                description: product.product_description
             }
         });
     } catch (error) {

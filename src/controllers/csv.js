@@ -1,6 +1,7 @@
 import { Parser } from 'json2csv';
 import status from 'http-status';
 import { productSerivce } from '../services';
+import logger from '../config';
 
 const downloadCsv = async(req, res) => {
     try {
@@ -11,7 +12,7 @@ const downloadCsv = async(req, res) => {
         res.set('Content-Type', 'text/csv');
         return res.status(status.OK).send(csv);
     } catch (error) {
-        console.log(error);
+        logger.info(error);
     }
 };
 

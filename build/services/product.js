@@ -23,14 +23,14 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 var addProduct = /*#__PURE__*/function () {
   var _ref = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(body) {
-    var id, product_name, category, quantity, price, product_image, payload, product;
+    var id, product_name, category, quantity, price, product_image, description, payload, product;
     return _regenerator["default"].wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
             id = (0, _uuid.v4)();
-            product_name = body.product_name, category = body.category, quantity = body.quantity, price = body.price, product_image = body.product_image;
-            payload = [id, product_name, category, quantity, price, product_image];
+            product_name = body.product_name, category = body.category, quantity = body.quantity, price = body.price, product_image = body.product_image, description = body.description;
+            payload = [id, product_name, category, quantity, price, product_image, description];
             _context.next = 5;
             return _db.db.one(_db.productQuery.createProduct, payload);
 

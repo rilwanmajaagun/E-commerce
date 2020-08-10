@@ -137,21 +137,20 @@ var product = /*#__PURE__*/function () {
             return _utils.schema.products.validateAsync(req.body);
 
           case 3:
-            _context4.next = 9;
+            _context4.next = 8;
             break;
 
           case 5:
             _context4.prev = 5;
             _context4.t0 = _context4["catch"](0);
-            console.log(_context4.t0);
             return _context4.abrupt("return", res.status(_httpStatus["default"].BAD_REQUEST).send({
               message: _context4.t0.details[0].message.replace(/[\"]/gi, '')
             }));
 
-          case 9:
+          case 8:
             next();
 
-          case 10:
+          case 9:
           case "end":
             return _context4.stop();
         }
@@ -175,21 +174,20 @@ var searchProduct = /*#__PURE__*/function () {
             return _utils.schema.product.validateAsync(req.body);
 
           case 3:
-            _context5.next = 9;
+            _context5.next = 8;
             break;
 
           case 5:
             _context5.prev = 5;
             _context5.t0 = _context5["catch"](0);
-            console.log(_context5.t0);
             return _context5.abrupt("return", res.status(_httpStatus["default"].BAD_REQUEST).send({
               message: _context5.t0.details[0].message.replace(/[\"]/gi, '')
             }));
 
-          case 9:
+          case 8:
             next();
 
-          case 10:
+          case 9:
           case "end":
             return _context5.stop();
         }
@@ -213,21 +211,20 @@ var getProductBycategory = /*#__PURE__*/function () {
             return _utils.schema.category.validateAsync(req.body);
 
           case 3:
-            _context6.next = 9;
+            _context6.next = 8;
             break;
 
           case 5:
             _context6.prev = 5;
             _context6.t0 = _context6["catch"](0);
-            console.log(_context6.t0);
             return _context6.abrupt("return", res.status(_httpStatus["default"].BAD_REQUEST).send({
               message: _context6.t0.details[0].message.replace(/[\"]/gi, '')
             }));
 
-          case 9:
+          case 8:
             next();
 
-          case 10:
+          case 9:
           case "end":
             return _context6.stop();
         }
@@ -251,21 +248,20 @@ var category = /*#__PURE__*/function () {
             return _utils.schema.updateCategory.validateAsync(req.body);
 
           case 3:
-            _context7.next = 9;
+            _context7.next = 8;
             break;
 
           case 5:
             _context7.prev = 5;
             _context7.t0 = _context7["catch"](0);
-            console.log(_context7.t0);
             return _context7.abrupt("return", res.status(_httpStatus["default"].BAD_REQUEST).send({
               message: _context7.t0.details[0].message.replace(/[\"]/gi, '')
             }));
 
-          case 9:
+          case 8:
             next();
 
-          case 10:
+          case 9:
           case "end":
             return _context7.stop();
         }
@@ -289,21 +285,20 @@ var updateProduct = /*#__PURE__*/function () {
             return _utils.schema.updateProducts.validateAsync(req.body);
 
           case 3:
-            _context8.next = 9;
+            _context8.next = 8;
             break;
 
           case 5:
             _context8.prev = 5;
             _context8.t0 = _context8["catch"](0);
-            console.log(_context8.t0);
             return _context8.abrupt("return", res.status(_httpStatus["default"].BAD_REQUEST).send({
               message: _context8.t0.details[0].message.replace(/[\"]/gi, '')
             }));
 
-          case 9:
+          case 8:
             next();
 
-          case 10:
+          case 9:
           case "end":
             return _context8.stop();
         }

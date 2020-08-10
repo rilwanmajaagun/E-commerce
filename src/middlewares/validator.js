@@ -38,7 +38,6 @@ const product = async(req, res, next) => {
     try {
         await schema.products.validateAsync(req.body);
     } catch (error) {
-        console.log(error);
         return res.status(status.BAD_REQUEST).send({
             message: error.details[0].message.replace(/[\"]/gi, '')
         });
@@ -50,7 +49,6 @@ const searchProduct = async(req, res, next) => {
     try {
         await schema.product.validateAsync(req.body);
     } catch (error) {
-        console.log(error);
         return res.status(status.BAD_REQUEST).send({
             message: error.details[0].message.replace(/[\"]/gi, '')
         });
@@ -62,7 +60,6 @@ const getProductBycategory = async(req, res, next) => {
     try {
         await schema.category.validateAsync(req.body);
     } catch (error) {
-        console.log(error);
         return res.status(status.BAD_REQUEST).send({
             message: error.details[0].message.replace(/[\"]/gi, '')
         });
@@ -74,7 +71,6 @@ const category = async(req, res, next) => {
     try {
         await schema.updateCategory.validateAsync(req.body);
     } catch (error) {
-        console.log(error)
         return res.status(status.BAD_REQUEST).send({
             message: error.details[0].message.replace(/[\"]/gi, '')
         });
@@ -86,7 +82,6 @@ const updateProduct = async(req, res, next) => {
     try {
         await schema.updateProducts.validateAsync(req.body);
     } catch (error) {
-        console.log(error);
         return res.status(status.BAD_REQUEST).send({
             message: error.details[0].message.replace(/[\"]/gi, '')
         });

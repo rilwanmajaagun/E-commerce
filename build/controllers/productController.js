@@ -48,7 +48,8 @@ var addProduct = /*#__PURE__*/function () {
                 status: product.status,
                 quantity: product.quantity,
                 price: product.price,
-                product_image: product.product_name
+                product_image: product.product_name,
+                description: product.product_description
               }
             }) : res.status(_httpStatus["default"].BAD_REQUEST).send({
               message: 'Error adding product',
@@ -98,7 +99,8 @@ var getSpecifyProduct = /*#__PURE__*/function () {
                 status: product.status,
                 quantity: product.quantity,
                 price: product.price,
-                image: product.product_image
+                image: product.product_image,
+                description: product.product_description
               }
             }));
 

@@ -6,8 +6,9 @@ export default {
         category,
         quantity,
         price,
-        product_image
-    )VALUES ($1, $2, $3, $4, $5, $6) RETURNING * 
+        product_image,
+        product_description
+    )VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING * 
     `,
     getProductByProduct_name: `
     SELECT * FROM product
@@ -17,11 +18,11 @@ export default {
     SELECT * FROM product
     `,
     getProductByCategories: `
-    SELECT id, product_name, category, product.quantity, product.price, product.status, product_image
+    SELECT id, product_name, category, product.quantity, product.price, product.status, product_image,product_description
     FROM product WHERE category = ($1)
     `,
     getAllProductByCategory: `
-    SELECT id, product_name, category, product.quantity, product.price, product.status 
+    SELECT id, product_name, category, product.quantity, product.price, product.status, product_description
     FROM product ORDER BY category;
     `,
     deleteProduct: `

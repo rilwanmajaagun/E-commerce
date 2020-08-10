@@ -17,11 +17,11 @@ export default {
     SELECT * FROM product
     `,
     getProductByCategories: `
-    SELECT product_name, category, product.quantity, product.price, product.status, product_image
+    SELECT id, product_name, category, product.quantity, product.price, product.status, product_image
     FROM product WHERE category = ($1)
     `,
     getAllProductByCategory: `
-    SELECT product_name, category, product.quantity, product.price, product.status 
+    SELECT id, product_name, category, product.quantity, product.price, product.status 
     FROM product ORDER BY category;
     `,
     deleteProduct: `

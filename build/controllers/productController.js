@@ -92,6 +92,7 @@ var getSpecifyProduct = /*#__PURE__*/function () {
             return _context2.abrupt("return", res.status(_httpStatus["default"].OK).send({
               message: 'Product found',
               data: {
+                id: product.id,
                 product: product.product_name,
                 category: product.category,
                 status: product.status,

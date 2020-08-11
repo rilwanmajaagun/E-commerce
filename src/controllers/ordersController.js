@@ -63,8 +63,8 @@ const getWishList = async(req, res) => {
         const wishList = await orderSerivce.getWishList(user.id);
         if (wishList.length === 0) {
             return res.status(status.OK).send({
-                message: 'Wish List is empty'
-                // wishList
+                message: 'Wish List is empty',
+                wishList
             });
         }
         return res.status(status.OK).send({

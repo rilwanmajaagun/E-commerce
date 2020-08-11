@@ -76,10 +76,23 @@ const getWishList = async(req, res) => {
     }
 };
 
+const deleteWishList = async(req, res) => {
+    const { email } = res.locals.user;
+    try {
+        const user = await userService.checkIfUserExist(email);
+        await orderSerivce.deletewishList(req.body, user.id);
+        return res.status(status.OK).send({
+            message: 'Product deleted successfully '
+        });
+    } catch (error) {
+        return res.status(status.INTERNAL_SERVER_ERROR).send({ message: status[500] });
+    }
+};
 export default {
     createOrder,
     cancelOrder,
     UpdateOrderStatus,
     createWishList,
-    getWishList
+    getWishList,
+    deleteWishList
 };

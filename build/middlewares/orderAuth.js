@@ -316,12 +316,63 @@ var alreadyExistInWishList = /*#__PURE__*/function () {
   };
 }();
 
+var deleteWishList = /*#__PURE__*/function () {
+  var _ref7 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee7(req, res, next) {
+    var items;
+    return _regenerator["default"].wrap(function _callee7$(_context7) {
+      while (1) {
+        switch (_context7.prev = _context7.next) {
+          case 0:
+            _context7.prev = 0;
+            _context7.next = 3;
+            return _services.orderSerivce.selectWishList(req.body);
+
+          case 3:
+            items = _context7.sent;
+
+            if (items) {
+              _context7.next = 6;
+              break;
+            }
+
+            return _context7.abrupt("return", res.status(_httpStatus["default"].BAD_REQUEST).send({
+              message: 'Product does not exist in wish List'
+            }));
+
+          case 6:
+            _context7.next = 11;
+            break;
+
+          case 8:
+            _context7.prev = 8;
+            _context7.t0 = _context7["catch"](0);
+            return _context7.abrupt("return", res.status(_httpStatus["default"].INTERNAL_SERVER_ERROR).send({
+              message: _httpStatus["default"][500]
+            }));
+
+          case 11:
+            next();
+
+          case 12:
+          case "end":
+            return _context7.stop();
+        }
+      }
+    }, _callee7, null, [[0, 8]]);
+  }));
+
+  return function deleteWishList(_x16, _x17, _x18) {
+    return _ref7.apply(this, arguments);
+  };
+}();
+
 var _default = {
   updateQauntity: updateQauntity,
   productStatus: productStatus,
   checkOrderStatus: checkOrderStatus,
   selectOrder: selectOrder,
   createTranscationDetails: createTranscationDetails,
-  alreadyExistInWishList: alreadyExistInWishList
+  alreadyExistInWishList: alreadyExistInWishList,
+  deleteWishList: deleteWishList
 };
 exports["default"] = _default;

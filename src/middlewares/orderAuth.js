@@ -94,11 +94,27 @@ const alreadyExistInWishList = async(req, res, next) => {
     } next();
 };
 
+const deleteWishList = async(req, res, next) => {
+    try {
+        const items = await orderSerivce.selectWishList(req.body);
+        if (!items) {
+            return res.status(status.BAD_REQUEST).send({
+                message: 'Product does not exist in wish List'
+            });
+        }
+    } catch (error) {
+        return res.status(status.INTERNAL_SERVER_ERROR).send({
+            message: status[500]
+        });
+    } next();
+};
+
 export default {
     updateQauntity,
     productStatus,
     checkOrderStatus,
     selectOrder,
     createTranscationDetails,
-    alreadyExistInWishList
+    alreadyExistInWishList,
+    deleteWishList
 };

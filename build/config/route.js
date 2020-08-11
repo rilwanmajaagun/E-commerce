@@ -45,6 +45,7 @@ router.post('/cardpayment/:order_id', _middlewares.userAuth.verifyToken, _contro
 router.get('/verifypayment/:reference', _middlewares.userAuth.verifyToken, _middlewares.userAuth.adminAuthorization, _controllers.payment.verifyPayment);
 router.post('/wishlist', _middlewares.userAuth.verifyToken, _middlewares.orderAuth.alreadyExistInWishList, _controllers.orderController.createWishList);
 router.get('/wishlist', _middlewares.userAuth.verifyToken, _ordersController["default"].getWishList);
+router["delete"]('/wishlist', _middlewares.userAuth.verifyToken, _middlewares.orderAuth.deleteWishList, _controllers.orderController.deleteWishList);
 router.post('/sendcode', _middlewares.sendcode.sendCode);
 router.post('/checkcode', _middlewares.sendcode.checkCode);
 router.get('/download', _controllers.downloadCsv);

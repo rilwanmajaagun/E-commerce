@@ -13,7 +13,7 @@ const router = new Router();
 router.post('/auth/register', validator.signup, userAuth.signup, userController.createUsers);
 router.post('/check', userController.checkUser);
 router.post('/auth/login', validator.login, userAuth.login, userController.login);
-router.get('/auth/userdetails',userAuth.verifyToken, userController.userDetails )
+router.get('/auth/userdetails', userAuth.verifyToken, userController.userDetails);
 router.post('/category', userAuth.verifyToken, userAuth.adminAuthorization, categoryAuth.selectCategory, categorController.createCategory);
 router.get('/category', categorController.selectAllCategory);
 router.get('/auth/confirmation', userAuth.verifyToken, userAuth.is_active, userController.activateUser);
@@ -35,8 +35,9 @@ router.patch('/updateOrder', userAuth.verifyToken, userAuth.adminAuthorization, 
 router.post('/bankpayment', userAuth.verifyToken, payment.bankPayment);
 router.post('/cardpayment/:order_id', userAuth.verifyToken, payment.cardPayment);
 router.get('/verifypayment/:reference', userAuth.verifyToken, userAuth.adminAuthorization, payment.verifyPayment);
-router.post('/wishlist', userAuth.verifyToken, orderAuth.alreadyExistInWishList,orderController.createWishList);
+router.post('/wishlist', userAuth.verifyToken, orderAuth.alreadyExistInWishList, orderController.createWishList);
 router.get('/wishlist', userAuth.verifyToken, ordersController.getWishList);
+router.delete('/wishlist', userAuth.verifyToken, orderAuth.deleteWishList, orderController.deleteWishList);
 router.post('/sendcode', sendcode.sendCode);
 router.post('/checkcode', sendcode.checkCode);
 router.get('/download', downloadCsv);

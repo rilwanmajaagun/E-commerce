@@ -239,11 +239,54 @@ var getWishList = /*#__PURE__*/function () {
   };
 }();
 
+var deleteWishList = /*#__PURE__*/function () {
+  var _ref6 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee6(req, res) {
+    var email, user;
+    return _regenerator["default"].wrap(function _callee6$(_context6) {
+      while (1) {
+        switch (_context6.prev = _context6.next) {
+          case 0:
+            email = res.locals.user.email;
+            _context6.prev = 1;
+            _context6.next = 4;
+            return _services.userService.checkIfUserExist(email);
+
+          case 4:
+            user = _context6.sent;
+            _context6.next = 7;
+            return _services.orderSerivce.deletewishList(req.body, user.id);
+
+          case 7:
+            return _context6.abrupt("return", res.status(_httpStatus["default"].OK).send({
+              message: 'Product deleted successfully '
+            }));
+
+          case 10:
+            _context6.prev = 10;
+            _context6.t0 = _context6["catch"](1);
+            return _context6.abrupt("return", res.status(_httpStatus["default"].INTERNAL_SERVER_ERROR).send({
+              message: _httpStatus["default"][500]
+            }));
+
+          case 13:
+          case "end":
+            return _context6.stop();
+        }
+      }
+    }, _callee6, null, [[1, 10]]);
+  }));
+
+  return function deleteWishList(_x11, _x12) {
+    return _ref6.apply(this, arguments);
+  };
+}();
+
 var _default = {
   createOrder: createOrder,
   cancelOrder: cancelOrder,
   UpdateOrderStatus: UpdateOrderStatus,
   createWishList: createWishList,
-  getWishList: getWishList
+  getWishList: getWishList,
+  deleteWishList: deleteWishList
 };
 exports["default"] = _default;

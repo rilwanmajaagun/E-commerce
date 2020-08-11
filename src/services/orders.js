@@ -58,6 +58,21 @@ const checkWishList = async(body) => {
 };
 
 const getWishList = async(user_id) => db.manyOrNone(ordersQuery.getWishList, [user_id]);
+
+const selectWishList = async(body) => {
+    const { id } = body;
+    return db.oneOrNone(ordersQuery.selectWishListItem, [id]);
+};
+
+const deletewishList = async(body, user_id) => {
+    const { id } = body;
+    const payload = [
+        id,
+        user_id
+    ];
+    return db.none(ordersQuery.deleteWishList, payload);
+};
+
 export default {
     createOrder,
     cancelOrder,
@@ -68,5 +83,7 @@ export default {
     verfiyTanscation,
     createWishList,
     checkWishList,
-    getWishList
+    getWishList,
+    deletewishList,
+    selectWishList
 };

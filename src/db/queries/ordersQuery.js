@@ -58,5 +58,11 @@ export default {
     JOIN wishlist
     ON product.id = wishlist.product_id
     WHERE user_id = ($1)
+    `,
+    selectWishListItem: `
+    SELECT * FROM wishlist WHERE id = ($1)
+    `,
+    deleteWishList: `
+    DELETE FROM wishlist WHERE id = ($1) AND user_id = ($2);
     `
 };

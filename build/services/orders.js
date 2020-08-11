@@ -253,6 +253,53 @@ var getWishList = /*#__PURE__*/function () {
   };
 }();
 
+var selectWishList = /*#__PURE__*/function () {
+  var _ref11 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee11(body) {
+    var id;
+    return _regenerator["default"].wrap(function _callee11$(_context11) {
+      while (1) {
+        switch (_context11.prev = _context11.next) {
+          case 0:
+            id = body.id;
+            return _context11.abrupt("return", _db.db.oneOrNone(_db.ordersQuery.selectWishListItem, [id]));
+
+          case 2:
+          case "end":
+            return _context11.stop();
+        }
+      }
+    }, _callee11);
+  }));
+
+  return function selectWishList(_x18) {
+    return _ref11.apply(this, arguments);
+  };
+}();
+
+var deletewishList = /*#__PURE__*/function () {
+  var _ref12 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee12(body, user_id) {
+    var id, payload;
+    return _regenerator["default"].wrap(function _callee12$(_context12) {
+      while (1) {
+        switch (_context12.prev = _context12.next) {
+          case 0:
+            id = body.id;
+            payload = [id, user_id];
+            return _context12.abrupt("return", _db.db.none(_db.ordersQuery.deleteWishList, payload));
+
+          case 3:
+          case "end":
+            return _context12.stop();
+        }
+      }
+    }, _callee12);
+  }));
+
+  return function deletewishList(_x19, _x20) {
+    return _ref12.apply(this, arguments);
+  };
+}();
+
 var _default = {
   createOrder: createOrder,
   cancelOrder: cancelOrder,
@@ -263,6 +310,8 @@ var _default = {
   verfiyTanscation: verfiyTanscation,
   createWishList: createWishList,
   checkWishList: checkWishList,
-  getWishList: getWishList
+  getWishList: getWishList,
+  deletewishList: deletewishList,
+  selectWishList: selectWishList
 };
 exports["default"] = _default;

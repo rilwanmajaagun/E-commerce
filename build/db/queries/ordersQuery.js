@@ -13,6 +13,7 @@ var _default = {
   transcationDetails: "\n    INSERT INTO transcation(\n        transcation_id,\n        order_id,\n        refrence,\n        amount,\n        status,\n        currency,\n        created_at\n    ) VALUES ($1, $2, $3, $4, $5, $6, $7) \n    ",
   verifyTranscation: "\n    update transcation set verified=($1) where refrence = ($2)\n    ",
   wishList: "\n    INSERT INTO wishlist(\n        id,\n        user_id,\n        product_id\n    ) VALUES ($1, $2, $3) \n    ",
-  checkWishList: "\n    SELECT * FROM wishlist WHERE product_id = ($1)\n    "
+  checkWishList: "\n    SELECT * FROM wishlist WHERE product_id = ($1)\n    ",
+  getWishList: "\n    SELECT\n        product.id,\n        product.product_name,\n        product.category,\n        product.status,\n        product.quantity,\n        product.price,\n        product.product_name,\n        product.product_image\n    FROM product\n    JOIN wishlist\n    ON product.id = wishlist.product_id\n    WHERE user_id = ($1)\n    "
 };
 exports["default"] = _default;

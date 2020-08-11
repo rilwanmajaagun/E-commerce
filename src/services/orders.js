@@ -46,10 +46,10 @@ const transcationDetails = async(body) => {
 
 const verfiyTanscation = async(status, refrence) => db.none(ordersQuery.verifyTranscation, [status, refrence]);
 
-const createWishList = async (body,user_id)=>{
+const createWishList = async(body, user_id) => {
     const id = uuidv4();
     const { product_id } = body;
-    return db.none(ordersQuery.wishList,[ id, user_id, product_id]);
+    return db.none(ordersQuery.wishList, [ id, user_id, product_id]);
 };
 
 const checkWishList = async(body) => {
@@ -57,6 +57,7 @@ const checkWishList = async(body) => {
     return db.oneOrNone(ordersQuery.checkWishList, [product_id]);
 };
 
+const getWishList = async(user_id) => db.manyOrNone(ordersQuery.getWishList, [user_id]);
 export default {
     createOrder,
     cancelOrder,
@@ -66,5 +67,6 @@ export default {
     transcationDetails,
     verfiyTanscation,
     createWishList,
-    checkWishList
+    checkWishList,
+    getWishList
 };

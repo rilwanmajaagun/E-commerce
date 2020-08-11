@@ -1,7 +1,6 @@
 import status from 'http-status';
 import { orderSerivce, userService } from '../services';
 import { orderAuth } from '../middlewares';
-import { userController } from '.';
 
 const createOrder = async(req, res) => {
     const { email } = res.locals.user;
@@ -44,23 +43,42 @@ const UpdateOrderStatus = async(req, res) => {
     }
 };
 
-const createWishList = async (req, res) => {
+const createWishList = async(req, res) => {
     const { email } = res.locals.user;
-    try{
+    try {
         const user = await userService.checkIfUserExist(email);
-        await orderSerivce.createWishList(req.body,user.id);
+        await orderSerivce.createWishList(req.body, user.id);
         return res.status(status.CREATED).send({
             message: 'product added succesfuly'
         });
     } catch (error) {
-        console.log(error);
         return res.status(status.INTERNAL_SERVER_ERROR).send({ message: status[500] });
     }
-}
+};
+
+const getWishList = async(req, res) => {
+    const { email } = res.locals.user;
+    try {
+        const user = await userService.checkIfUserExist(email);
+        const wishList = await orderSerivce.getWishList(user.id);
+        if (wishList.length === 0) {
+            return res.status(status.OK).send({
+                message: 'Wish List is empty'
+            });
+        }
+        return res.status(status.OK).send({
+            message: 'Wish List fetched successfully',
+            wishList
+        });
+    } catch (error) {
+        return res.status(status.INTERNAL_SERVER_ERROR).send({ message: status[500] });
+    }
+};
 
 export default {
     createOrder,
     cancelOrder,
     UpdateOrderStatus,
-    createWishList
+    createWishList,
+    getWishList
 };

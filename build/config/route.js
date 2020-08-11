@@ -1,5 +1,7 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -12,6 +14,8 @@ var _utils = require("../utils");
 var _controllers = require("../controllers");
 
 var _middlewares = require("../middlewares");
+
+var _ordersController = _interopRequireDefault(require("../controllers/ordersController"));
 
 var router = new _express.Router();
 router.post('/auth/register', _middlewares.validator.signup, _middlewares.userAuth.signup, _controllers.userController.createUsers);
@@ -40,6 +44,7 @@ router.post('/bankpayment', _middlewares.userAuth.verifyToken, _controllers.paym
 router.post('/cardpayment/:order_id', _middlewares.userAuth.verifyToken, _controllers.payment.cardPayment);
 router.get('/verifypayment/:reference', _middlewares.userAuth.verifyToken, _middlewares.userAuth.adminAuthorization, _controllers.payment.verifyPayment);
 router.post('/wishlist', _middlewares.userAuth.verifyToken, _middlewares.orderAuth.alreadyExistInWishList, _controllers.orderController.createWishList);
+router.get('/wishlist', _middlewares.userAuth.verifyToken, _ordersController["default"].getWishList);
 router.post('/sendcode', _middlewares.sendcode.sendCode);
 router.post('/checkcode', _middlewares.sendcode.checkCode);
 router.get('/download', _controllers.downloadCsv);

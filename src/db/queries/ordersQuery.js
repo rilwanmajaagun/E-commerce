@@ -43,5 +43,20 @@ export default {
     `,
     checkWishList: `
     SELECT * FROM wishlist WHERE product_id = ($1)
+    `,
+    getWishList: `
+    SELECT
+        product.id,
+        product.product_name,
+        product.category,
+        product.status,
+        product.quantity,
+        product.price,
+        product.product_name,
+        product.product_image
+    FROM product
+    JOIN wishlist
+    ON product.id = wishlist.product_id
+    WHERE user_id = ($1)
     `
 };

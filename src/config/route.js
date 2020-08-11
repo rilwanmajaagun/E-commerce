@@ -6,6 +6,7 @@ import {
 import {
     userAuth, categoryAuth, validator, productAuth, orderAuth, sendcode
 } from '../middlewares';
+import ordersController from '../controllers/ordersController';
 
 const router = new Router();
 
@@ -35,6 +36,7 @@ router.post('/bankpayment', userAuth.verifyToken, payment.bankPayment);
 router.post('/cardpayment/:order_id', userAuth.verifyToken, payment.cardPayment);
 router.get('/verifypayment/:reference', userAuth.verifyToken, userAuth.adminAuthorization, payment.verifyPayment);
 router.post('/wishlist', userAuth.verifyToken, orderAuth.alreadyExistInWishList,orderController.createWishList);
+router.get('/wishlist', userAuth.verifyToken, ordersController.getWishList);
 router.post('/sendcode', sendcode.sendCode);
 router.post('/checkcode', sendcode.checkCode);
 router.get('/download', downloadCsv);

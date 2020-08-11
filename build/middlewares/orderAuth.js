@@ -286,25 +286,24 @@ var alreadyExistInWishList = /*#__PURE__*/function () {
           case 8:
             product = _context6.sent;
             return _context6.abrupt("return", res.status(_httpStatus["default"].BAD_REQUEST).send({
-              message: "".concat(product.product_name, " already exists in whish List")
+              message: "".concat(product.product_name, " already exists in Wish List")
             }));
 
           case 10:
-            _context6.next = 16;
+            _context6.next = 15;
             break;
 
           case 12:
             _context6.prev = 12;
             _context6.t0 = _context6["catch"](0);
-            console.log("alreadyExistInWishList -> error", _context6.t0);
             return _context6.abrupt("return", res.status(_httpStatus["default"].INTERNAL_SERVER_ERROR).send({
               message: _httpStatus["default"][500]
             }));
 
-          case 16:
+          case 15:
             next();
 
-          case 17:
+          case 16:
           case "end":
             return _context6.stop();
         }

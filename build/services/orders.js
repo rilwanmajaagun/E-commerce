@@ -232,6 +232,27 @@ var checkWishList = /*#__PURE__*/function () {
   };
 }();
 
+var getWishList = /*#__PURE__*/function () {
+  var _ref10 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee10(user_id) {
+    return _regenerator["default"].wrap(function _callee10$(_context10) {
+      while (1) {
+        switch (_context10.prev = _context10.next) {
+          case 0:
+            return _context10.abrupt("return", _db.db.manyOrNone(_db.ordersQuery.getWishList, [user_id]));
+
+          case 1:
+          case "end":
+            return _context10.stop();
+        }
+      }
+    }, _callee10);
+  }));
+
+  return function getWishList(_x17) {
+    return _ref10.apply(this, arguments);
+  };
+}();
+
 var _default = {
   createOrder: createOrder,
   cancelOrder: cancelOrder,
@@ -241,6 +262,7 @@ var _default = {
   transcationDetails: transcationDetails,
   verfiyTanscation: verfiyTanscation,
   createWishList: createWishList,
-  checkWishList: checkWishList
+  checkWishList: checkWishList,
+  getWishList: getWishList
 };
 exports["default"] = _default;

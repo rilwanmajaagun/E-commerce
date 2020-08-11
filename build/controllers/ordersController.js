@@ -17,8 +17,6 @@ var _services = require("../services");
 
 var _middlewares = require("../middlewares");
 
-var _ = require(".");
-
 var createOrder = /*#__PURE__*/function () {
   var _ref = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(req, res) {
     var email, _req$body, product_name, quantity, user, userName, order;
@@ -168,12 +166,11 @@ var createWishList = /*#__PURE__*/function () {
           case 10:
             _context4.prev = 10;
             _context4.t0 = _context4["catch"](1);
-            console.log(_context4.t0);
             return _context4.abrupt("return", res.status(_httpStatus["default"].INTERNAL_SERVER_ERROR).send({
               message: _httpStatus["default"][500]
             }));
 
-          case 14:
+          case 13:
           case "end":
             return _context4.stop();
         }
@@ -186,10 +183,66 @@ var createWishList = /*#__PURE__*/function () {
   };
 }();
 
+var getWishList = /*#__PURE__*/function () {
+  var _ref5 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee5(req, res) {
+    var email, user, wishList;
+    return _regenerator["default"].wrap(function _callee5$(_context5) {
+      while (1) {
+        switch (_context5.prev = _context5.next) {
+          case 0:
+            email = res.locals.user.email;
+            _context5.prev = 1;
+            _context5.next = 4;
+            return _services.userService.checkIfUserExist(email);
+
+          case 4:
+            user = _context5.sent;
+            _context5.next = 7;
+            return _services.orderSerivce.getWishList(user.id);
+
+          case 7:
+            wishList = _context5.sent;
+
+            if (!(wishList.length === 0)) {
+              _context5.next = 10;
+              break;
+            }
+
+            return _context5.abrupt("return", res.status(_httpStatus["default"].OK).send({
+              message: 'Wish List is empty'
+            }));
+
+          case 10:
+            return _context5.abrupt("return", res.status(_httpStatus["default"].OK).send({
+              message: 'Wish List fetched successfully',
+              wishList: wishList
+            }));
+
+          case 13:
+            _context5.prev = 13;
+            _context5.t0 = _context5["catch"](1);
+            return _context5.abrupt("return", res.status(_httpStatus["default"].INTERNAL_SERVER_ERROR).send({
+              message: _httpStatus["default"][500]
+            }));
+
+          case 16:
+          case "end":
+            return _context5.stop();
+        }
+      }
+    }, _callee5, null, [[1, 13]]);
+  }));
+
+  return function getWishList(_x9, _x10) {
+    return _ref5.apply(this, arguments);
+  };
+}();
+
 var _default = {
   createOrder: createOrder,
   cancelOrder: cancelOrder,
   UpdateOrderStatus: UpdateOrderStatus,
-  createWishList: createWishList
+  createWishList: createWishList,
+  getWishList: getWishList
 };
 exports["default"] = _default;

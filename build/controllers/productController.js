@@ -59,12 +59,13 @@ var addProduct = /*#__PURE__*/function () {
           case 12:
             _context.prev = 12;
             _context.t0 = _context["catch"](0);
+            console.log(_context.t0);
             return _context.abrupt("return", res.status(_httpStatus["default"].INTERNAL_SERVER_ERROR).send({
               message: _httpStatus["default"][500],
               data: null
             }));
 
-          case 15:
+          case 16:
           case "end":
             return _context.stop();
         }

@@ -77,10 +77,29 @@ const selectOrder = async(req, res, next) => {
 
 const createTranscationDetails = async(body) => orderSerivce.transcationDetails(body);
 
+const alreadyExistInWishList = async (req, res, next) => {
+       try{
+           const prod = await orderSerivce.checkWishList(req.body)
+          if ( prod !==null) {
+            req.body.id = prod.product_id;
+            const product = await productSerivce.selectProductByid(req.body)
+              return res.status(status.BAD_REQUEST).send({
+                  message: `${product.product_name} already exists in whish List`
+                })
+          }
+       } catch (error) {
+       console.log("alreadyExistInWishList -> error", error)
+           return res.status(status.INTERNAL_SERVER_ERROR).send({
+               message: status[500]
+           });  
+       } next();
+}
+
 export default {
     updateQauntity,
     productStatus,
     checkOrderStatus,
     selectOrder,
-    createTranscationDetails
+    createTranscationDetails,
+    alreadyExistInWishList
 };

@@ -260,11 +260,69 @@ var createTranscationDetails = /*#__PURE__*/function () {
   };
 }();
 
+var alreadyExistInWishList = /*#__PURE__*/function () {
+  var _ref6 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee6(req, res, next) {
+    var prod, product;
+    return _regenerator["default"].wrap(function _callee6$(_context6) {
+      while (1) {
+        switch (_context6.prev = _context6.next) {
+          case 0:
+            _context6.prev = 0;
+            _context6.next = 3;
+            return _services.orderSerivce.checkWishList(req.body);
+
+          case 3:
+            prod = _context6.sent;
+
+            if (!(prod !== null)) {
+              _context6.next = 10;
+              break;
+            }
+
+            req.body.id = prod.product_id;
+            _context6.next = 8;
+            return _services.productSerivce.selectProductByid(req.body);
+
+          case 8:
+            product = _context6.sent;
+            return _context6.abrupt("return", res.status(_httpStatus["default"].BAD_REQUEST).send({
+              message: "".concat(product.product_name, " already exists in whish List")
+            }));
+
+          case 10:
+            _context6.next = 16;
+            break;
+
+          case 12:
+            _context6.prev = 12;
+            _context6.t0 = _context6["catch"](0);
+            console.log("alreadyExistInWishList -> error", _context6.t0);
+            return _context6.abrupt("return", res.status(_httpStatus["default"].INTERNAL_SERVER_ERROR).send({
+              message: _httpStatus["default"][500]
+            }));
+
+          case 16:
+            next();
+
+          case 17:
+          case "end":
+            return _context6.stop();
+        }
+      }
+    }, _callee6, null, [[0, 12]]);
+  }));
+
+  return function alreadyExistInWishList(_x13, _x14, _x15) {
+    return _ref6.apply(this, arguments);
+  };
+}();
+
 var _default = {
   updateQauntity: updateQauntity,
   productStatus: productStatus,
   checkOrderStatus: checkOrderStatus,
   selectOrder: selectOrder,
-  createTranscationDetails: createTranscationDetails
+  createTranscationDetails: createTranscationDetails,
+  alreadyExistInWishList: alreadyExistInWishList
 };
 exports["default"] = _default;

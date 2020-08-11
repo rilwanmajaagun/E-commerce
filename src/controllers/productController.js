@@ -29,6 +29,7 @@ const addProduct = async(req, res) => {
                 data: {}
             });
     } catch (error) {
+        console.log(error);
         return res.status(status.INTERNAL_SERVER_ERROR).send({
             message: status[500],
             data: null

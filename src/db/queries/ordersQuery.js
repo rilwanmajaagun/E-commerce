@@ -33,5 +33,15 @@ export default {
     `,
     verifyTranscation: `
     update transcation set verified=($1) where refrence = ($2)
+    `,
+    wishList: `
+    INSERT INTO wishlist(
+        id,
+        user_id,
+        product_id
+    ) VALUES ($1, $2, $3) 
+    `,
+    checkWishList: `
+    SELECT * FROM wishlist WHERE product_id = ($1)
     `
 };

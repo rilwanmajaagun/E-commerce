@@ -46,6 +46,17 @@ const transcationDetails = async(body) => {
 
 const verfiyTanscation = async(status, refrence) => db.none(ordersQuery.verifyTranscation, [status, refrence]);
 
+const createWishList = async (body,user_id)=>{
+    const id = uuidv4();
+    const { product_id } = body;
+    return db.none(ordersQuery.wishList,[ id, user_id, product_id]);
+};
+
+const checkWishList = async(body) => {
+    const { product_id } = body;
+    return db.oneOrNone(ordersQuery.checkWishList, [product_id]);
+};
+
 export default {
     createOrder,
     cancelOrder,
@@ -53,5 +64,7 @@ export default {
     updateOrderStatus,
     selectOrder,
     transcationDetails,
-    verfiyTanscation
+    verfiyTanscation,
+    createWishList,
+    checkWishList
 };

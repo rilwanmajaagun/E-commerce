@@ -39,6 +39,7 @@ router.patch('/updateOrder', _middlewares.userAuth.verifyToken, _middlewares.use
 router.post('/bankpayment', _middlewares.userAuth.verifyToken, _controllers.payment.bankPayment);
 router.post('/cardpayment/:order_id', _middlewares.userAuth.verifyToken, _controllers.payment.cardPayment);
 router.get('/verifypayment/:reference', _middlewares.userAuth.verifyToken, _middlewares.userAuth.adminAuthorization, _controllers.payment.verifyPayment);
+router.post('/wishlist', _middlewares.userAuth.verifyToken, _middlewares.orderAuth.alreadyExistInWishList, _controllers.orderController.createWishList);
 router.post('/sendcode', _middlewares.sendcode.sendCode);
 router.post('/checkcode', _middlewares.sendcode.checkCode);
 router.get('/download', _controllers.downloadCsv);

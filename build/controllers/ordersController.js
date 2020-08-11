@@ -17,6 +17,8 @@ var _services = require("../services");
 
 var _middlewares = require("../middlewares");
 
+var _ = require(".");
+
 var createOrder = /*#__PURE__*/function () {
   var _ref = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(req, res) {
     var email, _req$body, product_name, quantity, user, userName, order;
@@ -141,9 +143,53 @@ var UpdateOrderStatus = /*#__PURE__*/function () {
   };
 }();
 
+var createWishList = /*#__PURE__*/function () {
+  var _ref4 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee4(req, res) {
+    var email, user;
+    return _regenerator["default"].wrap(function _callee4$(_context4) {
+      while (1) {
+        switch (_context4.prev = _context4.next) {
+          case 0:
+            email = res.locals.user.email;
+            _context4.prev = 1;
+            _context4.next = 4;
+            return _services.userService.checkIfUserExist(email);
+
+          case 4:
+            user = _context4.sent;
+            _context4.next = 7;
+            return _services.orderSerivce.createWishList(req.body, user.id);
+
+          case 7:
+            return _context4.abrupt("return", res.status(_httpStatus["default"].CREATED).send({
+              message: 'product added succesfuly'
+            }));
+
+          case 10:
+            _context4.prev = 10;
+            _context4.t0 = _context4["catch"](1);
+            console.log(_context4.t0);
+            return _context4.abrupt("return", res.status(_httpStatus["default"].INTERNAL_SERVER_ERROR).send({
+              message: _httpStatus["default"][500]
+            }));
+
+          case 14:
+          case "end":
+            return _context4.stop();
+        }
+      }
+    }, _callee4, null, [[1, 10]]);
+  }));
+
+  return function createWishList(_x7, _x8) {
+    return _ref4.apply(this, arguments);
+  };
+}();
+
 var _default = {
   createOrder: createOrder,
   cancelOrder: cancelOrder,
-  UpdateOrderStatus: UpdateOrderStatus
+  UpdateOrderStatus: UpdateOrderStatus,
+  createWishList: createWishList
 };
 exports["default"] = _default;

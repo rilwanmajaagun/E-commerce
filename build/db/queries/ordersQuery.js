@@ -11,6 +11,8 @@ var _default = {
   updateOrderStatus: "\n    UPDATE orders SET order_status  =($1) where id = ($2);\n    ",
   getOrderId: "SELECT * FROM orders WHERE id = ($1);\n    ",
   transcationDetails: "\n    INSERT INTO transcation(\n        transcation_id,\n        order_id,\n        refrence,\n        amount,\n        status,\n        currency,\n        created_at\n    ) VALUES ($1, $2, $3, $4, $5, $6, $7) \n    ",
-  verifyTranscation: "\n    update transcation set verified=($1) where refrence = ($2)\n    "
+  verifyTranscation: "\n    update transcation set verified=($1) where refrence = ($2)\n    ",
+  wishList: "\n    INSERT INTO wishlist(\n        id,\n        user_id,\n        product_id\n    ) VALUES ($1, $2, $3) \n    ",
+  checkWishList: "\n    SELECT * FROM wishlist WHERE product_id = ($1)\n    "
 };
 exports["default"] = _default;

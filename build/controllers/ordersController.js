@@ -209,8 +209,8 @@ var getWishList = /*#__PURE__*/function () {
             }
 
             return _context5.abrupt("return", res.status(_httpStatus["default"].OK).send({
-              message: 'Wish List is empty',
-              wishList: wishList
+              message: 'Wish List is empty' // wishList
+
             }));
 
           case 10:

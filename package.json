@@ -9,8 +9,8 @@
     "test": "ECOMMERCE_NODE_ENV=test mocha --require @babel/register test/index.js --exit",
     "posttest": "db-migrate reset:seeds && db-migrate reset ",
     "dev:start": "nodemon --require @babel/register src/index.js",
-    "t": "nodemon -r @babel/register t",
     "lint": "eslint --ext js .",
+    "predev:start": "db-migrate up",
     "build": "babel src -d --out-dir build"
   },
   "repository": {

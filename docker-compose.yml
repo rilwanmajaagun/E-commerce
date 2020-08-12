@@ -5,13 +5,31 @@ services:
     container_name: cache
     expose:
       - 6379
+
   web:
+    env_file: 
+      - .env
     build: .
     ports:
       - "3000:3000"
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
     links:
         - redis
+    command: ["bash", "-c","while !</dev/tcp/db/5432; do sleep 1; done; npm run dev:start"]
     environment:
-     - ECOMMERCE_NODE_ENV=development
-     - REDIS_URL=redis://cache
+      - ECOMMERCE_NODE_ENV=development
+      - REDIS_URL=redis://cache
+      - ECOMMERCE_DATABASE_DEV_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/ecommerce_dev_db
+    depends_on: 
+        - redis
+        - db
+
+  db:
+    env_file: 
+      - .env
+    image: postgres
+    expose:
+      - 5432
   

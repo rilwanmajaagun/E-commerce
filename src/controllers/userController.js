@@ -26,6 +26,7 @@ const createUsers = async(req, res) => {
                 data: null
             });
     } catch (e) {
+        console.log('createUsers -> e', e);
         res.status(status.INTERNAL_SERVER_ERROR).send({
             message: status[500],
             data: null
@@ -46,7 +47,7 @@ const checkUser = async(req, res) => {
     }
 };
 
-const  userDetails = async(req, res) => {
+const userDetails = async(req, res) => {
     const { email } = res.locals.user;
     try {
         const user = await userService.checkIfUserExist(email);
@@ -56,7 +57,7 @@ const  userDetails = async(req, res) => {
                 id: user.id,
                 first_name: user.first_name,
                 last_name: user.last_name,
-                email: user.email,
+                email: user.email
             }
         });
     } catch (e) {

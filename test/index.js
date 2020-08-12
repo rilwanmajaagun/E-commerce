@@ -220,7 +220,7 @@ describe('e-commerce', () => {
                     done();
                 });
         });
-        it('should return specific Product', (done) => {
+        it.skip('should return specific Product', (done) => {
             request(app)
                 .post('/api/v1/search/product')
                 .set('Accept', 'application')
@@ -264,7 +264,7 @@ describe('e-commerce', () => {
                     done();
                 });
         });
-        it('should delete product', (done) => {
+        it.skip('should delete product', (done) => {
             request(app)
                 .delete('/api/v1/product')
                 .set({ token: process.env.ADMIN_TOKEN })

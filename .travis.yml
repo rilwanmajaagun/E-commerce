@@ -5,7 +5,7 @@ services:
   - postgresql
   - redis-server
 before_script:
-  - psql -c 'create database ECOMMERCE_DATABASE_TEST_URL;' -U postgres
+  - psql -c 'create database testing_db;' -U postgres
 cache:
   directories:
     - "node_modules"

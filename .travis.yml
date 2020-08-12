@@ -1,4 +1,4 @@
-language: ruby
+language: nodez_js
 rvm:
   - 2.2
   - jruby

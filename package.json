@@ -11,7 +11,8 @@
     "dev:start": "nodemon --require @babel/register src/index.js",
     "lint": "eslint --ext js .",
     "predev:start": "db-migrate up",
-    "build": "babel src -d --out-dir build"
+    "build": "babel src -d --out-dir build",
+    "coverage": "ECOMMERCE_NODE_ENV=test nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
     "type": "git",
@@ -51,6 +52,7 @@
     "multer": "^1.4.2",
     "nexmo": "^2.8.0",
     "nodemailer": "^6.4.11",
+    "nyc": "^15.1.0",
     "passport": "^0.4.1",
     "passport-facebook": "^3.0.0",
     "passport-google-oauth20": "^2.0.0",

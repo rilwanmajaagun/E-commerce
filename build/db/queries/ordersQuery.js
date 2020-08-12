@@ -14,7 +14,7 @@ var _default = {
   verifyTranscation: "\n    update transcation set verified=($1) where refrence = ($2)\n    ",
   wishList: "\n    INSERT INTO wishlist(\n        id,\n        user_id,\n        product_id\n    ) VALUES ($1, $2, $3) \n    ",
   checkWishList: "\n    SELECT * FROM wishlist WHERE product_id = ($1)\n    ",
-  getWishList: "\n    SELECT\n        product.id,\n        product.product_name,\n        product.category,\n        product.status,\n        product.quantity,\n        product.price,\n        product.product_name,\n        product.product_image\n    FROM product\n    JOIN wishlist\n    ON product.id = wishlist.product_id\n    WHERE user_id = ($1)\n    ",
+  getWishList: "\n    SELECT\n        wishlist.id,\n        product.product_name,\n        product.category,\n        product.status,\n        product.quantity,\n        product.price,\n        product.product_name,\n        product.product_image\n    FROM product\n    JOIN wishlist\n    ON product.id = wishlist.product_id\n    WHERE user_id = ($1)\n    ",
   selectWishListItem: "\n    SELECT * FROM wishlist WHERE id = ($1)\n    ",
   deleteWishList: "\n    DELETE FROM wishlist WHERE id = ($1) AND user_id = ($2);\n    "
 };

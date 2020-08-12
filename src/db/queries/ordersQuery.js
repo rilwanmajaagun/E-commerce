@@ -46,7 +46,7 @@ export default {
     `,
     getWishList: `
     SELECT
-        product.id,
+        wishlist.id,
         product.product_name,
         product.category,
         product.status,

@@ -1,9 +1,9 @@
 language: nodez_js
 env:
   ECOMMERCE_NODE_ENV=test
-  services: 
+services: 
     - postgresql
     - redis-server
-  before_script:
+before_script:
       - psql -c 'create database ECOMMERCE_DATABASE_TEST_URL;' -U postgres
-  cache: npm
+cache: npm

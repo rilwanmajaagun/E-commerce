@@ -1,9 +1,13 @@
 language: nodez_js
+node_js: 
+  - "stable"
 env:
-  ECOMMERCE_NODE_ENV=test
+  - ECOMMERCE_NODE_ENV=test
 services: 
-    - postgresql
-    - redis-server
+  - postgresql
+  - redis-server
 before_script:
-      - psql -c 'create database ECOMMERCE_DATABASE_TEST_URL;' -U postgres
-cache: npm
+  - psql -c 'create database ECOMMERCE_DATABASE_TEST_URL;' -U postgres
+cache:
+  directories:
+    - "node_modules"

@@ -31,7 +31,7 @@ describe('e-commerce', () => {
             .expect('Content-Type', /json/)
             .expect(201)
             .end((err, res) => {
-                console.log(user);
+                console.log(res.body);
                 token = res.body.data.token;
                 if (err) { return done(err); }
                 expect(res.body.message).to.equal('user created sucessfully');

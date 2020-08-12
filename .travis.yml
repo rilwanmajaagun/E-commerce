@@ -1,9 +1,6 @@
 language: nodez_js
 node_js: 
   - "stable"
-env:
-  - ECOMMERCE_NODE_ENV=test
-  - ECOMMERCE_DATABASE_TEST_URL = postgres
 services: 
   - postgresql
   - redis-server

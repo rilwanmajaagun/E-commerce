@@ -37,7 +37,7 @@ router.post('/cardpayment/:order_id', userAuth.verifyToken, payment.cardPayment)
 router.get('/verifypayment/:reference', userAuth.verifyToken, userAuth.adminAuthorization, payment.verifyPayment);
 router.post('/wishlist', userAuth.verifyToken, orderAuth.alreadyExistInWishList, orderController.createWishList);
 router.get('/wishlist', userAuth.verifyToken, ordersController.getWishList);
-router.delete('/wishlist', userAuth.verifyToken, orderAuth.deleteWishList, orderController.deleteWishList);
+router.delete('/wishlist/:id', userAuth.verifyToken, orderAuth.deleteWishList, orderController.deleteWishList);
 router.post('/sendcode', sendcode.sendCode);
 router.post('/checkcode', sendcode.checkCode);
 router.get('/download', downloadCsv);

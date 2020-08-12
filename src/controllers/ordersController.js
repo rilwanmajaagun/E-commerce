@@ -80,7 +80,7 @@ const deleteWishList = async(req, res) => {
     const { email } = res.locals.user;
     try {
         const user = await userService.checkIfUserExist(email);
-        await orderSerivce.deletewishList(req.body, user.id);
+        await orderSerivce.deletewishList(req.params, user.id);
         return res.status(status.OK).send({
             message: 'Product deleted successfully '
         });

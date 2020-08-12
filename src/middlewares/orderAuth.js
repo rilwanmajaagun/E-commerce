@@ -96,7 +96,7 @@ const alreadyExistInWishList = async(req, res, next) => {
 
 const deleteWishList = async(req, res, next) => {
     try {
-        const items = await orderSerivce.selectWishList(req.body);
+        const items = await orderSerivce.selectWishList(req.params);
         if (!items) {
             return res.status(status.BAD_REQUEST).send({
                 message: 'Product does not exist in wish List'

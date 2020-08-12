@@ -254,7 +254,7 @@ var deleteWishList = /*#__PURE__*/function () {
           case 4:
             user = _context6.sent;
             _context6.next = 7;
-            return _services.orderSerivce.deletewishList(req.body, user.id);
+            return _services.orderSerivce.deletewishList(req.params, user.id);
 
           case 7:
             return _context6.abrupt("return", res.status(_httpStatus["default"].OK).send({

@@ -59,13 +59,13 @@ const checkWishList = async(body) => {
 
 const getWishList = async(user_id) => db.manyOrNone(ordersQuery.getWishList, [user_id]);
 
-const selectWishList = async(body) => {
-    const { id } = body;
+const selectWishList = async(params) => {
+    const { id } = params;
     return db.oneOrNone(ordersQuery.selectWishListItem, [id]);
 };
 
-const deletewishList = async(body, user_id) => {
-    const { id } = body;
+const deletewishList = async(params, user_id) => {
+    const { id } = params;
     const payload = [
         id,
         user_id

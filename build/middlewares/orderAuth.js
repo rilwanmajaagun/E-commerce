@@ -325,7 +325,7 @@ var deleteWishList = /*#__PURE__*/function () {
           case 0:
             _context7.prev = 0;
             _context7.next = 3;
-            return _services.orderSerivce.selectWishList(req.body);
+            return _services.orderSerivce.selectWishList(req.params);
 
           case 3:
             items = _context7.sent;

@@ -254,13 +254,13 @@ var getWishList = /*#__PURE__*/function () {
 }();
 
 var selectWishList = /*#__PURE__*/function () {
-  var _ref11 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee11(body) {
+  var _ref11 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee11(params) {
     var id;
     return _regenerator["default"].wrap(function _callee11$(_context11) {
       while (1) {
         switch (_context11.prev = _context11.next) {
           case 0:
-            id = body.id;
+            id = params.id;
             return _context11.abrupt("return", _db.db.oneOrNone(_db.ordersQuery.selectWishListItem, [id]));
 
           case 2:
@@ -277,13 +277,13 @@ var selectWishList = /*#__PURE__*/function () {
 }();
 
 var deletewishList = /*#__PURE__*/function () {
-  var _ref12 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee12(body, user_id) {
+  var _ref12 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee12(params, user_id) {
     var id, payload;
     return _regenerator["default"].wrap(function _callee12$(_context12) {
       while (1) {
         switch (_context12.prev = _context12.next) {
           case 0:
-            id = body.id;
+            id = params.id;
             payload = [id, user_id];
             return _context12.abrupt("return", _db.db.none(_db.ordersQuery.deleteWishList, payload));
 

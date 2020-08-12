@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node  build/index.js",
     "pretest": "npm run posttest && db-migrate up && db-migrate up:seeds",
-    "test": "ECOMMERCE_NODE_ENV=test mocha --require @babel/register test/index.js --exit",
+    "test": "ECOMMERCE_NODE_ENV=test mocha --require @babel/register nyc test/index.js --exit",
     "posttest": "db-migrate reset:seeds && db-migrate reset ",
     "dev:start": "nodemon --require @babel/register src/index.js",
     "lint": "eslint --ext js .",

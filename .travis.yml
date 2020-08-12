@@ -1,4 +1,9 @@
 language: nodez_js
-rvm:
-  - 2.2
-  - jruby
+env:
+  ECOMMERCE_NODE_ENV=test
+  services: 
+    - postgresql
+    - redis-server
+  before_script:
+      - psql -c 'create database ECOMMERCE_DATABASE_TEST_URL;' -U postgres
+  cache: npm

@@ -1,6 +1,6 @@
 language: nodez_js
 node_js: 
-  - "stable"
+  - "v11.0.0"
 services: 
   - postgresql
   - redis-server

@@ -224,7 +224,7 @@ describe('e-commerce', () => {
             request(app)
                 .post('/api/v1/search/product')
                 .set('Accept', 'application')
-                .send({ product_name: 'chain' })
+                .send({ product_name: 'ch' })
                 .expect('Content-Type', /json/)
                 .expect(200)
                 .end((err, res) => {
@@ -264,17 +264,17 @@ describe('e-commerce', () => {
                     done();
                 });
         });
-        it.skip('should delete product', (done) => {
+        it('should delete product', (done) => {
             request(app)
                 .delete('/api/v1/product')
                 .set({ token: process.env.ADMIN_TOKEN })
                 .set('Accept', 'application')
-                .send({ product_name: 'chain' })
+                .send({ product_name: 'Chain' })
                 .expect('Content-Type', /json/)
                 .expect(200)
                 .end((err, res) => {
                     if (err) { throw err; }
-                    expect(res.body.message).to.equal('chain Deleted successfully');
+                    expect(res.body.message).to.equal('Chain Deleted successfully');
                     done();
                 });
         });

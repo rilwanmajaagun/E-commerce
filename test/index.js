@@ -14,7 +14,8 @@ describe('e-commerce', () => {
         category,
         new_name,
         id,
-        order_id;
+        order_id,
+        wishList_id;
     const product_name = faker.commerce.productName();
     before((done) => {
         user = {
@@ -264,20 +265,6 @@ describe('e-commerce', () => {
                     done();
                 });
         });
-        it('should delete product', (done) => {
-            request(app)
-                .delete('/api/v1/product')
-                .set({ token: process.env.ADMIN_TOKEN })
-                .set('Accept', 'application')
-                .send({ product_name: 'Chain' })
-                .expect('Content-Type', /json/)
-                .expect(200)
-                .end((err, res) => {
-                    if (err) { throw err; }
-                    expect(res.body.message).to.equal('Chain Deleted successfully');
-                    done();
-                });
-        });
     });
     describe('password', () => {
         it('Forget Password', (done) => {
@@ -337,6 +324,64 @@ describe('e-commerce', () => {
                 .end((err, res) => {
                     if (err) { throw err; }
                     expect(res.body.message).to.equal('your order has been cancelled');
+                    done();
+                });
+        });
+    });
+    describe('wishList', () => {
+        it('create wishList', (done) => {
+            request(app)
+                .post('/api/v1/wishlist')
+                .set({ token })
+                .send({
+                    product_id: '6e440d26-c5a9-401d-970e-9a213efba929'
+                })
+                .set('Accept', 'application')
+                .expect('Content-Type', /json/)
+                .expect(201)
+                .end((err, res) => {
+                    if (err) { throw err; }
+                    expect(res.body.message).to.equal('product added succesfuly');
+                    done();
+                });
+        });
+        it('get wishList', (done) => {
+            request(app)
+                .get('/api/v1/wishlist')
+                .set({ token })
+                .expect('Content-Type', /json/)
+                .expect(200)
+                .end((err, res) => {
+                    wishList_id = res.body.wishList[0].id;
+                    if (err) { throw err; }
+                    expect(res.body.message).to.equal('Wish List fetched successfully');
+                    done();
+                });
+        });
+        it('delete wishList', (done) => {
+            request(app)
+                .delete(`/api/v1/wishlist/${wishList_id}`)
+                .set({ token })
+                .set('Accept', 'application')
+                .expect('Content-Type', /json/)
+                .expect(200)
+                .end((err, res) => {
+                    if (err) { throw err; }
+                    expect(res.body.message).to.equal('Product deleted successfully ');
+                    done();
+                });
+        });
+        it('should delete product', (done) => {
+            request(app)
+                .delete('/api/v1/product')
+                .set({ token: process.env.ADMIN_TOKEN })
+                .set('Accept', 'application')
+                .send({ product_name: 'Chain' })
+                .expect('Content-Type', /json/)
+                .expect(200)
+                .end((err, res) => {
+                    if (err) { throw err; }
+                    expect(res.body.message).to.equal('Chain Deleted successfully');
                     done();
                 });
         });

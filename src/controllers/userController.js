@@ -26,7 +26,6 @@ const createUsers = async(req, res) => {
                 data: null
             });
     } catch (error) {
-        console.log('createUsers -> error', error);
         res.status(status.INTERNAL_SERVER_ERROR).send({
             message: status[500],
             data: null

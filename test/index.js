@@ -220,7 +220,7 @@ describe('e-commerce', () => {
                     done();
                 });
         });
-        it.skip('should return specific Product', (done) => {
+        it('should return specific Product', (done) => {
             request(app)
                 .post('/api/v1/search/product')
                 .set('Accept', 'application')

@@ -31,3 +31,14 @@ jobs:
     env:
       ECOMMERCE_NODE_ENV: test
       ECOMMERCE_DATABASE_TEST_URL: postgres://rzvbskcw:Q1bhpv6LVUKKQNI8rfuiyap2WK7epzkt@drona.db.elephantsql.com:5432/rzvbskcw
+      FACEBOOK_APP_ID: ${{secrets.FACEBOOK_APP_ID}}
+      FACEBOOK_CALLBACK_URL: ${{secrets.FACEBOOK_CALLBACK_URL}}
+      FACEBOOK_APP_SECRET: ${{secrets.FACEBOOK_APP_SECRET}}
+      SECRET_KE: ${{secrets.SECRET_KE}}
+      API_KEY: ${{secrets.API_KEY}}
+      DOMAIN: ${{secrets.DOMAIN}}
+      GOOGLE_CLIENT_ID: ${{secrets.GOOGLE_CLIENT_ID}}
+      GOOGLE_CLIENT_SECRET: ${{secrets.GOOGLE_CLIENT_SECRET}}
+      SALT: ${{secrets.SALT}}
+      NODE_MAILER_EMAIL: ${{secrets.NODE_MAILER_EMAIL}}
+      NODE_MAILER_PASSWORD: ${{secrets.NODE_MAILER_PASSWORD}}

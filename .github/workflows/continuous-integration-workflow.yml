@@ -67,4 +67,4 @@ jobs:
       NODE_MAILER_EMAIL: ${{secrets.NODE_MAILER_EMAIL}}
       NODE_MAILER_PASSWORD: ${{secrets.NODE_MAILER_PASSWORD}}
       REDIS_URL: 'redis://127.0.0.1:6379'
-      ADMIN_TOKEN: {{secrets.ADMIN_TOKEN}}
+      ADMIN_TOKEN: ${{secrets.ADMIN_TOKEN}}

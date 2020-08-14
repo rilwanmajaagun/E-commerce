@@ -33,4 +33,4 @@ jobs:
       REDIS_HOST: redis
           # The default Redis port
       REDIS_PORT: 6379
-      ECOMMERCE_DATABASE_TEST_URL: postgres://localhost/postgres
+      ECOMMERCE_DATABASE_TEST_URL: postgresql://localhost/postgres

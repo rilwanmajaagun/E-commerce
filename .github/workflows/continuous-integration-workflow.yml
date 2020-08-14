@@ -28,14 +28,7 @@ jobs:
     - run: npm run build --if-present
     - run: npm test
     - run: node client.js
-    - name: Setup PostgreSQL
-      uses: Harmon758/postgresql-action@v1.0.0
-      with:
-        postgresql version: 11
-        postgresql db: databasename-test
-        postgresql user: dev
-        postgresql password: dev
 
     env:
       ECOMMERCE_NODE_ENV: test
-      ECOMMERCE_DATABASE_TEST_URL: postgres://localhost/databasename-test
+      ECOMMERCE_DATABASE_TEST_URL: postgres://rzvbskcw:Q1bhpv6LVUKKQNI8rfuiyap2WK7epzkt@drona.db.elephantsql.com:5432/rzvbskcw

@@ -1,2 +1,2 @@
 /* Replace with your SQL commands */
-DROP TABLE wishlist;
+DROP TABLE wishlist CASCADE;

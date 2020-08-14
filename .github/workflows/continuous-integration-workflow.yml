@@ -30,10 +30,12 @@ jobs:
     - run: node client.js
     - name: Setup PostgreSQL
       uses: Harmon758/postgresql-action@v1.0.0
+      with:
+        postgresql version: 11
+        postgresql db: databasename-test
+        postgresql user: dev
+        postgresql password: dev
 
     env:
       ECOMMERCE_NODE_ENV: test
-      REDIS_HOST: redis
-          # The default Redis port
-      REDIS_PORT: 6379
-      ECOMMERCE_DATABASE_TEST_URL: postgres://localhost/postgres
+      ECOMMERCE_DATABASE_TEST_URL: postgres://localhost/databasename-test

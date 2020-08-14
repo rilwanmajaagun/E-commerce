@@ -72,6 +72,10 @@ const schema = {
             .uuid(),
         order_status: joi.string().valid('pending', 'shipped')
 
+    }),
+    product_id: joi.object({
+        product_id: joi.string()
+            .uuid().required()
     })
 };
 

@@ -88,11 +88,25 @@ const deleteWishList = async(req, res) => {
         return res.status(status.INTERNAL_SERVER_ERROR).send({ message: status[500] });
     }
 };
+
+const createCart = async(req, res) => {
+    const { email } = res.locals.user;
+    try {
+        const user = await userService.checkIfUserExist(email);
+        await orderSerivce.createCart(req.body, user.id);
+        return res.status(status.CREATED).send({
+            message: 'product added succesfuly'
+        });
+    } catch (error) {
+        return res.status(status.INTERNAL_SERVER_ERROR).send({ message: status[500] });
+    }
+};
 export default {
     createOrder,
     cancelOrder,
     UpdateOrderStatus,
     createWishList,
     getWishList,
-    deleteWishList
+    deleteWishList,
+    createCart
 };

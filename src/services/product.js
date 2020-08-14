@@ -28,7 +28,7 @@ const addProduct = async(body) => {
 const selectProduct = async(body) => {
     const { product_name } = body;
     const name = (product_name) => product_name.charAt(0).toUpperCase() + product_name.slice(1);
-    const product = `${name(product_name)}%`
+    const product = `${name(product_name)}%`;
     return db.oneOrNone(productQuery.getProductByProduct_name, [product]);
 };
 

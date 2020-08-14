@@ -73,6 +73,17 @@ const deletewishList = async(params, user_id) => {
     return db.none(ordersQuery.deleteWishList, payload);
 };
 
+const createCart = async(body, user_id) => {
+    const id = uuidv4();
+    const { product_id } = body;
+    return db.none(ordersQuery.createCart, [id, user_id, product_id]);
+};
+
+const checkCart = async(body) => {
+    const { product_id } = body;
+    return db.oneOrNone(ordersQuery.checkCart, [product_id]);
+};
+
 export default {
     createOrder,
     cancelOrder,
@@ -85,5 +96,7 @@ export default {
     checkWishList,
     getWishList,
     deletewishList,
-    selectWishList
+    selectWishList,
+    createCart,
+    checkCart
 };

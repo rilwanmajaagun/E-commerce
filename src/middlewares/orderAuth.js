@@ -109,6 +109,23 @@ const deleteWishList = async(req, res, next) => {
     } next();
 };
 
+const alreadyExistInCart = async(req, res, next) => {
+    try {
+        const prod = await orderSerivce.checkCart(req.body);
+        if (prod !== null) {
+            req.body.id = prod.product_id;
+            const product = await productSerivce.selectProductByid(req.body);
+            return res.status(status.BAD_REQUEST).send({
+                message: `${product.product_name} already exists in Cart`
+            });
+        }
+    } catch (error) {
+        return res.status(status.INTERNAL_SERVER_ERROR).send({
+            message: status[500]
+        });
+    } next();
+};
+
 export default {
     updateQauntity,
     productStatus,
@@ -116,5 +133,6 @@ export default {
     selectOrder,
     createTranscationDetails,
     alreadyExistInWishList,
-    deleteWishList
+    deleteWishList,
+    alreadyExistInCart
 };

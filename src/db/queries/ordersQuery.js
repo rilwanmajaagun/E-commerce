@@ -64,5 +64,15 @@ export default {
     `,
     deleteWishList: `
     DELETE FROM wishlist WHERE id = ($1) AND user_id = ($2);
+    `,
+    createCart: `
+    INSERT INTO cart(
+        id,
+        user_id,
+        product_id
+    ) VALUES ($1, $2, $3) 
+    `,
+    checkCart: `
+    SELECT * FROM cart WHERE product_id = ($1)
     `
 };

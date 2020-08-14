@@ -17,7 +17,11 @@ jobs:
     strategy:
       matrix:
         node-version: [10.x, 12.x, 14.x]
-
+  container-job:
+    # Containers must run in Linux based operating systems
+    runs-on: ubuntu-latest
+    # Docker Hub image that `container-job` executes in
+    
     services:
       # Label used to access the service container
       postgres:

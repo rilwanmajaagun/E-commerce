@@ -371,7 +371,7 @@ describe('e-commerce', () => {
                     done();
                 });
         });
-        it('should delete product', (done) => {
+        it.skip('should delete product', (done) => {
             request(app)
                 .delete('/api/v1/product')
                 .set({ token: process.env.ADMIN_TOKEN })

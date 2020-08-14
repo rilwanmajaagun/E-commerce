@@ -58,7 +58,7 @@ jobs:
       FACEBOOK_APP_ID: ${{secrets.FACEBOOK_APP_ID}}
       FACEBOOK_CALLBACK_URL: ${{secrets.FACEBOOK_CALLBACK_URL}}
       FACEBOOK_APP_SECRET: ${{secrets.FACEBOOK_APP_SECRET}}
-      SECRET_KE: ${{secrets.SECRET_KE}}
+      SECRET_KEY: ${{secrets.SECRET_KEY}}
       API_KEY: ${{secrets.API_KEY}}
       DOMAIN: ${{secrets.DOMAIN}}
       GOOGLE_CLIENT_ID: ${{secrets.GOOGLE_CLIENT_ID}}

@@ -17,7 +17,19 @@ jobs:
     strategy:
       matrix:
         node-version: [10.x, 12.x, 14.x]
-
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: ECOMMERCE_DATABASE_TEST
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
@@ -30,7 +42,7 @@ jobs:
 
     env:
       ECOMMERCE_NODE_ENV: test
-      ECOMMERCE_DATABASE_TEST_URL: postgres://rzvbskcw:Q1bhpv6LVUKKQNI8rfuiyap2WK7epzkt@drona.db.elephantsql.com:5432/rzvbskcw
+      ECOMMERCE_DATABASE_TEST_URL: 'postgres://postgres:postgres@localhost:5432/ECOMMERCE_DATABASE_TEST'
       FACEBOOK_APP_ID: ${{secrets.FACEBOOK_APP_ID}}
       FACEBOOK_CALLBACK_URL: ${{secrets.FACEBOOK_CALLBACK_URL}}
       FACEBOOK_APP_SECRET: ${{secrets.FACEBOOK_APP_SECRET}}

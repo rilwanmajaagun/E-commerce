@@ -30,6 +30,18 @@ jobs:
           --health-retries 5
         ports:
           - 5432:5432
+      redis:
+        image: redis
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: ECOMMERCE_DATABASE_TEST
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 6379:6379
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
@@ -54,3 +66,4 @@ jobs:
       SALT: ${{secrets.SALT}}
       NODE_MAILER_EMAIL: ${{secrets.NODE_MAILER_EMAIL}}
       NODE_MAILER_PASSWORD: ${{secrets.NODE_MAILER_PASSWORD}}
+      REDIS_URL: 'redis://127.0.0.1:6379'

@@ -18,7 +18,7 @@ jobs:
       matrix:
         node-version: [10.x, 12.x, 14.x]
 
-  services:
+    services:
       # Label used to access the service container
       postgres:
         # Docker Hub image

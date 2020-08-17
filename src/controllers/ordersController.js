@@ -49,7 +49,7 @@ const createWishList = async(req, res) => {
         const user = await userService.checkIfUserExist(email);
         await orderSerivce.createWishList(req.body, user.id);
         return res.status(status.CREATED).send({
-            message: 'product added succesfuly'
+            message: 'product added successfuly'
         });
     } catch (error) {
         return res.status(status.INTERNAL_SERVER_ERROR).send({ message: status[500] });
@@ -92,15 +92,37 @@ const deleteWishList = async(req, res) => {
 const createCart = async(req, res) => {
     const { email } = res.locals.user;
     try {
+        const price = await orderSerivce.getprice(req.body);
         const user = await userService.checkIfUserExist(email);
-        await orderSerivce.createCart(req.body, user.id);
+        await orderSerivce.createCart(req.body, user.id, price.price);
         return res.status(status.CREATED).send({
-            message: 'product added succesfuly'
+            message: 'product added successfully'
         });
     } catch (error) {
         return res.status(status.INTERNAL_SERVER_ERROR).send({ message: status[500] });
     }
 };
+
+const getCart = async(req, res) => {
+    const { email } = res.locals.user;
+    try {
+        const user = await userService.checkIfUserExist(email);
+        const wishList = await orderSerivce.getCart(user.id);
+        if (wishList.length === 0) {
+            return res.status(status.OK).send({
+                message: 'Cart is empty',
+                wishList
+            });
+        }
+        return res.status(status.OK).send({
+            message: 'Cart fetched successfully',
+            wishList
+        });
+    } catch (error) {
+        return res.status(status.INTERNAL_SERVER_ERROR).send({ message: status[500] });
+    }
+};
+
 export default {
     createOrder,
     cancelOrder,
@@ -108,5 +130,6 @@ export default {
     createWishList,
     getWishList,
     deleteWishList,
-    createCart
+    createCart,
+    getCart
 };

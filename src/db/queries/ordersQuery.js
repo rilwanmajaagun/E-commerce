@@ -69,10 +69,31 @@ export default {
     INSERT INTO cart(
         id,
         user_id,
-        product_id
-    ) VALUES ($1, $2, $3) 
+        product_id,
+        sub_total
+    ) VALUES ($1, $2, $3, $4) 
     `,
     checkCart: `
     SELECT * FROM cart WHERE product_id = ($1)
-    `
+    `,
+    getProductPrice: `
+    SELECT price FROM product where id = ($1)
+    `,
+    getCart: `
+    SELECT 
+        cart.id,
+        product.product_name,
+        product.category,
+        product.status,
+        product.quantity,
+        product.price,
+        product.product_name,
+        product.product_image,
+        cart.quantity,
+        cart.sub_total
+    FROM product 
+    JOIN cart 
+    ON product.id = cart.product_id
+    WHERE user_id = ($1);
+`
 };

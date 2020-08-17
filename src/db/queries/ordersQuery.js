@@ -95,5 +95,8 @@ export default {
     JOIN cart 
     ON product.id = cart.product_id
     WHERE user_id = ($1);
-`
+    `,
+    updateCart: `
+    UPDATE cart SET quantity = 2, sub_total = 5000 WHERE user_id= '($1) AND id = ($2)';
+    `
 };

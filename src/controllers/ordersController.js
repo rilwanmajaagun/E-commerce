@@ -107,16 +107,16 @@ const getCart = async(req, res) => {
     const { email } = res.locals.user;
     try {
         const user = await userService.checkIfUserExist(email);
-        const wishList = await orderSerivce.getCart(user.id);
-        if (wishList.length === 0) {
+        const cart = await orderSerivce.getCart(user.id);
+        if (cart.length === 0) {
             return res.status(status.OK).send({
                 message: 'Cart is empty',
-                wishList
+                cart
             });
         }
         return res.status(status.OK).send({
             message: 'Cart fetched successfully',
-            wishList
+            cart
         });
     } catch (error) {
         return res.status(status.INTERNAL_SERVER_ERROR).send({ message: status[500] });

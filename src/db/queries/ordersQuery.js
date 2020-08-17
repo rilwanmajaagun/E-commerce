@@ -97,6 +97,34 @@ export default {
     WHERE user_id = ($1);
     `,
     updateCart: `
-    UPDATE cart SET quantity = 2, sub_total = 5000 WHERE user_id= '($1) AND id = ($2)';
-    `
+    UPDATE cart SET quantity = ($1), sub_total = ($2) WHERE user_id= ($3) AND id = ($4);
+   `,
+    getSubTotal: `
+   SELECT sub_total FROM cart where id = ($1)
+   `,
+    getPrice: `
+   SELECT price 
+   FROM product
+   JOIN cart
+   ON product.id = cart.product_id
+   WHERE cart.id = ($1)
+   `,
+    selectCartItem: `
+   SELECT * FROM cart WHERE id = ($1)
+   `,
+    deleteCart: `
+   DELETE FROM cart WHERE id = ($1) AND user_id = ($2);
+   `,
+    moveWishListToCart: ` 
+    INSERT INTO cart (id,user_id, product_id, sub_total)
+    SELECT 
+        wishlist.id, 
+        wishlist.user_id,
+        wishlist.product_id,
+        product.price
+    FROM wishlist
+    JOIN product
+    ON product.id = wishlist.product_id
+    WHERE wishlist.id = ($1) AND user_id = ($2);
+`
 };

@@ -109,6 +109,21 @@ const deleteWishList = async(req, res, next) => {
     } next();
 };
 
+const deleteCart = async(req, res, next) => {
+    try {
+        const items = await orderSerivce.selectCart(req.params);
+        if (!items) {
+            return res.status(status.BAD_REQUEST).send({
+                message: 'Product does not exist in cart'
+            });
+        }
+    } catch (error) {
+        return res.status(status.INTERNAL_SERVER_ERROR).send({
+            message: status[500]
+        });
+    } next();
+};
+
 const alreadyExistInCart = async(req, res, next) => {
     try {
         const prod = await orderSerivce.checkCart(req.body);
@@ -134,5 +149,6 @@ export default {
     createTranscationDetails,
     alreadyExistInWishList,
     deleteWishList,
-    alreadyExistInCart
+    alreadyExistInCart,
+    deleteCart
 };

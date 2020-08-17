@@ -91,6 +91,36 @@ const getprice = async(body) => {
 
 const getCart = async(user_id) => db.manyOrNone(ordersQuery.getCart, [user_id]);
 
+const getTotal = async(body) => {
+    const { id } = body;
+    const total = db.one(ordersQuery.getPrice, [id]);
+    return total;
+};
+
+const updateCart = async(body, user_id, sub_total) => {
+    const { id, quantity } = body;
+    return db.none(ordersQuery.updateCart, [quantity, sub_total, user_id, id]);
+};
+
+const selectCart = async(params) => {
+    const { id } = params;
+    return db.oneOrNone(ordersQuery.selectCartItem, [id]);
+};
+
+const deleteCart = async(params, user_id) => {
+    const { id } = params;
+    const payload = [
+        id,
+        user_id
+    ];
+    return db.none(ordersQuery.deleteCart, payload);
+};
+
+const moveToCart = async(body, user_id) => {
+    const { id } = body;
+    return db.none(ordersQuery.moveWishListToCart, [id, user_id]);
+};
+
 export default {
     createOrder,
     cancelOrder,
@@ -107,5 +137,10 @@ export default {
     createCart,
     checkCart,
     getprice,
-    getCart
+    getCart,
+    updateCart,
+    getTotal,
+    deleteCart,
+    selectCart,
+    moveToCart
 };

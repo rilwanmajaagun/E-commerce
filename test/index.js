@@ -341,7 +341,7 @@ describe('e-commerce', () => {
                 .expect(201)
                 .end((err, res) => {
                     if (err) { throw err; }
-                    expect(res.body.message).to.equal('product added succesfuly');
+                    expect(res.body.message).to.equal('product added successfuly');
                     done();
                 });
         });

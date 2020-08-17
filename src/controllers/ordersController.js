@@ -130,7 +130,7 @@ const updateCart = async(req, res) => {
         const sub_total = await orderSerivce.getTotal(req.body);
         const total = await sub_total.price * req.body.quantity;
         await orderSerivce.updateCart(req.body, user.id, total);
-        return res.status(status.CREATED).send({
+        return res.status(status.OK).send({
             message: 'cart updated successfully'
         });
     } catch (error) {

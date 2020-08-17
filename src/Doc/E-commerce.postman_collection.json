@@ -2307,6 +2307,1046 @@
 					"body": "{\n    \"id\": 758220462,\n    \"domain\": \"test\",\n    \"status\": \"success\",\n    \"reference\": \"xv8c0l8f5azekgw\",\n    \"amount\": 100000,\n    \"message\": null,\n    \"gateway_response\": \"Successful\",\n    \"paid_at\": \"2020-07-28T08:34:42.000Z\",\n    \"created_at\": \"2020-07-28T08:34:42.000Z\",\n    \"channel\": \"card\",\n    \"currency\": \"NGN\",\n    \"ip_address\": \"52.31.139.75\",\n    \"metadata\": {\n        \"custom_fields\": [\n            {\n                \"value\": \"makurdi\",\n                \"display_name\": \"Donation for\",\n                \"variable_name\": \"donation_for\"\n            }\n        ]\n    },\n    \"log\": null,\n    \"fees\": 1500,\n    \"fees_split\": null,\n    \"authorization\": {\n        \"authorization_code\": \"AUTH_arj4ae361c\",\n        \"bin\": \"408408\",\n        \"last4\": \"4081\",\n        \"exp_month\": \"01\",\n        \"exp_year\": \"2099\",\n        \"channel\": \"card\",\n        \"card_type\": \"visa \",\n        \"bank\": \"TEST BANK\",\n        \"country_code\": \"NG\",\n        \"brand\": \"visa\",\n        \"reusable\": true,\n        \"signature\": \"SIG_Is3ATjwfpqHJ6rtA9RMy\",\n        \"account_name\": null,\n        \"receiver_bank_account_number\": null,\n        \"receiver_bank\": null\n    },\n    \"customer\": {\n        \"id\": 27379838,\n        \"first_name\": null,\n        \"last_name\": null,\n        \"email\": \"bofili1067@mado34.com\",\n        \"customer_code\": \"CUS_7q28nktu6xlq1wd\",\n        \"phone\": null,\n        \"metadata\": null,\n        \"risk_action\": \"default\",\n        \"international_format_phone\": null\n    },\n    \"plan\": null,\n    \"split\": {},\n    \"order_id\": null,\n    \"paidAt\": \"2020-07-28T08:34:42.000Z\",\n    \"createdAt\": \"2020-07-28T08:34:42.000Z\",\n    \"requested_amount\": 100000,\n    \"transaction_date\": \"2020-07-28T08:34:42.000Z\",\n    \"plan_object\": {},\n    \"subaccount\": {}\n}"
 				}
 			]
+		},
+		{
+			"name": "Get user Details After google Login",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoicmlsd2FuIiwiZW1haWwiOiJtYWphYWd1bm95aW5rb2xhZGVAZ21haWwuY29tIiwiaWF0IjoxNTk2OTgxNDk1LCJleHAiOjE1OTY5ODUwOTV9.Ajpr5PIDskfILRiup1VkZ3fe91L5mfT3oTQTSJydAfw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://dry-wildwood-70605.herokuapp.com/api/v1/auth/userdetails",
+					"protocol": "https",
+					"host": [
+						"dry-wildwood-70605",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"userdetails"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get user Details After google Login",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoicmlsd2FuIiwiZW1haWwiOiJtYWphYWd1bm95aW5rb2xhZGVAZ21haWwuY29tIiwiaWF0IjoxNTk2OTgxNDk1LCJleHAiOjE1OTY5ODUwOTV9.Ajpr5PIDskfILRiup1VkZ3fe91L5mfT3oTQTSJydAfw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://dry-wildwood-70605.herokuapp.com/api/v1/auth/userdetails",
+							"protocol": "https",
+							"host": [
+								"dry-wildwood-70605",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"userdetails"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "165"
+						},
+						{
+							"key": "Etag",
+							"value": "W/\"a5-VISJVsz74SnseWbLfVTBjYSowaY\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 09 Aug 2020 14:12:14 GMT"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"login successful\",\n    \"data\": {\n        \"id\": \"a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11\",\n        \"first_name\": \"rilwan\",\n        \"last_name\": \"kolade\",\n        \"email\": \"majaagunoyinkolade@gmail.com\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Get WishList",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiTGFiIiwiZW1haWwiOiJsYWJpcmkyMTY2N0BkZWxvd2QuY29tIiwiaWF0IjoxNTk3MTM3MTI5LCJleHAiOjE1OTcxNDA3Mjl9.2_ER4yJP2oMK34WMauGnoU0nnbl5UwAaLvz8j-1jEYU",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/wishlist",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"wishlist"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "http://localhost:3000/api/v1/wishlist",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiTGFiIiwiZW1haWwiOiJsYWJpcmkyMTY2N0BkZWxvd2QuY29tIiwiaWF0IjoxNTk3MTM3MTI5LCJleHAiOjE1OTcxNDA3Mjl9.2_ER4yJP2oMK34WMauGnoU0nnbl5UwAaLvz8j-1jEYU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/wishlist",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"wishlist"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "236"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"ec-Py6vBf4P8M0/P0+0FF9LzH8VJEc\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 11 Aug 2020 09:31:38 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Wish List fetched successfully\",\n    \"wishList\": [\n        {\n            \"id\": \"3287c306-1b90-4522-b341-2f6a1644bc85\",\n            \"product_name\": \"Vans  OLD SKOOL - BOYS YOUTH\",\n            \"category\": \"Beauty\",\n            \"status\": \"in_stock\",\n            \"quantity\": 8,\n            \"price\": 2000,\n            \"product_image\": null\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "add to wishlist",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiTGFiIiwiZW1haWwiOiJsYWJpcmkyMTY2N0BkZWxvd2QuY29tIiwiaWF0IjoxNTk3MTM3MTI5LCJleHAiOjE1OTcxNDA3Mjl9.2_ER4yJP2oMK34WMauGnoU0nnbl5UwAaLvz8j-1jEYU",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"product_id\": \"3287c306-1b90-4522-b341-2f6a1644bc85\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/wishlist",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"wishlist"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "http://localhost:3000/api/v1/wishlist",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiTGFiIiwiZW1haWwiOiJsYWJpcmkyMTY2N0BkZWxvd2QuY29tIiwiaWF0IjoxNTk3MTM3MTI5LCJleHAiOjE1OTcxNDA3Mjl9.2_ER4yJP2oMK34WMauGnoU0nnbl5UwAaLvz8j-1jEYU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"product_id\": \"3287c306-1b90-4522-b341-2f6a1644bc85\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/wishlist",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"wishlist"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "70"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"46-Gjw3uT4sI3XhTVXs/ECcJa/vzD4\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 11 Aug 2020 09:29:40 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Vans  OLD SKOOL - BOYS YOUTH already exists in Wish List\"\n}"
+				}
+			]
+		},
+		{
+			"name": "delete wishList",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiTGFiIiwiZW1haWwiOiJsYWJpcmkyMTY2N0BkZWxvd2QuY29tIiwiaWF0IjoxNTk3MjI0MTIzLCJleHAiOjE1OTcyMjc3MjN9.RfpLhsHIclDwvAyLlXJHQYhtuJ79LNBFO-UO24nBWrs",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://dry-wildwood-70605.herokuapp.com/api/v1/wishlist/d7b13b18-e4ac-4d05-beb6-ac3bf5a60266",
+					"protocol": "https",
+					"host": [
+						"dry-wildwood-70605",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"wishlist",
+						"d7b13b18-e4ac-4d05-beb6-ac3bf5a60266"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "http://localhost:3000/api/v1/wishlist",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiTGFiIiwiZW1haWwiOiJsYWJpcmkyMTY2N0BkZWxvd2QuY29tIiwiaWF0IjoxNTk3MTUyMzI3LCJleHAiOjE1OTcxNTU5Mjd9.r2tACnrpTkWs3B_jDl6gnIZ9qXBgGND16gmNxezt_P4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"9836f424-9116-431d-8ba6-eab18f87f7a8\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/wishlist",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"wishlist"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "43"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2b-nbd5F6H8vUdW+Qk+FLBA7+IH6pU\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 11 Aug 2020 14:21:43 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Product deleted successfully \"\n}"
+				}
+			]
+		},
+		{
+			"name": "move wishlist to cart",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiTGFiIiwiZW1haWwiOiJsYWJpcmkyMTY2N0BkZWxvd2QuY29tIiwiaWF0IjoxNTk3NjcyMDMzLCJleHAiOjE1OTc2NzU2MzN9.KwvoP63vcjcWmyv8nAlnvphQA9jlUTs5aJp5BGgzn1A",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\":\"1dbb27db-5973-4ae3-9873-fd4a358cdf01\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/cart/wishlist",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"cart",
+						"wishlist"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "move wishlist to cart",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiTGFiIiwiZW1haWwiOiJsYWJpcmkyMTY2N0BkZWxvd2QuY29tIiwiaWF0IjoxNTk3NjcyMDMzLCJleHAiOjE1OTc2NzU2MzN9.KwvoP63vcjcWmyv8nAlnvphQA9jlUTs5aJp5BGgzn1A",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\":\"1dbb27db-5973-4ae3-9873-fd4a358cdf01\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/cart/wishlist",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"cart",
+								"wishlist"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "48"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"30-ZJraLJ7spIMrnhjTZ3ZAT769fd8\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 17 Aug 2020 14:20:30 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Product added to cart successfully\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Add to cart",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiTGFiIiwiZW1haWwiOiJsYWJpcmkyMTY2N0BkZWxvd2QuY29tIiwiaWF0IjoxNTk3NjcyMDMzLCJleHAiOjE1OTc2NzU2MzN9.KwvoP63vcjcWmyv8nAlnvphQA9jlUTs5aJp5BGgzn1A",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"product_id\":\"3287c306-1b90-4522-b341-2f6a1644bc85\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/cart",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"cart"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Add to cart",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiTGFiIiwiZW1haWwiOiJsYWJpcmkyMTY2N0BkZWxvd2QuY29tIiwiaWF0IjoxNTk3NjcyMDMzLCJleHAiOjE1OTc2NzU2MzN9.KwvoP63vcjcWmyv8nAlnvphQA9jlUTs5aJp5BGgzn1A",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"product_id\":\"3287c306-1b90-4522-b341-2f6a1644bc85\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/cart",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"cart"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "40"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"28-ynwwywHxo4czxovtLkKABEoW5bk\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 17 Aug 2020 14:25:46 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"product added successfully\"\n}"
+				}
+			]
+		},
+		{
+			"name": "update cart",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiTGFiIiwiZW1haWwiOiJsYWJpcmkyMTY2N0BkZWxvd2QuY29tIiwiaWF0IjoxNTk3NjcyMDMzLCJleHAiOjE1OTc2NzU2MzN9.KwvoP63vcjcWmyv8nAlnvphQA9jlUTs5aJp5BGgzn1A",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\":\"cd6573fd-5aa8-4c0f-b307-7ba9458cde9b\",\n    \"quantity\": 10\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/cart",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"cart"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "update cart",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiTGFiIiwiZW1haWwiOiJsYWJpcmkyMTY2N0BkZWxvd2QuY29tIiwiaWF0IjoxNTk3NjcyMDMzLCJleHAiOjE1OTc2NzU2MzN9.KwvoP63vcjcWmyv8nAlnvphQA9jlUTs5aJp5BGgzn1A",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\":\"cd6573fd-5aa8-4c0f-b307-7ba9458cde9b\",\n    \"quantity\": 10\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/cart",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"cart"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "39"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"27-M0fedmKi7ZBvA3zQTJ0DhpASeD8\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 17 Aug 2020 14:24:10 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"cart updated successfully\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete cart",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiTGFiIiwiZW1haWwiOiJsYWJpcmkyMTY2N0BkZWxvd2QuY29tIiwiaWF0IjoxNTk3NjcyMDMzLCJleHAiOjE1OTc2NzU2MzN9.KwvoP63vcjcWmyv8nAlnvphQA9jlUTs5aJp5BGgzn1A",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/cart/1dbb27db-5973-4ae3-9873-fd4a358cdf01",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"cart",
+						"1dbb27db-5973-4ae3-9873-fd4a358cdf01"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Delete Cart",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiTGFiIiwiZW1haWwiOiJsYWJpcmkyMTY2N0BkZWxvd2QuY29tIiwiaWF0IjoxNTk3NjcyMDMzLCJleHAiOjE1OTc2NzU2MzN9.KwvoP63vcjcWmyv8nAlnvphQA9jlUTs5aJp5BGgzn1A",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/cart/1dbb27db-5973-4ae3-9873-fd4a358cdf01",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"cart",
+								"1dbb27db-5973-4ae3-9873-fd4a358cdf01"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "43"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2b-nbd5F6H8vUdW+Qk+FLBA7+IH6pU\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 17 Aug 2020 14:19:11 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Product deleted successfully \"\n}"
+				},
+				{
+					"name": "http://localhost:3000/api/v1/cart",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiTGFiIiwiZW1haWwiOiJsYWJpcmkyMTY2N0BkZWxvd2QuY29tIiwiaWF0IjoxNTk3NjcyMDMzLCJleHAiOjE1OTc2NzU2MzN9.KwvoP63vcjcWmyv8nAlnvphQA9jlUTs5aJp5BGgzn1A",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\":\"1dbb27db-5973-4ae3-9873-fd4a358cdf01\",\n    \"quantity\": \"5\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/cart",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"cart"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "39"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"27-M0fedmKi7ZBvA3zQTJ0DhpASeD8\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 17 Aug 2020 14:04:39 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"cart updated successfully\"\n}"
+				},
+				{
+					"name": "http://localhost:3000/api/v1/cart",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiTGFiIiwiZW1haWwiOiJsYWJpcmkyMTY2N0BkZWxvd2QuY29tIiwiaWF0IjoxNTk3NjYzMjUyLCJleHAiOjE1OTc2NjY4NTJ9.TpnpbibIKFk8eslZExjVJElWMbiKYhpzLcwBBLREuwE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\":\"cd6573fd-5aa8-4c0f-b307-7ba9458cde9b\",\n    \"quantity\": \"1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/cart",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"cart"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "39"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"27-M0fedmKi7ZBvA3zQTJ0DhpASeD8\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 17 Aug 2020 12:01:55 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"cart updated successfully\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get cart",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiTGFiIiwiZW1haWwiOiJsYWJpcmkyMTY2N0BkZWxvd2QuY29tIiwiaWF0IjoxNTk3NjcyMDMzLCJleHAiOjE1OTc2NzU2MzN9.KwvoP63vcjcWmyv8nAlnvphQA9jlUTs5aJp5BGgzn1A",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/cart",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"cart"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get cart",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiTGFiIiwiZW1haWwiOiJsYWJpcmkyMTY2N0BkZWxvd2QuY29tIiwiaWF0IjoxNTk3NjcyMDMzLCJleHAiOjE1OTc2NzU2MzN9.KwvoP63vcjcWmyv8nAlnvphQA9jlUTs5aJp5BGgzn1A",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/cart",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"cart"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "541"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"21d-n18bvOMiqdOm56xMKRHaAaUTAPM\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 17 Aug 2020 14:29:30 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Cart fetched successfully\",\n    \"cart\": [\n        {\n            \"id\": \"e0da42d2-16e7-4e84-97bc-0e966f998f57\",\n            \"product_name\": \"Vans  OLD SKOOL - BOYS YOUTH\",\n            \"category\": \"Beauty\",\n            \"status\": \"in_stock\",\n            \"quantity\": 1,\n            \"price\": 2000,\n            \"product_image\": null,\n            \"sub_total\": 2000\n        },\n        {\n            \"id\": \"cd6573fd-5aa8-4c0f-b307-7ba9458cde9b\",\n            \"product_name\": \"Mens Stitched Short Sleeve T-shirt POLO Shirt Tee-Grey\",\n            \"category\": \"Beauty\",\n            \"status\": \"in_stock\",\n            \"quantity\": 10,\n            \"price\": 3000,\n            \"product_image\": \"https://e-commerc.s3.amazonaws.com/4a23959c-3e1d-49c7-bc0d-f1062de5db7f.jpg\",\n            \"sub_total\": 30000\n        }\n    ]\n}"
+				}
+			]
 		}
 	],
 	"protocolProfileBehavior": {}

@@ -246,7 +246,6 @@ describe('e-commerce', () => {
                 .expect('Content-Type', /json/)
                 .expect(201)
                 .end((err, res) => {
-                    console.log(res.body);
                     if (err) { throw err; }
                     expect(res.body.message).to.equal('product updated sucessfully');
                     done();

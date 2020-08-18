@@ -9,9 +9,11 @@ services:
   web:
     env_file: 
       - .env
-    build: .
+    image: kollyd/e-commerce:1.0
+    container_name: e-commerce
+    restart: always
     ports:
-      - "3000"
+      - "3000:3000"
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules

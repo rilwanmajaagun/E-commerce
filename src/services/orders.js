@@ -75,8 +75,8 @@ const deletewishList = async(params, user_id) => {
 
 const createCart = async(body, user_id, sub_total) => {
     const id = uuidv4();
-    const { product_id } = body;
-    return db.none(ordersQuery.createCart, [id, user_id, product_id, sub_total]);
+    const { product_id, order_id } = body;
+    return db.none(ordersQuery.createCart, [id, user_id, product_id, sub_total, order_id]);
 };
 
 const checkCart = async(body) => {

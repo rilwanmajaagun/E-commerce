@@ -75,7 +75,8 @@ const schema = {
     }),
     product_id: joi.object({
         product_id: joi.string()
-            .uuid().required()
+            .uuid().required(),
+        order_id: joi.string().uuid().optional()
     })
 };
 

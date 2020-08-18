@@ -70,8 +70,9 @@ export default {
         id,
         user_id,
         product_id,
-        sub_total
-    ) VALUES ($1, $2, $3, $4) 
+        sub_total,
+        order_id
+    ) VALUES ($1, $2, $3, $4, $5) 
     `,
     checkCart: `
     SELECT * FROM cart WHERE product_id = ($1)

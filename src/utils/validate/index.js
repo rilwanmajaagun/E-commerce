@@ -77,6 +77,39 @@ const schema = {
         product_id: joi.string()
             .uuid().required(),
         order_id: joi.string().uuid().optional()
+    }),
+    address_details: joi.object({
+        first_name: joi.string()
+            .required(),
+        last_name: joi.string()
+            .required(),
+        mobile_number: joi.number()
+            .required(),
+        additional_mobile_number: joi.number().allow(''),
+        address: joi.string()
+            .required(),
+        state_region: joi.string()
+            .required(),
+        city: joi.string()
+            .required()
+    }),
+    updateAddress: joi.object({
+        id: joi.string()
+            .uuid()
+            .required(),
+        first_name: joi.string().allow('')
+            .optional(),
+        last_name: joi.string().allow('')
+            .optional(),
+        mobile_number: joi.number().allow('')
+            .optional(),
+        additional_mobile_number: joi.number().allow(''),
+        address: joi.string().allow('')
+            .optional(),
+        state_region: joi.string().allow('')
+            .optional(),
+        city: joi.string().allow('')
+            .optional()
     })
 };
 

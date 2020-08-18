@@ -109,6 +109,7 @@ const updateOrderStatus = async(req, res, next) => {
     }
     next();
 };
+
 const checkproductId = async(req, res, next) => {
     try {
         await schema.product_id.validateAsync(req.body);
@@ -120,6 +121,27 @@ const checkproductId = async(req, res, next) => {
     next();
 };
 
+const checkAddress = async(req, res, next) => {
+    try {
+        await schema.address_details.validateAsync(req.body);
+    } catch (error) {
+        return res.status(status.BAD_REQUEST).send({
+            message: error.details[0].message.replace(/[\"]/gi, '')
+        });
+    }
+    next();
+};
+
+const checkupdatedAddress = async(req, res, next) => {
+    try {
+        await schema.updateAddress.validateAsync(req.body);
+    } catch (error) {
+        return res.status(status.BAD_REQUEST).send({
+            message: error.details[0].message.replace(/[\"]/gi, '')
+        });
+    }
+    next();
+};
 export default {
     signup,
     login,
@@ -131,6 +153,8 @@ export default {
     updateProduct,
     createOrder,
     updateOrderStatus,
-    checkproductId
+    checkproductId,
+    checkAddress,
+    checkupdatedAddress
 
 };

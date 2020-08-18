@@ -1,6 +1,7 @@
 import status from 'http-status';
 import { orderSerivce, userService } from '../services';
 import { orderAuth } from '../middlewares';
+import { response } from '../utils';
 
 const createOrder = async(req, res) => {
     const { email } = res.locals.user;
@@ -44,10 +45,8 @@ const UpdateOrderStatus = async(req, res) => {
 };
 
 const createWishList = async(req, res) => {
-    const { email } = res.locals.user;
     try {
-        const user = await userService.checkIfUserExist(email);
-        await orderSerivce.createWishList(req.body, user.id);
+        await orderSerivce.createWishList(req.body, await response.user_id(res));
         return res.status(status.CREATED).send({
             message: 'product added successfuly'
         });
@@ -57,10 +56,8 @@ const createWishList = async(req, res) => {
 };
 
 const getWishList = async(req, res) => {
-    const { email } = res.locals.user;
     try {
-        const user = await userService.checkIfUserExist(email);
-        const wishList = await orderSerivce.getWishList(user.id);
+        const wishList = await orderSerivce.getWishList(await response.user_id(res));
         if (wishList.length === 0) {
             return res.status(status.OK).send({
                 message: 'Wish List is empty',
@@ -77,10 +74,8 @@ const getWishList = async(req, res) => {
 };
 
 const deleteWishList = async(req, res) => {
-    const { email } = res.locals.user;
     try {
-        const user = await userService.checkIfUserExist(email);
-        await orderSerivce.deletewishList(req.params, user.id);
+        await orderSerivce.deletewishList(req.params, await response.user_id(res));
         return res.status(status.OK).send({
             message: 'Product deleted successfully '
         });
@@ -90,11 +85,9 @@ const deleteWishList = async(req, res) => {
 };
 
 const createCart = async(req, res) => {
-    const { email } = res.locals.user;
     try {
         const price = await orderSerivce.getprice(req.body);
-        const user = await userService.checkIfUserExist(email);
-        await orderSerivce.createCart(req.body, user.id, price.price);
+        await orderSerivce.createCart(req.body, await response.user_id(res), price.price);
         return res.status(status.CREATED).send({
             message: 'product added successfully'
         });
@@ -104,10 +97,8 @@ const createCart = async(req, res) => {
 };
 
 const getCart = async(req, res) => {
-    const { email } = res.locals.user;
     try {
-        const user = await userService.checkIfUserExist(email);
-        const cart = await orderSerivce.getCart(user.id);
+        const cart = await orderSerivce.getCart(await response.user_id(res));
         if (cart.length === 0) {
             return res.status(status.OK).send({
                 message: 'Cart is empty',
@@ -124,12 +115,10 @@ const getCart = async(req, res) => {
 };
 
 const updateCart = async(req, res) => {
-    const { email } = res.locals.user;
     try {
-        const user = await userService.checkIfUserExist(email);
         const sub_total = await orderSerivce.getTotal(req.body);
         const total = await sub_total.price * req.body.quantity;
-        await orderSerivce.updateCart(req.body, user.id, total);
+        await orderSerivce.updateCart(req.body, await response.user_id(res), total);
         return res.status(status.OK).send({
             message: 'cart updated successfully'
         });
@@ -139,28 +128,49 @@ const updateCart = async(req, res) => {
 };
 
 const deleteCart = async(req, res) => {
-    const { email } = res.locals.user;
     try {
-        const user = await userService.checkIfUserExist(email);
-        await orderSerivce.deleteCart(req.params, user.id);
-        return res.status(status.OK).send({
-            message: 'Product deleted successfully '
-        });
+        await orderSerivce.deleteCart(req.params, await response.user_id(res));
+        response.successful(res, status.OK, 'Product deleted successfully ');
     } catch (error) {
         return res.status(status.INTERNAL_SERVER_ERROR).send({ message: status[500] });
     }
 };
 
 const moveToCart = async(req, res) => {
-    const { email } = res.locals.user;
     try {
-        const user = await userService.checkIfUserExist(email);
-        await orderSerivce.moveToCart(req.body, user.id);
+        await orderSerivce.moveToCart(req.body, await response.user_id(res));
+        response.successful(res, status.OK, 'Product added to cart successfully');
+    } catch (error) {
+        return res.status(status.INTERNAL_SERVER_ERROR).send({ message: status[500] });
+    }
+};
+
+const AddAddressDetails = async(req, res) => {
+    try {
+        await orderSerivce.address_details(req.body, await response.user_id(res));
+        response.successful(res, status.CREATED, 'Address Added successfully');
+    } catch (error) {
+        return res.status(status.INTERNAL_SERVER_ERROR).send({ message: status[500] });
+    }
+};
+
+const updateAddress = async(req, res) => {
+    try {
+        await orderSerivce.updateAddress(req.body, await response.user_id(res));
+        response.successful(res, status.OK, 'Address updated successfully');
+    } catch (error) {
+        return res.status(status.INTERNAL_SERVER_ERROR).send({ message: status[500] });
+    }
+};
+
+const getAddress = async(req, res) => {
+    try {
+        const address = await orderSerivce.userAddress(await response.user_id(res));
         return res.status(status.OK).send({
-            message: 'Product added to cart successfully'
+            message: 'Address fetched successfully',
+            data: address
         });
     } catch (error) {
-        console.log('moveToCart -> error', error);
         return res.status(status.INTERNAL_SERVER_ERROR).send({ message: status[500] });
     }
 };
@@ -176,5 +186,8 @@ export default {
     getCart,
     updateCart,
     deleteCart,
-    moveToCart
+    moveToCart,
+    AddAddressDetails,
+    updateAddress,
+    getAddress
 };

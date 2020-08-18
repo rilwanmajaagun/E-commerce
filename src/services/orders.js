@@ -118,10 +118,52 @@ const deleteCart = async(params, user_id) => {
 
 const moveToCart = async(body, user_id) => {
     const order_id = uuidv4();
-    console.log('moveToCart -> order_id', order_id);
     const { id } = body;
     return db.none(ordersQuery.moveWishListToCart, [id, user_id, order_id]);
 };
+
+const address_details = async(body, user_id) => {
+    const id = uuidv4();
+    const {
+        first_name,
+        last_name,
+        mobile_number,
+        additional_mobile_number,
+        address,
+        state_region,
+        city
+    } = body;
+    const payload = [
+        id,
+        user_id,
+        first_name,
+        last_name,
+        mobile_number,
+        additional_mobile_number,
+        address,
+        state_region,
+        city
+    ];
+    return db.none(ordersQuery.address_details, payload);
+};
+const updateAddress = async(body, user_id) => {
+    const { id } = body;
+    const oldData = await db.one(ordersQuery.getAddressById, [user_id, id]);
+    const newdata = { ...oldData, ...body };
+    return db.none(ordersQuery.updateAddress, [
+        newdata.first_name,
+        newdata.last_name,
+        newdata.mobile_number,
+        newdata.additional_mobile_number,
+        newdata.address,
+        newdata.state_region,
+        newdata.city,
+        user_id,
+        id
+    ]);
+};
+
+const userAddress = async(user_id) => db.manyOrNone(ordersQuery.getAddress, [user_id]);
 
 export default {
     createOrder,
@@ -144,5 +186,8 @@ export default {
     getTotal,
     deleteCart,
     selectCart,
-    moveToCart
+    moveToCart,
+    address_details,
+    updateAddress,
+    userAddress
 };

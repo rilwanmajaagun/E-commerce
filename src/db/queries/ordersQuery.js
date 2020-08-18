@@ -118,12 +118,13 @@ export default {
    DELETE FROM cart WHERE id = ($1) AND user_id = ($2);
    `,
     moveWishListToCart: ` 
-    INSERT INTO cart (id,user_id, product_id, sub_total)
+    INSERT INTO cart (id,user_id, product_id, sub_total, order_id)
     SELECT 
         wishlist.id, 
         wishlist.user_id,
         wishlist.product_id,
-        product.price
+        product.price,
+        ($3)
     FROM wishlist
     JOIN product
     ON product.id = wishlist.product_id

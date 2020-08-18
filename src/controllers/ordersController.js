@@ -160,6 +160,7 @@ const moveToCart = async(req, res) => {
             message: 'Product added to cart successfully'
         });
     } catch (error) {
+        console.log('moveToCart -> error', error);
         return res.status(status.INTERNAL_SERVER_ERROR).send({ message: status[500] });
     }
 };

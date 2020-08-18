@@ -117,8 +117,10 @@ const deleteCart = async(params, user_id) => {
 };
 
 const moveToCart = async(body, user_id) => {
+    const order_id = uuidv4();
+    console.log('moveToCart -> order_id', order_id);
     const { id } = body;
-    return db.none(ordersQuery.moveWishListToCart, [id, user_id]);
+    return db.none(ordersQuery.moveWishListToCart, [id, user_id, order_id]);
 };
 
 export default {

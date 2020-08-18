@@ -91,7 +91,8 @@ export default {
         product.product_name,
         product.product_image,
         cart.quantity,
-        cart.sub_total
+        cart.sub_total,
+        order_id
     FROM product 
     JOIN cart 
     ON product.id = cart.product_id

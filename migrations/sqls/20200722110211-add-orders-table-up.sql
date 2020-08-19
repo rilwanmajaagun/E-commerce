@@ -1,7 +1,10 @@
 /* Replace with your SQL commands */
 CREATE TABLE IF NOT EXISTS orders(
-id uuid, user_id uuid, user_name VARCHAR NOT NULL, Quantity int DEFAULT 1, order_status VARCHAR DEFAULT 'pending', cancelled BOOLEAN DEFAULT false, 
-product_name VARCHAR NOT NULL, email VARCHAR not null, 
-created_at TIMESTAMP DEFAULT NOW(), PRIMARY KEY (id), FOREIGN KEY (user_id) REFERENCES users(id),
-FOREIGN KEY (user_id) REFERENCES users(id), FOREIGN KEY (product_name) REFERENCES product(product_name), FOREIGN KEY (email) REFERENCES users(email)
+id uuid, transaction_id uuid NOT NULL, user_id uuid, order_id uuid NOT NULL, 
+product_id uuid,product_name VARCHAR NOT NULL, price int, 
+quantity int NOT NULL ,sub_total int NOT NULL, 
+payment_status VARCHAR DEFAULT 'NOT PAID', order_status VARCHAR DEFAULT 'REVIEW' NOT NULL ,
+delivery_status VARCHAR DEFAULT 'pending', 
+FOREIGN KEY (user_id) REFERENCES users(id),
+FOREIGN KEY (product_id) REFERENCES product(id)
 );

@@ -32,19 +32,19 @@ const selectProduct = async(body) => {
     return db.oneOrNone(productQuery.getProductByProduct_name, [product]);
 };
 
-const selectProductByid = async(body) => {
+const selectProductById = async(body) => {
     const { id } = body;
-    return db.oneOrNone(productQuery.getProductByid, [id]);
+    return db.oneOrNone(productQuery.getProductById, [id]);
 };
 
 const getAllProduct = async() => db.manyOrNone(productQuery.getAllProduct);
 
-const getProductBycategory = async(body) => {
+const getProductByCategory = async(body) => {
     const { category } = body;
     return db.manyOrNone(productQuery.getProductByCategories, [category]);
 };
 
-const getAllProductBycategories = async() => {
+const getAllProductByCategories = async() => {
     const product = await db.any(productQuery.getAllProductByCategory);
     return product;
 };
@@ -56,9 +56,9 @@ const deleteProduct = async(body) => {
 
 const updateProduct = async(body) => {
     const { id } = body;
-    const oldData = await db.oneOrNone(productQuery.getProductByid, [id]);
-    const newdata = { ...oldData, ...body };
-    const product = db.oneOrNone(productQuery.updateProduct, [newdata.product_name, newdata.category, newdata.quantity, newdata.price, newdata.status, id]);
+    const oldData = await db.oneOrNone(productQuery.getProductById, [id]);
+    const newData = { ...oldData, ...body };
+    const product = db.oneOrNone(productQuery.updateProduct, [newData.product_name, newData.category, newData.quantity, newData.price, newData.status, id]);
     return product;
 };
 
@@ -67,17 +67,17 @@ const checkStatusAndQuantity = async(product_name) => {
     return product;
 };
 
-const updateQuantityAndStatus = async(quantity, status, product_name) => db.none(productQuery.updateQuantityAndStatu, [quantity, status, product_name]);
+const updateQuantityAndStatus = async(quantity, status, product_name) => db.none(productQuery.updateQuantityAndStatus, [quantity, status, product_name]);
 
 export default {
     addProduct,
     selectProduct,
     getAllProduct,
-    getProductBycategory,
-    getAllProductBycategories,
+    getProductByCategory,
+    getAllProductByCategories,
     deleteProduct,
     updateProduct,
-    selectProductByid,
+    selectProductById,
     checkStatusAndQuantity,
     updateQuantityAndStatus
 };

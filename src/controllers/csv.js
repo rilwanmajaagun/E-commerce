@@ -1,11 +1,11 @@
 import { Parser } from 'json2csv';
 import status from 'http-status';
-import { productSerivce } from '../services';
+import { productService } from '../services';
 import logger from '../config';
 
-const downloadCsv = async(req, res) => {
+const downloadCsv = async (req, res) => {
     try {
-        const product = await productSerivce.getAllProduct();
+        const product = await productService.getAllProduct();
         const json2csvParser = new Parser();
         const csv = json2csvParser.parse(product);
         res.setHeader('Content-disposition', 'attachment; filename=product.csv');

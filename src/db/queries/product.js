@@ -33,13 +33,13 @@ export default {
     UPDATE product SET product_name=($1),category=($2),quantity=($3),price=($4), status=($5)
     wHERE id = ($6) RETURNING product_name, category, quantity, price
     `,
-    getProductByid: `
+    getProductById: `
     SELECT * FROM product WHERE id= ($1)
     `,
     checkProductStatus: `
     SELECT status, quantity from Product WHERE product_name=($1);
     `,
-    updateQuantityAndStatu: `
+    updateQuantityAndStatus: `
     UPDATE product SET quantity=($1), status=($2) WHERE product_name =($3);
     `
 };

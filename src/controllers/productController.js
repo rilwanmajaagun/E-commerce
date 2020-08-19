@@ -1,18 +1,18 @@
 import status from 'http-status';
-import { productSerivce } from '../services';
+import { productService } from '../services';
 import { client } from '../config';
 import { aws } from '../middlewares';
 
 const addProduct = async(req, res) => {
     try {
-        const myfile = req.file;
-        const picture = await aws.uploadImage(myfile);
+        const myFile = req.file;
+        const picture = await aws.uploadImage(myFile);
         req.body.product_image = picture.Location;
-        const product = await productSerivce.addProduct(req.body);
+        const product = await productService.addProduct(req.body);
         return product ?
             res.status(status.CREATED).send({
                 message:
-            'product Added Sucessfully',
+                    'product Added Successfully',
                 data: {
                     id: product.id,
                     product_name: product.product_name,
@@ -38,7 +38,7 @@ const addProduct = async(req, res) => {
 
 const getSpecifyProduct = async(req, res) => {
     try {
-        const product = await productSerivce.selectProduct(req.body);
+        const product = await productService.selectProduct(req.body);
         return res.status(status.OK).send({
             message: 'Product found',
             data: {
@@ -66,7 +66,7 @@ const selectAllProduct = async(req, res) => {
                     data: JSON.parse(result)
                 });
             }
-            const product = await productSerivce.getAllProduct();
+            const product = await productService.getAllProduct();
             if (product) {
                 client.set('allProduct', JSON.stringify(product));
                 client.expire('allProduct', 300); /*  expires in five minute*/
@@ -89,9 +89,9 @@ const selectAllProduct = async(req, res) => {
     }
 };
 
-const selectProductBycategory = async(req, res) => {
+const selectProductByCategory = async(req, res) => {
     try {
-        const product = await productSerivce.getProductBycategory(req.body);
+        const product = await productService.getProductByCategory(req.body);
         return product.length > 0 ?
             res.status(status.OK).send({
                 message: 'Product found',
@@ -105,17 +105,17 @@ const selectProductBycategory = async(req, res) => {
 
 const getAllProductByCategories = async(req, res) => {
     try {
-        client.get('allProductBycategories', async(error, result) => {
+        client.get('allProductByCategories', async(error, result) => {
             if (result) {
                 return res.status(status.OK).send({
                     message: 'successfully fetched all product',
                     data: JSON.parse(result)
                 });
             }
-            const product = await productSerivce.getAllProductBycategories();
+            const product = await productService.getAllProductByCategories();
             if (product) {
-                client.set('allProductBycategories', JSON.stringify(product));
-                client.expire('allProductBycategories', 300); /*  expires in five minute*/
+                client.set('allProductByCategories', JSON.stringify(product));
+                client.expire('allProductByCategories', 300); /*  expires in five minute*/
                 return res.status(status.OK).send({
                     message: 'successfully fetch all product',
                     data: product
@@ -137,7 +137,7 @@ const getAllProductByCategories = async(req, res) => {
 
 const deleteProduct = async(req, res) => {
     try {
-        const product = await productSerivce.deleteProduct(req.body);
+        const product = await productService.deleteProduct(req.body);
         return res.status(status.OK).send({
             message: `${product.product_name} Deleted successfully`
         });
@@ -151,9 +151,9 @@ const deleteProduct = async(req, res) => {
 
 const updateProduct = async(req, res) => {
     try {
-        const product = await productSerivce.updateProduct(req.body);
+        const product = await productService.updateProduct(req.body);
         return res.status(status.CREATED).send({
-            message: 'product updated sucessfully',
+            message: 'product updated Successfully',
             data: product
         });
     } catch (error) {
@@ -168,7 +168,7 @@ export default {
     addProduct,
     getSpecifyProduct,
     selectAllProduct,
-    selectProductBycategory,
+    selectProductByCategory,
     getAllProductByCategories,
     deleteProduct,
     updateProduct

@@ -12,7 +12,7 @@ const createUsers = async(req, res) => {
         mailing.signupMail(email, first_name, token);
         return id ?
             res.status(status.CREATED).send({
-                message: 'user created sucessfully',
+                message: 'user created Successfully',
                 data: {
                     id,
                     first_name,

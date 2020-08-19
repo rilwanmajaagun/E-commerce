@@ -8,7 +8,7 @@ export default {
     selectAllCategory: `
     SELECT * FROM category
     `,
-    chechkCategory: `
+    checkCategory: `
     SELECT * FROM category WHERE name=($1)
     `,
     deleteCategory: `

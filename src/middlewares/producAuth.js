@@ -1,12 +1,12 @@
 import status from 'http-status';
 // eslint-disable-next-line import/no-cycle
-import { productSerivce, categoryService } from '../services';
+import { productService, categoryService } from '../services';
 
 const selectProduct = async(req, res, next) => {
     const { category } = req.body;
     req.body.name = category;
     try {
-        const product = await productSerivce.selectProduct(req.body);
+        const product = await productService.selectProduct(req.body);
         const categories = await categoryService.selectCategory(req.body);
         if (!categories) {
             return res.status(status.BAD_REQUEST).send({ message: 'Input a valid category' });
@@ -21,7 +21,7 @@ const selectProduct = async(req, res, next) => {
 
 const CheckProduct = async(req, res, next) => {
     try {
-        const product = await productSerivce.selectProduct(req.body);
+        const product = await productService.selectProduct(req.body);
         if (!product) {
             return res.status(status.BAD_REQUEST).send({
                 message: 'product does not exist'
@@ -35,10 +35,10 @@ const CheckProduct = async(req, res, next) => {
     next();
 };
 
-const CheckProductByid = async(req, res, next) => {
+const CheckProductById = async(req, res, next) => {
     req.body.name = req.body.category;
     try {
-        const product = await productSerivce.selectProductByid(req.body);
+        const product = await productService.selectProductById(req.body);
         const categories = await categoryService.selectCategory(req.body);
         if (!categories) {
             return res.status(status.BAD_REQUEST).send({ message: 'Input a valid category' });
@@ -56,17 +56,17 @@ const CheckProductByid = async(req, res, next) => {
     next();
 };
 
-const updateQauntity = async(req, res, next) => {
+const updateQuantity = async(req, res, next) => {
     try {
-        const product = await productSerivce.checkStatusAndQuantity(req.body);
-        const newQunatity = product.quantity - 1;
+        const product = await productService.checkStatusAndQuantity(req.body);
+        const newQuantity = product.quantity - 1;
         let status;
-        if (newQunatity === 0) {
+        if (newQuantity === 0) {
             status = 'out_of_stock';
         } else {
             status = 'in_stock';
         }
-        await productSerivce.updateQuantityAndStatus(newQunatity, status, req.body);
+        await productService.updateQuantityAndStatus(newQuantity, status, req.body);
     } catch (error) {
         return res.status(status.INTERNAL_SERVER_ERROR).send({
             message: status[500]
@@ -77,6 +77,6 @@ const updateQauntity = async(req, res, next) => {
 export default {
     selectProduct,
     CheckProduct,
-    CheckProductByid,
-    updateQauntity
+    CheckProductById,
+    updateQuantity
 };

@@ -1,12 +1,12 @@
 /* eslint-disable import/no-cycle */
 import status from 'http-status';
-import { productSerivce, orderSerivce } from '../services';
+import { productService, orderService } from '../services';
 import { logger } from '../config';
 
 const productStatus = async(req, res, next) => {
     const { product_name } = req.body;
     try {
-        const product = await productSerivce.checkStatusAndQuantity(product_name);
+        const product = await productService.checkStatusAndQuantity(product_name);
         if (product.status === 'out_of_stock') {
             return res.status(status.BAD_REQUEST).send({
                 message: 'product is out of stock pls check back later'
@@ -24,17 +24,17 @@ const productStatus = async(req, res, next) => {
     } next();
 };
 
-const updateQauntity = async(name, quan) => {
+const updateQuantity = async(name, quan) => {
     try {
-        const product = await productSerivce.checkStatusAndQuantity(name);
-        const newQunatity = product.quantity - quan;
+        const product = await productService.checkStatusAndQuantity(name);
+        const newQuantity = product.quantity - quan;
         let status;
-        if (newQunatity === 0) {
+        if (newQuantity === 0) {
             status = 'out_of_stock';
         } else {
             status = 'in_stock';
         }
-        await productSerivce.updateQuantityAndStatus(newQunatity, status, name);
+        await productService.updateQuantityAndStatus(newQuantity, status, name);
     } catch (error) {
         logger.info(error);
     }
@@ -44,7 +44,7 @@ const checkOrderStatus = async(req, res, next) => {
     const { email } = res.locals.user;
     const { id } = req.body;
     try {
-        const Status = await orderSerivce.checkOrderStatus(email, id);
+        const Status = await orderService.checkOrderStatus(email, id);
         if (!Status) {
             return res.status(status.BAD_REQUEST).send({
                 message: 'Order could not be found'
@@ -59,12 +59,12 @@ const checkOrderStatus = async(req, res, next) => {
         return res.status(status.INTERNAL_SERVER_ERROR).send({
             message: status[500]
         });
-    }next();
+    } next();
 };
 
 const selectOrder = async(req, res, next) => {
     try {
-        const order = await orderSerivce.selectOrder(req.body);
+        const order = await orderService.selectOrder(req.body);
         if (!order) {
             return res.status(status.BAD_REQUEST).send({
                 message: 'Order not found'
@@ -75,14 +75,14 @@ const selectOrder = async(req, res, next) => {
     } next();
 };
 
-const createTranscationDetails = async(body) => orderSerivce.transcationDetails(body);
+const createTransactionDetails = async(body) => orderService.transactionDetails(body);
 
 const alreadyExistInWishList = async(req, res, next) => {
     try {
-        const prod = await orderSerivce.checkWishList(req.body);
+        const prod = await orderService.checkWishList(req.body);
         if (prod !== null) {
             req.body.id = prod.product_id;
-            const product = await productSerivce.selectProductByid(req.body);
+            const product = await productService.selectProductById(req.body);
             return res.status(status.BAD_REQUEST).send({
                 message: `${product.product_name} already exists in Wish List`
             });
@@ -96,7 +96,7 @@ const alreadyExistInWishList = async(req, res, next) => {
 
 const deleteWishList = async(req, res, next) => {
     try {
-        const items = await orderSerivce.selectWishList(req.params);
+        const items = await orderService.selectWishList(req.params);
         if (!items) {
             return res.status(status.BAD_REQUEST).send({
                 message: 'Product does not exist in wish List'
@@ -111,7 +111,7 @@ const deleteWishList = async(req, res, next) => {
 
 const deleteCart = async(req, res, next) => {
     try {
-        const items = await orderSerivce.selectCart(req.params);
+        const items = await orderService.selectCart(req.params);
         if (!items) {
             return res.status(status.BAD_REQUEST).send({
                 message: 'Product does not exist in cart'
@@ -126,10 +126,10 @@ const deleteCart = async(req, res, next) => {
 
 const alreadyExistInCart = async(req, res, next) => {
     try {
-        const prod = await orderSerivce.checkCart(req.body);
+        const prod = await orderService.checkCart(req.body);
         if (prod !== null) {
             req.body.id = prod.product_id;
-            const product = await productSerivce.selectProductByid(req.body);
+            const product = await productService.selectProductById(req.body);
             return res.status(status.BAD_REQUEST).send({
                 message: `${product.product_name} already exists in Cart`
             });
@@ -143,10 +143,10 @@ const alreadyExistInCart = async(req, res, next) => {
 
 const alreadyMovedToCart = async(req, res, next) => {
     try {
-        const prod = await orderSerivce.checkCartById(req.body);
+        const prod = await orderService.checkCartById(req.body);
         if (prod !== null) {
             req.body.id = prod.product_id;
-            const product = await productSerivce.selectProductByid(req.body);
+            const product = await productService.selectProductById(req.body);
             return res.status(status.BAD_REQUEST).send({
                 message: `${product.product_name} already exists in Cart`
             });
@@ -160,7 +160,7 @@ const alreadyMovedToCart = async(req, res, next) => {
 
 const deleteAddress = async(req, res, next) => {
     try {
-        const address = await orderSerivce.getOneAddress(req.params);
+        const address = await orderService.getOneAddress(req.params);
         if (!address) {
             return res.status(status.BAD_REQUEST).send({
                 message: 'Address not found'
@@ -172,12 +172,13 @@ const deleteAddress = async(req, res, next) => {
         });
     } next();
 };
+
 export default {
-    updateQauntity,
+    updateQuantity,
     productStatus,
     checkOrderStatus,
     selectOrder,
-    createTranscationDetails,
+    createTransactionDetails,
     alreadyExistInWishList,
     deleteWishList,
     alreadyExistInCart,

@@ -10,4 +10,4 @@ export default {
     development,
     test,
     production
-}[NODE_ENV || 'production'];
+}[NODE_ENV || 'development'];

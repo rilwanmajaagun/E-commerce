@@ -1,30 +1,26 @@
 import status from 'http-status';
-import { orderSerivce, userService } from '../services';
-import { orderAuth } from '../middlewares';
+import { orderService, userService } from '../services';
+// import { orderAuth } from '../middlewares';
 import { response } from '../utils';
 
-const createOrder = async(req, res) => {
+const createOrders = async(req, res) => {
     const { email } = res.locals.user;
-    const { product_name, quantity } = req.body;
     try {
         const user = await userService.checkIfUserExist(email);
-        const userName = `${user.first_name} ${user.last_name}`;
-        const order = await orderSerivce.createOrder(user.id, userName, user.email, req.body);
-        await orderAuth.updateQauntity(product_name, quantity);
+        const transaction_id = await orderService.createOrders(req.body, user.id);
         return res.status(status.CREATED).send({
             message: 'your order as been placed',
-            data: order
+            transaction_id
         });
     } catch (error) {
         return res.status(status.INTERNAL_SERVER_ERROR).send({ message: status[500] });
     }
 };
-
 const cancelOrder = async(req, res) => {
     const { email } = res.locals.user;
     const { id } = req.body;
     try {
-        await orderSerivce.cancelOrder(email, id);
+        await orderService.cancelOrder(email, id);
         return res.status(status.OK).send({
             message: 'your order has been cancelled'
         });
@@ -35,9 +31,9 @@ const cancelOrder = async(req, res) => {
 
 const UpdateOrderStatus = async(req, res) => {
     try {
-        await orderSerivce.updateOrderStatus(req.body);
+        await orderService.updateOrderStatus(req.body);
         return res.status(status.OK).send({
-            message: 'product order as been updated sucessfully'
+            message: 'product order as been updated Successfully'
         });
     } catch (error) {
         return res.status(status.INTERNAL_SERVER_ERROR).send({ message: status[500] });
@@ -46,9 +42,9 @@ const UpdateOrderStatus = async(req, res) => {
 
 const createWishList = async(req, res) => {
     try {
-        await orderSerivce.createWishList(req.body, await response.user_id(res));
+        await orderService.createWishList(req.body, await response.user_id(res));
         return res.status(status.CREATED).send({
-            message: 'product added successfuly'
+            message: 'product added successfully'
         });
     } catch (error) {
         return res.status(status.INTERNAL_SERVER_ERROR).send({ message: status[500] });
@@ -57,7 +53,7 @@ const createWishList = async(req, res) => {
 
 const getWishList = async(req, res) => {
     try {
-        const wishList = await orderSerivce.getWishList(await response.user_id(res));
+        const wishList = await orderService.getWishList(await response.user_id(res));
         if (wishList.length === 0) {
             return res.status(status.OK).send({
                 message: 'Wish List is empty',
@@ -75,7 +71,7 @@ const getWishList = async(req, res) => {
 
 const deleteWishList = async(req, res) => {
     try {
-        await orderSerivce.deletewishList(req.params, await response.user_id(res));
+        await orderService.deleteWishList(req.params, await response.user_id(res));
         return res.status(status.OK).send({
             message: 'Product deleted successfully '
         });
@@ -86,8 +82,8 @@ const deleteWishList = async(req, res) => {
 
 const createCart = async(req, res) => {
     try {
-        const price = await orderSerivce.getprice(req.body);
-        await orderSerivce.createCart(req.body, await response.user_id(res), price.price);
+        const price = await orderService.getPrice(req.body);
+        await orderService.createCart(req.body, await response.user_id(res), price.price);
         return res.status(status.CREATED).send({
             message: 'product added successfully'
         });
@@ -98,7 +94,7 @@ const createCart = async(req, res) => {
 
 const getCart = async(req, res) => {
     try {
-        const cart = await orderSerivce.getCart(await response.user_id(res));
+        const cart = await orderService.getCart(await response.user_id(res));
         if (cart.length === 0) {
             return res.status(status.OK).send({
                 message: 'Cart is empty',
@@ -116,9 +112,9 @@ const getCart = async(req, res) => {
 
 const updateCart = async(req, res) => {
     try {
-        const sub_total = await orderSerivce.getTotal(req.body);
+        const sub_total = await orderService.getTotal(req.body);
         const total = await sub_total.price * req.body.quantity;
-        await orderSerivce.updateCart(req.body, await response.user_id(res), total);
+        await orderService.updateCart(req.body, await response.user_id(res), total);
         return res.status(status.OK).send({
             message: 'cart updated successfully'
         });
@@ -129,7 +125,7 @@ const updateCart = async(req, res) => {
 
 const deleteCart = async(req, res) => {
     try {
-        await orderSerivce.deleteCart(req.params, await response.user_id(res));
+        await orderService.deleteCart(req.params, await response.user_id(res));
         response.successful(res, status.OK, 'Product deleted successfully ');
     } catch (error) {
         return res.status(status.INTERNAL_SERVER_ERROR).send({ message: status[500] });
@@ -138,7 +134,7 @@ const deleteCart = async(req, res) => {
 
 const moveToCart = async(req, res) => {
     try {
-        await orderSerivce.moveToCart(req.body, await response.user_id(res));
+        await orderService.moveToCart(req.body, await response.user_id(res));
         response.successful(res, status.OK, 'Product added to cart successfully');
     } catch (error) {
         return res.status(status.INTERNAL_SERVER_ERROR).send({ message: status[500] });
@@ -147,7 +143,7 @@ const moveToCart = async(req, res) => {
 
 const AddAddressDetails = async(req, res) => {
     try {
-        await orderSerivce.address_details(req.body, await response.user_id(res));
+        await orderService.address_details(req.body, await response.user_id(res));
         response.successful(res, status.CREATED, 'Address Added successfully');
     } catch (error) {
         return res.status(status.INTERNAL_SERVER_ERROR).send({ message: status[500] });
@@ -156,7 +152,7 @@ const AddAddressDetails = async(req, res) => {
 
 const updateAddress = async(req, res) => {
     try {
-        await orderSerivce.updateAddress(req.body, await response.user_id(res));
+        await orderService.updateAddress(req.body, await response.user_id(res));
         response.successful(res, status.OK, 'Address updated successfully');
     } catch (error) {
         return res.status(status.INTERNAL_SERVER_ERROR).send({ message: status[500] });
@@ -165,7 +161,7 @@ const updateAddress = async(req, res) => {
 
 const getAddress = async(req, res) => {
     try {
-        const address = await orderSerivce.userAddress(await response.user_id(res));
+        const address = await orderService.userAddress(await response.user_id(res));
         return res.status(status.OK).send({
             message: 'Address fetched successfully',
             data: address
@@ -177,8 +173,8 @@ const getAddress = async(req, res) => {
 
 const setDefaultAddress = async(req, res) => {
     try {
-        await orderSerivce.resetAddress(await response.user_id(res));
-        await orderSerivce.setDefaultAddress(req.body, await response.user_id(res));
+        await orderService.resetAddress(await response.user_id(res));
+        await orderService.setDefaultAddress(req.body, await response.user_id(res));
         response.successful(res, status.OK, 'Address set as default successfully');
     } catch (error) {
         return res.status(status.INTERNAL_SERVER_ERROR).send({ message: status[500] });
@@ -187,15 +183,28 @@ const setDefaultAddress = async(req, res) => {
 
 const deleteAddress = async(req, res) => {
     try {
-        await orderSerivce.deletAddress(req.params, await response.user_id(res));
+        await orderService.deleteAddress(req.params, await response.user_id(res));
         response.successful(res, status.OK, 'Address deleted successfully ');
     } catch (error) {
         return res.status(status.INTERNAL_SERVER_ERROR).send({ message: status[500] });
     }
 };
 
+const getSumSubTotal = async(req, res) => {
+    const { transaction_id } = req.params;
+    try {
+        const { sum } = await orderService.sumSubTotal(transaction_id);
+        return res.status(status.OK).send({
+            message: 'YOur ',
+            price: sum
+        });
+    } catch (error) {
+        return res.status(status.INTERNAL_SERVER_ERROR).send({ message: status[500] });
+    }
+};
+
 export default {
-    createOrder,
+    createOrders,
     cancelOrder,
     UpdateOrderStatus,
     createWishList,
@@ -210,5 +219,6 @@ export default {
     updateAddress,
     getAddress,
     setDefaultAddress,
-    deleteAddress
+    deleteAddress,
+    getSumSubTotal
 };

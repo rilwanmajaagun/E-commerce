@@ -95,7 +95,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"message\": \"user created sucessfully\",\n    \"data\": {\n        \"id\": \"2de8ae80-d165-49b4-9109-449e36ae76d3\",\n        \"email\": \"bofili1067@mado34.com\",\n        \"date_created\": \"2020-07-28T01:26:36.779Z\",\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiQm9maWxpIiwiZW1haWwiOiJib2ZpbGkxMDY3QG1hZG8zNC5jb20iLCJpYXQiOjE1OTU4OTk1OTYsImV4cCI6MTU5NTkwMzE5Nn0.5V0yDp6laJnEjNZ0qH8nB4ycw7AMcTbtLykZ1HJYonQ\"\n    }\n}"
+					"body": "{\n    \"message\": \"user created Successfully\",\n    \"data\": {\n        \"id\": \"2de8ae80-d165-49b4-9109-449e36ae76d3\",\n        \"email\": \"bofili1067@mado34.com\",\n        \"date_created\": \"2020-07-28T01:26:36.779Z\",\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiQm9maWxpIiwiZW1haWwiOiJib2ZpbGkxMDY3QG1hZG8zNC5jb20iLCJpYXQiOjE1OTU4OTk1OTYsImV4cCI6MTU5NTkwMzE5Nn0.5V0yDp6laJnEjNZ0qH8nB4ycw7AMcTbtLykZ1HJYonQ\"\n    }\n}"
 				}
 			]
 		},
@@ -791,7 +791,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"message\": \"All categories selected sucessfully \",\n    \"data\": [\n        {\n            \"id\": \"40c1d0e2-ccda-4036-932e-238be840725f\",\n            \"name\": \"fashion\",\n            \"created_at\": \"2020-07-28T00:54:57.019Z\",\n            \"updated_at\": null\n        }\n    ]\n}"
+					"body": "{\n    \"message\": \"All categories selected Successfully \",\n    \"data\": [\n        {\n            \"id\": \"40c1d0e2-ccda-4036-932e-238be840725f\",\n            \"name\": \"fashion\",\n            \"created_at\": \"2020-07-28T00:54:57.019Z\",\n            \"updated_at\": null\n        }\n    ]\n}"
 				}
 			]
 		},
@@ -896,7 +896,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"message\": \"Beauty updated sucessfully\"\n}"
+					"body": "{\n    \"message\": \"Beauty updated Successfully\"\n}"
 				}
 			]
 		},
@@ -1055,7 +1055,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"message\": \"product Added Sucessfully\",\n    \"data\": [\n        {\n            \"id\": \"3287c306-1b90-4522-b341-2f6a1644bc85\",\n            \"product_name\": \"Vans  OLD SKOOL - BOYS YOUTH\",\n            \"category\": \"fashion\",\n            \"status\": \"in_stock\",\n            \"quantity\": 10,\n            \"price\": 2000,\n            \"created_at\": \"2020-07-28T00:58:55.098Z\",\n            \"product_image\": null\n        }\n    ]\n}"
+					"body": "{\n    \"message\": \"product Added Successfully\",\n    \"data\": [\n        {\n            \"id\": \"3287c306-1b90-4522-b341-2f6a1644bc85\",\n            \"product_name\": \"Vans  OLD SKOOL - BOYS YOUTH\",\n            \"category\": \"fashion\",\n            \"status\": \"in_stock\",\n            \"quantity\": 10,\n            \"price\": 2000,\n            \"created_at\": \"2020-07-28T00:58:55.098Z\",\n            \"product_image\": null\n        }\n    ]\n}"
 				}
 			]
 		},
@@ -1160,7 +1160,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"message\": \"product updated sucessfully\",\n    \"data\": {\n        \"product_name\": \"D&G\",\n        \"category\": \"fashion\",\n        \"quantity\": 10,\n        \"price\": 2000\n    }\n}"
+					"body": "{\n    \"message\": \"product updated Successfully\",\n    \"data\": {\n        \"product_name\": \"D&G\",\n        \"category\": \"fashion\",\n        \"quantity\": 10,\n        \"price\": 2000\n    }\n}"
 				}
 			]
 		},
@@ -1889,7 +1889,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/v1/cancelorder",
+					"raw": "http://localhost:3000/api/v1/cancelOrder",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -1898,7 +1898,7 @@
 					"path": [
 						"api",
 						"v1",
-						"cancelorder"
+						"cancelOrder"
 					]
 				},
 				"description": "Order can only be cancel when order status is pending. \nThe user who create order can cancel the order.\n"
@@ -1925,7 +1925,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/api/v1/cancelorder",
+							"raw": "http://localhost:3000/api/v1/cancelOrder",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1934,7 +1934,7 @@
 							"path": [
 								"api",
 								"v1",
-								"cancelorder"
+								"cancelOrder"
 							]
 						}
 					},
@@ -2194,7 +2194,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"message\": \"product order as been updated sucessfully\"\n}"
+					"body": "{\n    \"message\": \"product order as been updated Successfully\"\n}"
 				}
 			]
 		},

@@ -12,7 +12,7 @@ export default {
 
     selectCategory: async(body) => {
         const { name } = body;
-        return db.oneOrNone(categoryQuery.chechkCategory, name);
+        return db.oneOrNone(categoryQuery.checkCategory, name);
     },
 
     selectAllCategory: async() => db.manyOrNone(categoryQuery.selectAllCategory),

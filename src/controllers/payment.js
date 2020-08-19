@@ -3,7 +3,7 @@ import axios from 'axios';
 import status from 'http-status';
 import logger from '../config/logger';
 import { orderAuth } from '../middlewares';
-import { orderSerivce } from '../services';
+import { orderService } from '../services';
 
 const bankPayment = async(req, res) => {
     try {
@@ -49,10 +49,12 @@ const bankPayment = async(req, res) => {
 };
 
 const cardPayment = async(req, res) => {
-    const { order_id } = req.params;
+    const { transaction_id } = req.params;
+    const { email } = res.locals.user;
     try {
+        const amount = await orderService.sumSubTotal(transaction_id);
         const {
-            email, amount, card: {
+            card: {
                 cvv, number, expiry_month, expiry_year
             }, pin
         } = req.body;
@@ -66,16 +68,7 @@ const cardPayment = async(req, res) => {
             },
             data: {
                 email,
-                amount,
-                metadata: {
-                    custom_fields: [
-                        {
-                            value: 'makurdi',
-                            display_name: 'Donation for',
-                            variable_name: 'donation_for'
-                        }
-                    ]
-                },
+                amount: amount.sum,
                 card: {
                     cvv,
                     number,
@@ -87,14 +80,13 @@ const cardPayment = async(req, res) => {
         };
         const transaction = await axios(options);
         const { data } = transaction.data;
-        data.order_id = order_id;
-        await orderAuth.createTranscationDetails(data);
+        data.transaction_id = transaction_id;
+        const transaction_table_id = await orderAuth.createTransactionDetails(data);
+        await orderService.updateTransactionTableId(transaction_id, transaction_table_id.id);
         return res.json(data);
     } catch (error) {
         logger.info(error.response.status);
-        return res.status(status.INTERNAL_SERVER_ERROR).send({
-            message: status[500]
-        });
+        return res.status(status.INTERNAL_SERVER_ERROR).send({ message: status[500] });
     }
 };
 
@@ -113,9 +105,9 @@ const verifyPayment = async(req, res) => {
         const transactionStatus = await axios(options);
         const { data } = transactionStatus.data;
         if (data.status === 'success') {
-            orderSerivce.verfiyTanscation('success', reference);
+            orderService.verifyTransactions('success', reference);
         } else {
-            orderSerivce.verfiyTanscation('failed', reference);
+            orderService.verifyTransactions('failed', reference);
         }
         return res.json(data);
     } catch (error) {

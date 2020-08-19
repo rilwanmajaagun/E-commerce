@@ -1,13 +1,15 @@
 /* eslint-disable no-undef */
 import 'dotenv/config';
+import { v4 as uuidv4 } from 'uuid';
 import faker from 'faker';
 import request from 'supertest';
 import chai from 'chai';
+import nock from 'nock';
 import app from '../src/index';
 import { logger } from '../src/config';
 
 const { expect } = chai;
-
+const scope = nock('/api/v1/');
 describe('e-commerce', () => {
     let user,
         token,
@@ -16,7 +18,10 @@ describe('e-commerce', () => {
         id,
         order_id,
         wishList_id,
-        cart_id;
+        cart,
+        cart_id,
+        address_id,
+        transaction_id;
     const product_name = faker.commerce.productName();
     before((done) => {
         user = {
@@ -35,7 +40,7 @@ describe('e-commerce', () => {
             .end((err, res) => {
                 token = res.body.data.token;
                 if (err) { return done(err); }
-                expect(res.body.message).to.equal('user created sucessfully');
+                expect(res.body.message).to.equal('user created Successfully');
                 request(app)
                     .get(`/api/v1/auth/confirmation?token=${token}`)
                     .send(user)
@@ -59,7 +64,7 @@ describe('e-commerce', () => {
             });
     });
     describe('login', () => {
-        it('it sholud get the base url', (done) => {
+        it('it should get the base url', (done) => {
             request(app)
                 .get('/')
                 .set('Accept', 'application/json')
@@ -143,7 +148,7 @@ describe('e-commerce', () => {
                 .expect(201)
                 .end((err, res) => {
                     if (err) { throw err; }
-                    expect(res.body.message).to.equal(`${new_name} updated sucessfully`);
+                    expect(res.body.message).to.equal(`${new_name} updated Successfully`);
                     done();
                 });
         });
@@ -165,7 +170,7 @@ describe('e-commerce', () => {
                 .end((err, res) => {
                     id = res.body.data.id;
                     if (err) { throw err; }
-                    expect(res.body.message).to.equal('product Added Sucessfully');
+                    expect(res.body.message).to.equal('product Added Successfully');
                     done();
                 });
         });
@@ -181,7 +186,7 @@ describe('e-commerce', () => {
                     done();
                 });
         });
-        it('should return No Product found by sepcific category', (done) => {
+        it('should return No Product found by specific category', (done) => {
             request(app)
                 .post('/api/v1/select/product/category')
                 .set('Accept', 'application')
@@ -194,7 +199,7 @@ describe('e-commerce', () => {
                     done();
                 });
         });
-        it('should return Product found by sepcific category', (done) => {
+        it('should return Product found by specific category', (done) => {
             request(app)
                 .post('/api/v1/select/product/category')
                 .set('Accept', 'application')
@@ -247,7 +252,7 @@ describe('e-commerce', () => {
                 .expect(201)
                 .end((err, res) => {
                     if (err) { throw err; }
-                    expect(res.body.message).to.equal('product updated sucessfully');
+                    expect(res.body.message).to.equal('product updated Successfully');
                     done();
                 });
         });
@@ -280,40 +285,6 @@ describe('e-commerce', () => {
                 });
         });
     });
-    describe('order', () => {
-        it('create order', (done) => {
-            request(app)
-                .post('/api/v1/order')
-                .set({ token })
-                .send({
-                    quantity: '1',
-                    product_name
-                })
-                .set('Accept', 'application')
-                .expect('Content-Type', /json/)
-                .expect(201)
-                .end((err, res) => {
-                    order_id = res.body.data.id;
-                    if (err) { throw err; }
-                    expect(res.body.message).to.equal('your order as been placed');
-                    done();
-                });
-        });
-        it('cancel order', (done) => {
-            request(app)
-                .patch('/api/v1/cancelorder')
-                .set({ token })
-                .set('Accept', 'application')
-                .expect('Content-Type', /json/)
-                .send({ id: order_id })
-                .expect(200)
-                .end((err, res) => {
-                    if (err) { throw err; }
-                    expect(res.body.message).to.equal('your order has been cancelled');
-                    done();
-                });
-        });
-    });
     describe('wishList', () => {
         it('create wishList', (done) => {
             request(app)
@@ -327,7 +298,7 @@ describe('e-commerce', () => {
                 .expect(201)
                 .end((err, res) => {
                     if (err) { throw err; }
-                    expect(res.body.message).to.equal('product added successfuly');
+                    expect(res.body.message).to.equal('product added successfully');
                     done();
                 });
         });
@@ -345,6 +316,79 @@ describe('e-commerce', () => {
                 });
         });
     });
+    describe('address', () => {
+        it('create address', (done) => {
+            request(app)
+                .post('/api/v1/address')
+                .set({ token })
+                .send({
+                    first_name: faker.name.findName(),
+                    last_name: faker.name.lastName(),
+                    mobile_number: faker.random.number(110000000000),
+                    additional_mobile_number: '',
+                    address: faker.address.streetAddress(),
+                    state_region: faker.address.state(),
+                    city: faker.address.city()
+                })
+                .expect('Content-Type', /json/)
+                .expect(201)
+                .end((err, res) => {
+                    if (err) { throw err; }
+                    expect(res.body.message).to.equal('Address Added successfully');
+                    done();
+                });
+        });
+        it('get address', (done) => {
+            request(app)
+                .get('/api/v1/address')
+                .set({ token })
+                .expect('Content-Type', /json/)
+                .expect(200)
+                .end((err, res) => {
+                    address_id = res.body.data[0].id;
+                    if (err) { throw err; }
+                    expect(res.body.message).to.equal('Address fetched successfully');
+                    done();
+                });
+        });
+        it('update address', (done) => {
+            request(app)
+                .put('/api/v1/address')
+                .set({ token })
+                .send({
+                    id: address_id,
+                    first_name: faker.name.findName(),
+                    last_name: faker.name.lastName(),
+                    mobile_number: faker.random.number(110000000000),
+                    additional_mobile_number: '',
+                    address: faker.address.streetAddress(),
+                    state_region: faker.address.state(),
+                    city: faker.address.city()
+                })
+                .expect('Content-Type', /json/)
+                .expect(200)
+                .end((err, res) => {
+                    if (err) { throw err; }
+                    expect(res.body.message).to.equal('Address updated successfully');
+                    done();
+                });
+        });
+        it('set as address default', (done) => {
+            request(app)
+                .patch('/api/v1/address')
+                .set({ token })
+                .send({
+                    id: address_id
+                })
+                .expect('Content-Type', /json/)
+                .expect(200)
+                .end((err, res) => {
+                    if (err) { throw err; }
+                    expect(res.body.message).to.equal('Address set as default successfully');
+                    done();
+                });
+        });
+    });
     describe('cart', () => {
         it('add to cart', (done) => {
             request(app)
@@ -352,7 +396,10 @@ describe('e-commerce', () => {
                 .set({ token })
                 .set('Accept', 'application')
                 .expect('Content-Type', /json/)
-                .send({ product_id: id })
+                .send({
+                    product_id: id,
+                    order_id: uuidv4()
+                })
                 .expect(201)
                 .end((err, res) => {
                     if (err) { throw err; }
@@ -368,6 +415,7 @@ describe('e-commerce', () => {
                 .expect('Content-Type', /json/)
                 .expect(200)
                 .end((err, res) => {
+                    cart = res.body.cart;
                     cart_id = res.body.cart[0].id;
                     if (err) { throw err; }
                     expect(res.body.message).to.equal('Cart fetched successfully');
@@ -391,19 +439,6 @@ describe('e-commerce', () => {
                     done();
                 });
         });
-        it('update cart', (done) => {
-            request(app)
-                .delete(`/api/v1/cart/${cart_id}`)
-                .set({ token })
-                .set('Accept', 'application')
-                .expect('Content-Type', /json/)
-                .expect(200)
-                .end((err, res) => {
-                    if (err) { throw err; }
-                    expect(res.body.message).to.equal('Product deleted successfully ');
-                    done();
-                });
-        });
         it('move wish list to cart', (done) => {
             request(app)
                 .post('/api/v1/cart/wishlist')
@@ -420,23 +455,55 @@ describe('e-commerce', () => {
                     done();
                 });
         });
-        it('update cart', (done) => {
+    });
+    describe('order', () => {
+        it('create order', (done) => {
             request(app)
-                .delete(`/api/v1/cart/${wishList_id}`)
+                .post('/api/v1/order')
                 .set({ token })
+                .send(
+                    cart
+                )
+                .set('Accept', 'application')
+                .expect('Content-Type', /json/)
+                .expect(201)
+                .end((err, res) => {
+                    transaction_id = res.body.transaction_id;
+                    if (err) { throw err; }
+                    expect(res.body.message).to.equal('your order as been placed');
+                    done();
+                });
+        });
+        it('get subTotal', (done) => {
+            request(app)
+                .get(`/api/v1/subTotal/${transaction_id}`)
                 .set('Accept', 'application')
                 .expect('Content-Type', /json/)
                 .expect(200)
                 .end((err, res) => {
                     if (err) { throw err; }
-                    expect(res.body.message).to.equal('Product deleted successfully ');
+                    expect(res.body.message).to.equal('YOur ');
+                    done();
+                });
+        });
+        it.skip('cancel order', (done) => {
+            request(app)
+                .patch('/api/v1/cancelOrder')
+                .set({ token })
+                .set('Accept', 'application')
+                .expect('Content-Type', /json/)
+                .send({ id: order_id })
+                .expect(200)
+                .end((err, res) => {
+                    if (err) { throw err; }
+                    expect(res.body.message).to.equal('your order has been cancelled');
                     done();
                 });
         });
     });
     after((done) => {
         request(app)
-            .delete(`/api/v1/wishlist/${wishList_id}`)
+            .delete(`/api/v1/cart/${cart_id}`)
             .set({ token })
             .set('Accept', 'application')
             .expect('Content-Type', /json/)
@@ -445,26 +512,57 @@ describe('e-commerce', () => {
                 if (err) { throw err; }
                 expect(res.body.message).to.equal('Product deleted successfully ');
                 request(app)
-                    .delete('/api/v1/product')
-                    .set({ token: process.env.ADMIN_TOKEN })
+                    .delete(`/api/v1/cart/${wishList_id}`)
+                    .set({ token })
                     .set('Accept', 'application')
-                    .send({ product_name: 'Chain' })
                     .expect('Content-Type', /json/)
                     .expect(200)
                     .end((err, res) => {
                         if (err) { throw err; }
-                        expect(res.body.message).to.equal('Chain Deleted successfully');
+                        expect(res.body.message).to.equal('Product deleted successfully ');
                         request(app)
-                            .delete('/api/v1/category')
-                            .set({ token: process.env.ADMIN_TOKEN })
+                            .delete(`/api/v1/wishlist/${wishList_id}`)
+                            .set({ token })
                             .set('Accept', 'application')
-                            .send({ name: 'Pet Supplies' })
                             .expect('Content-Type', /json/)
                             .expect(200)
                             .end((err, res) => {
                                 if (err) { throw err; }
-                                expect(res.body.message).to.equal('Pet Supplies Deleted successfully');
-                                done();
+                                expect(res.body.message).to.equal('Product deleted successfully ');
+                                request(app)
+                                    .delete('/api/v1/product')
+                                    .set({ token: process.env.ADMIN_TOKEN })
+                                    .set('Accept', 'application')
+                                    .send({ product_name: 'Chain' })
+                                    .expect('Content-Type', /json/)
+                                    .expect(200)
+                                    .end((err, res) => {
+                                        if (err) { throw err; }
+                                        expect(res.body.message).to.equal('Chain Deleted successfully');
+                                        request(app)
+                                            .delete('/api/v1/category')
+                                            .set({ token: process.env.ADMIN_TOKEN })
+                                            .set('Accept', 'application')
+                                            .send({ name: 'Pet Supplies' })
+                                            .expect('Content-Type', /json/)
+                                            .expect(200)
+                                            .end((err, res) => {
+                                                if (err) { throw err; }
+                                                expect(res.body.message).to.equal('Pet Supplies Deleted successfully');
+                                                request(app)
+                                                    .delete(`/api/v1/address/${address_id}`)
+                                                    .set({ token })
+                                                    .set('Accept', 'application')
+                                                    .send({ name: 'Pet Supplies' })
+                                                    .expect('Content-Type', /json/)
+                                                    .expect(200)
+                                                    .end((err, res) => {
+                                                        if (err) { throw err; }
+                                                        expect(res.body.message).to.equal('Address deleted successfully ');
+                                                        done();
+                                                    });
+                                            });
+                                    });
                             });
                     });
             });

@@ -1,13 +1,16 @@
 export default {
     createOrders: `
-    INSERT INTO orders(
+    INSERT INTO orders (
         id,
+        transaction_id,
         user_id,
-        user_name,
-        quantity,
+        order_id,
+        product_id,
         product_name,
-        email
-    ) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *
+        price,
+        quantity,
+        sub_total
+        ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
     `,
     cancelledOrder: `
     UPDATE orders set cancelled = true WHERE email =($1) AND id =($2);
@@ -20,19 +23,20 @@ export default {
     `,
     getOrderId: `SELECT * FROM orders WHERE id = ($1);
     `,
-    transcationDetails: `
-    INSERT INTO transcation(
-        transcation_id,
-        order_id,
-        refrence,
+    transactionDetails: `
+    INSERT INTO transaction(
+        id, 
+        payment_id,
+        transaction_id,
+        reference,
         amount,
         status,
         currency,
         created_at
-    ) VALUES ($1, $2, $3, $4, $5, $6, $7) 
+    ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING id
     `,
-    verifyTranscation: `
-    update transcation set verified=($1) where refrence = ($2)
+    verifyTransaction: `
+    update transaction set verified=($1) where reference = ($2)
     `,
     wishList: `
     INSERT INTO wishlist(
@@ -83,6 +87,7 @@ export default {
     getCart: `
     SELECT 
         cart.id,
+        cart.product_id,
         product.product_name,
         product.category,
         product.status,
@@ -175,5 +180,13 @@ export default {
     `,
     SelectCartById: `
     SELECT * FROM cart WHERE id = ($1)
-    `
+    `,
+    updateTransactionTableId: `
+    UPDATE orders SET transaction_table_id = ($1) WHERE transaction_id = ($2)
+    `,
+    sumSubTotal: `
+    SELECT SUM(sub_total)
+    FROM orders
+    WHERE transaction_id = ($1);
+     `
 };

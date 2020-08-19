@@ -1,2 +1,2 @@
 /* Replace with your SQL commands */
-DROP TABLE transcation CASCADE;
+DROP TABLE transaction CASCADE;

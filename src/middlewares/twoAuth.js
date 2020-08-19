@@ -11,11 +11,11 @@ const sendCode = async(req, res) => {
         number: `234${Number}`,
         brand: 'Ecommerce',
         code_length: '4'
-    }, (error, ressult) => {
-        if (ressult.status !== 0) {
+    }, (error, result) => {
+        if (result.status !== 0) {
             res.status(status.OK).send({
                 message: 'successful',
-                request_id: ressult.request_id
+                request_id: result.request_id
             });
         } else {
             res.status(status.BAD_REQUEST).send({
@@ -37,7 +37,7 @@ const checkCode = async(req, res) => {
             });
         }
         return res.status(status.BAD_REQUEST).send({
-            message: 'Error verifiying code'
+            message: 'Error verifying code'
         });
     });
 };

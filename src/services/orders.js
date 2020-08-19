@@ -1,17 +1,26 @@
 import { v4 as uuidv4 } from 'uuid';
 // eslint-disable-next-line import/no-cycle
+import { logger } from '../config';
+// eslint-disable-next-line import/no-cycle
 import { ordersQuery, db } from '../db';
 
 export default {
-    createOrder: async(user_id, user_name, email, body) => {
+    createOrders: async(data, user_id) => {
         const id = uuidv4();
-        const {
-            quantity,
-            product_name
-        } = body;
-        const payload = [id, user_id, user_name, quantity, product_name, email];
-        const order = await db.oneOrNone(ordersQuery.createOrders, payload);
-        return order;
+        const transaction_id = uuidv4();
+        const order = data.map((cart) => db.oneOrNone(ordersQuery.createOrders, [
+            id,
+            transaction_id,
+            user_id,
+            cart.order_id,
+            cart.product_id,
+            cart.product_name,
+            cart.price,
+            cart.quantity,
+            cart.sub_total
+        ]));
+        logger.info(order);
+        return transaction_id;
     },
 
     cancelOrder: async(email, id) => db.none(ordersQuery.cancelledOrder, [email, id]),
@@ -32,25 +41,28 @@ export default {
         return db.none(ordersQuery.updateOrderStatus, [order_status, id]);
     },
 
-    transcationDetails: async(body) => {
+    transactionDetails: async(body) => {
+        const id = uuidv4();
+        const payment_id = body.id;
         const payload = [
-            body.id,
-            body.order_id,
+            id,
+            payment_id,
+            body.transaction_id,
             body.reference,
             body.amount,
             body.status,
             body.currency,
             body.created_at
         ];
-        return db.none(ordersQuery.transcationDetails, payload);
+        return db.one(ordersQuery.transactionDetails, payload);
     },
 
-    verfiyTanscation: async(status, refrence) => db.none(ordersQuery.verifyTranscation, [status, refrence]),
+    verifyTransactions: async(status, reference) => db.none(ordersQuery.verifyTransaction, [status, reference]),
 
     createWishList: async(body, user_id) => {
         const id = uuidv4();
         const { product_id } = body;
-        return db.none(ordersQuery.wishList, [ id, user_id, product_id]);
+        return db.none(ordersQuery.wishList, [id, user_id, product_id]);
     },
 
     checkWishList: async(body) => {
@@ -65,7 +77,7 @@ export default {
         return db.oneOrNone(ordersQuery.selectWishListItem, [id]);
     },
 
-    deletewishList: async(params, user_id) => {
+    deleteWishList: async(params, user_id) => {
         const { id } = params;
         const payload = [
             id,
@@ -90,7 +102,7 @@ export default {
         return db.oneOrNone(ordersQuery.SelectCartById, [id]);
     },
 
-    getprice: async(body) => {
+    getPrice: async(body) => {
         const { product_id } = body;
         return db.one(ordersQuery.getProductPrice, [product_id]);
     },
@@ -155,15 +167,15 @@ export default {
     updateAddress: async(body, user_id) => {
         const { id } = body;
         const oldData = await db.one(ordersQuery.getAddressById, [user_id, id]);
-        const newdata = { ...oldData, ...body };
+        const newData = { ...oldData, ...body };
         return db.none(ordersQuery.updateAddress, [
-            newdata.first_name,
-            newdata.last_name,
-            newdata.mobile_number,
-            newdata.additional_mobile_number,
-            newdata.address,
-            newdata.state_region,
-            newdata.city,
+            newData.first_name,
+            newData.last_name,
+            newData.mobile_number,
+            newData.additional_mobile_number,
+            newData.address,
+            newData.state_region,
+            newData.city,
             user_id,
             id
         ]);
@@ -181,8 +193,12 @@ export default {
         const { id } = body;
         return db.none(ordersQuery.setDefaultAddress, [user_id, id]);
     },
-    deletAddress: async(params, user_id) => {
+    deleteAddress: async(params, user_id) => {
         const { id } = params;
         return db.none(ordersQuery.deleteAddress, [id, user_id]);
-    }
+    },
+    updateTransactionTableId: async(transaction_id, transaction_table_id) => {
+        db.none(ordersQuery.updateTransactionTableId, [transaction_table_id, transaction_id]);
+    },
+    sumSubTotal: async(transaction_id) => db.one(ordersQuery.sumSubTotal, [transaction_id])
 };

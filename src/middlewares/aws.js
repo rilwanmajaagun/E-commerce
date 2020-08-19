@@ -7,7 +7,7 @@ const s3 = new AWS.S3({
     secretAccessKey: process.env.AWS_SECRET
 });
 
-const uploadImage = async(file) => {
+const uploadImage = async (file) => {
     try {
         const myFile = file.originalname.split('.');
         const fileType = myFile[myFile.length - 1];

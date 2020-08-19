@@ -56,7 +56,7 @@ const searchProduct = async(req, res, next) => {
     next();
 };
 
-const getProductBycategory = async(req, res, next) => {
+const getProductByCategory = async(req, res, next) => {
     try {
         await schema.category.validateAsync(req.body);
     } catch (error) {
@@ -148,7 +148,7 @@ export default {
     checkEmail,
     product,
     searchProduct,
-    getProductBycategory,
+    getProductByCategory,
     category,
     updateProduct,
     createOrder,

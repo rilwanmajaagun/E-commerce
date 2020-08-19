@@ -2,7 +2,7 @@ import status from 'http-status';
 import { categoryService } from '../services';
 import { client } from '../config';
 
-const createCategory = async(req, res) => {
+const createCategory = async (req, res) => {
     try {
         const category = await categoryService.createCategory(req.body);
         return res.status(status.CREATED).send({
@@ -21,12 +21,12 @@ const createCategory = async(req, res) => {
     }
 };
 
-const selectAllCategory = async(req, res) => {
+const selectAllCategory = async (req, res) => {
     try {
-        client.get('allcategory', async(error, result) => {
+        client.get('allcategory', async (error, result) => {
             if (result) {
                 return res.status(status.OK).send({
-                    message: 'All categories selected sucessfully',
+                    message: 'All categories selected Successfully',
                     data: JSON.parse(result)
                 });
             }
@@ -35,7 +35,7 @@ const selectAllCategory = async(req, res) => {
                 client.set('allcategory', JSON.stringify(allCategory));
                 client.expire('allcategory', 300); /*  expires in five minute*/
                 return res.status(status.OK).send({
-                    message: 'All categories selected sucessfully ',
+                    message: 'All categories selected Successfully ',
                     data: allCategory
                 });
             }
@@ -52,7 +52,7 @@ const selectAllCategory = async(req, res) => {
     }
 };
 
-const deleteCategory = async(req, res) => {
+const deleteCategory = async (req, res) => {
     try {
         const category = await categoryService.deleteCategory(req.body);
         return res.status(status.OK).send({
@@ -66,11 +66,11 @@ const deleteCategory = async(req, res) => {
     }
 };
 
-const updateCategory = async(req, res) => {
+const updateCategory = async (req, res) => {
     try {
         const category = await categoryService.updateCategory(req.body);
         return res.status(status.CREATED).send({
-            message: `${category.name} updated sucessfully`
+            message: `${category.name} updated Successfully`
         });
     } catch (error) {
         return res.status(status.INTERNAL_SERVER_ERROR).send({

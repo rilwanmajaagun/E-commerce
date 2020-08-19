@@ -42,10 +42,12 @@ router.post('/cart', userAuth.verifyToken, validator.checkproductId, orderAuth.a
 router.get('/cart', userAuth.verifyToken, ordersController.getCart);
 router.delete('/cart/:id', userAuth.verifyToken, orderAuth.deleteCart, orderController.deleteCart);
 router.patch('/cart', userAuth.verifyToken, ordersController.updateCart);
-router.post('/cart/wishlist', userAuth.verifyToken, ordersController.moveToCart);
+router.post('/cart/wishlist', userAuth.verifyToken, orderAuth.alreadyMovedToCart, ordersController.moveToCart);
 router.post('/address', userAuth.verifyToken, validator.checkAddress, ordersController.AddAddressDetails);
 router.put('/address', userAuth.verifyToken, validator.checkupdatedAddress, ordersController.updateAddress);
 router.get('/address', userAuth.verifyToken, orderController.getAddress);
+router.patch('/address', userAuth.verifyToken, orderController.setDefaultAddress);
+router.delete('/address/:id', userAuth.verifyToken, orderAuth.deleteAddress, orderController.deleteAddress);
 router.post('/sendcode', sendcode.sendCode);
 router.post('/checkcode', sendcode.checkCode);
 router.get('/download', downloadCsv);

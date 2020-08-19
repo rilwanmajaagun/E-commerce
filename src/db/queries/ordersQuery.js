@@ -160,5 +160,20 @@ export default {
     `,
     getAddress: `
     SELECT * FROM address_details WHERE user_id = ($1) ORDER BY is_default DESC;
+    `,
+    resetDefault: `
+    UPDATE address_details SET is_default = FALSE WHERE user_id = ($1);
+    `,
+    setDefaultAddress: `
+    UPDATE address_details SET is_default = TRUE WHERE user_id = ($1) AND id = ($2);
+    `,
+    deleteAddress: `
+    DELETE FROM address_details WHERE id = ($1) AND user_id = ($2);
+    `,
+    getOneAddress: `
+    SELECT * FROM address_details WHERE id = ($1)
+    `,
+    SelectCartById: `
+    SELECT * FROM cart WHERE id = ($1)
     `
 };

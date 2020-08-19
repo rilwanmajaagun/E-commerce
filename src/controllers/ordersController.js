@@ -175,6 +175,25 @@ const getAddress = async(req, res) => {
     }
 };
 
+const setDefaultAddress = async(req, res) => {
+    try {
+        await orderSerivce.resetAddress(await response.user_id(res));
+        await orderSerivce.setDefaultAddress(req.body, await response.user_id(res));
+        response.successful(res, status.OK, 'Address set as default successfully');
+    } catch (error) {
+        return res.status(status.INTERNAL_SERVER_ERROR).send({ message: status[500] });
+    }
+};
+
+const deleteAddress = async(req, res) => {
+    try {
+        await orderSerivce.deletAddress(req.params, await response.user_id(res));
+        response.successful(res, status.OK, 'Address deleted successfully ');
+    } catch (error) {
+        return res.status(status.INTERNAL_SERVER_ERROR).send({ message: status[500] });
+    }
+};
+
 export default {
     createOrder,
     cancelOrder,
@@ -189,5 +208,7 @@ export default {
     moveToCart,
     AddAddressDetails,
     updateAddress,
-    getAddress
+    getAddress,
+    setDefaultAddress,
+    deleteAddress
 };

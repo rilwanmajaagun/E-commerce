@@ -107,7 +107,7 @@ const activateUser = async(req, res) => {
     }
 };
 
-const confrimationToken = async(req, res) => {
+const confirmationToken = async(req, res) => {
     const { email } = req.body;
     try {
         const user = await userService.checkIfUserExist(email);
@@ -115,7 +115,7 @@ const confrimationToken = async(req, res) => {
         mailing.verifyMail(user.email, user.first_name, token);
         return user ?
             res.status(status.CREATED).send({ message: 'sent' }) :
-            res.status(status.BAD_REQUEST).send({ message: 'Error sending confrimation code' });
+            res.status(status.BAD_REQUEST).send({ message: 'Error sending confirmation code' });
     } catch (error) {
         res.status(status.INTERNAL_SERVER_ERROR).send({
             message: status[500],
@@ -149,7 +149,7 @@ const resetPassword = async(req, res) => {
         if (user) {
             mailing.resetSuccessful(user.first_name, user.email);
             return res.status(status.OK).send({ message: 'password reset successfully' });
-        } return res.status(status.BAD_REQUEST).send({ message: 'Error reseting password' });
+        } return res.status(status.BAD_REQUEST).send({ message: 'Error resting password' });
     } catch (error) {
         res.status(status.INTERNAL_SERVER_ERROR).send({
             message: status[500],
@@ -164,7 +164,7 @@ export default {
     userDetails,
     login,
     activateUser,
-    confrimationToken,
+    confirmationToken,
     forgetPassword,
     resetPassword
 };

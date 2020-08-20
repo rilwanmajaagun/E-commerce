@@ -4,12 +4,11 @@ import { v4 as uuidv4 } from 'uuid';
 import faker from 'faker';
 import request from 'supertest';
 import chai from 'chai';
-import nock from 'nock';
+// import nock from 'nock';
 import app from '../src/index';
 import { logger } from '../src/config';
 
 const { expect } = chai;
-const scope = nock('/api/v1/');
 describe('e-commerce', () => {
     let user,
         token,

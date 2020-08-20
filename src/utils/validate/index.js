@@ -68,9 +68,14 @@ const schema = {
             .required()
     }),
     updateStatus: joi.object({
-        id: joi.string()
+        order_id: joi.string()
             .uuid(),
-        order_status: joi.string().valid('pending', 'shipped')
+        delivery_status: joi.string()
+            .valid('pending', 'shipped', 'delivered')
+            .optional(),
+        order_status: joi.string()
+            .valid('review', 'cancelled')
+            .optional()
 
     }),
     product_id: joi.object({

@@ -132,7 +132,7 @@ const checkAddress = async(req, res, next) => {
     next();
 };
 
-const checkupdatedAddress = async(req, res, next) => {
+const checkUpdatedAddress = async(req, res, next) => {
     try {
         await schema.updateAddress.validateAsync(req.body);
     } catch (error) {
@@ -155,6 +155,6 @@ export default {
     updateOrderStatus,
     checkproductId,
     checkAddress,
-    checkupdatedAddress
+    checkUpdatedAddress
 
 };

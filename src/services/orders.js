@@ -31,14 +31,15 @@ export default {
     },
 
     selectOrder: async(body) => {
-        const { id } = body;
-        const order = await db.oneOrNone(ordersQuery.getOrderId, [id]);
+        const { order_id } = body;
+        const order = await db.oneOrNone(ordersQuery.selectOrder, [order_id]);
         return order;
     },
-
     updateOrderStatus: async(body) => {
-        const { id, order_status } = body;
-        return db.none(ordersQuery.updateOrderStatus, [order_status, id]);
+        const { order_id } = body;
+        const OldData = await db.one(ordersQuery.selectOrder, [order_id]);
+        const newData = { ...OldData, ...body };
+        return db.none(ordersQuery.updateOrder, [newData.order_status, newData.delivery_status, order_id]);
     },
 
     transactionDetails: async(body) => {

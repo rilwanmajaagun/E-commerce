@@ -18,10 +18,11 @@ export default {
     selectOrderStatus: `
     SELECT order_status FROM orders WHERE email =($1) AND id =($2);
     `,
-    updateOrderStatus: `
-    UPDATE orders SET order_status  =($1) where id = ($2);
+    updateOrder: `
+    UPDATE orders SET order_status  =($1), delivery_status = ($2) where order_id = ($3);
     `,
-    getOrderId: `SELECT * FROM orders WHERE id = ($1);
+    selectOrder: `
+        SELECT * FROM orders WHERE order_id = ($1)
     `,
     transactionDetails: `
     INSERT INTO transaction(
@@ -182,7 +183,7 @@ export default {
     SELECT * FROM cart WHERE id = ($1)
     `,
     updateTransactionTableId: `
-    UPDATE orders SET transaction_table_id = ($1) WHERE transaction_id = ($2)
+    UPDATE orders SET transaction_table_id = ($1), payment_status = 'PAID' WHERE transaction_id = ($2)
     `,
     sumSubTotal: `
     SELECT SUM(sub_total)

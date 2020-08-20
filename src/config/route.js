@@ -17,7 +17,7 @@ router.get('/auth/userdetails', userAuth.verifyToken, userController.userDetails
 router.post('/category', userAuth.verifyToken, userAuth.adminAuthorization, categoryAuth.selectCategory, categorController.createCategory);
 router.get('/category', categorController.selectAllCategory);
 router.get('/auth/confirmation', userAuth.verifyToken, userAuth.is_active, userController.activateUser);
-router.post('/auth/confirmation', validator.checkEmail, userAuth.confrimationToken, userController.confrimationToken);
+router.post('/auth/confirmation', validator.checkEmail, userAuth.confirmationToken, userController.confirmationToken);
 router.post('/product', userAuth.verifyToken, userAuth.adminAuthorization, multer.upload, validator.product, productAuth.selectProduct, productController.addProduct);
 router.get('/product', productController.selectAllProduct);
 router.post('/search/Product', validator.searchProduct, productAuth.CheckProduct, productController.getSpecifyProduct);
@@ -45,7 +45,7 @@ router.delete('/cart/:id', userAuth.verifyToken, orderAuth.deleteCart, orderCont
 router.patch('/cart', userAuth.verifyToken, ordersController.updateCart);
 router.post('/cart/wishlist', userAuth.verifyToken, orderAuth.alreadyMovedToCart, ordersController.moveToCart);
 router.post('/address', userAuth.verifyToken, validator.checkAddress, ordersController.AddAddressDetails);
-router.put('/address', userAuth.verifyToken, validator.checkupdatedAddress, ordersController.updateAddress);
+router.put('/address', userAuth.verifyToken, validator.checkUpdatedAddress, ordersController.updateAddress);
 router.get('/address', userAuth.verifyToken, orderController.getAddress);
 router.patch('/address', userAuth.verifyToken, orderController.setDefaultAddress);
 router.delete('/address/:id', userAuth.verifyToken, orderAuth.deleteAddress, orderController.deleteAddress);

@@ -23,7 +23,10 @@ export default {
         return transaction_id;
     },
 
-    cancelOrder: async(email, id) => db.none(ordersQuery.cancelledOrder, [email, id]),
+    cancelOrder: async(body, user_id) => {
+        const { order_id } = body;
+        db.none(ordersQuery.cancelledOrder, [order_id, user_id]);
+    },
 
     checkOrderStatus: async(email, id) => {
         const status = db.oneOrNone(ordersQuery.selectOrderStatus, [email, id]);
@@ -35,6 +38,7 @@ export default {
         const order = await db.oneOrNone(ordersQuery.selectOrder, [order_id]);
         return order;
     },
+
     updateOrderStatus: async(body) => {
         const { order_id } = body;
         const OldData = await db.one(ordersQuery.selectOrder, [order_id]);
@@ -141,7 +145,7 @@ export default {
         return db.none(ordersQuery.moveWishListToCart, [id, user_id, order_id]);
     },
 
-    address_details: async(body, user_id) => {
+    address_details: async(body, user_id, is_default) => {
         const id = uuidv4();
         const {
             first_name,
@@ -161,10 +165,12 @@ export default {
             additional_mobile_number,
             address,
             state_region,
-            city
+            city,
+            is_default
         ];
         return db.none(ordersQuery.address_details, payload);
     },
+
     updateAddress: async(body, user_id) => {
         const { id } = body;
         const oldData = await db.one(ordersQuery.getAddressById, [user_id, id]);
@@ -194,12 +200,15 @@ export default {
         const { id } = body;
         return db.none(ordersQuery.setDefaultAddress, [user_id, id]);
     },
+
     deleteAddress: async(params, user_id) => {
         const { id } = params;
         return db.none(ordersQuery.deleteAddress, [id, user_id]);
     },
+
     updateTransactionTableId: async(transaction_id, transaction_table_id) => {
         db.none(ordersQuery.updateTransactionTableId, [transaction_table_id, transaction_id]);
     },
+
     sumSubTotal: async(transaction_id) => db.one(ordersQuery.sumSubTotal, [transaction_id])
 };

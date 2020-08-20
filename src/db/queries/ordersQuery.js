@@ -13,7 +13,7 @@ export default {
         ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
     `,
     cancelledOrder: `
-    UPDATE orders set cancelled = true WHERE email =($1) AND id =($2);
+    UPDATE orders set order_status = 'cancelled' WHERE order_id =($1) AND user_id =($2);
     `,
     selectOrderStatus: `
     SELECT order_status FROM orders WHERE email =($1) AND id =($2);
@@ -146,8 +146,9 @@ export default {
         additional_mobile_number,
         address,
         state_region,
-        city
-    ) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9)
+        city,
+        is_default
+    ) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
     `,
     getAddressById: `
     SELECT * FROM address_details WHERE user_id = ($1) AND id = ($2)

@@ -9,6 +9,7 @@ import app from '../src/index';
 import { logger } from '../src/config';
 
 const { expect } = chai;
+// const scope = nock('/api/v1/');
 describe('e-commerce', () => {
     let user,
         token,
@@ -500,6 +501,12 @@ describe('e-commerce', () => {
                 });
         });
     });
+    // describe('payment', () => {
+    //     scope
+    //         .post(`/cardpayment/${transaction_id}`, )
+    //         .reply(200);
+    //     done();
+    // });
     after((done) => {
         request(app)
             .delete(`/api/v1/cart/${cart_id}`)

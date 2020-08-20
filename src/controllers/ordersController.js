@@ -143,8 +143,15 @@ const moveToCart = async(req, res) => {
 
 const AddAddressDetails = async(req, res) => {
     try {
-        await orderService.address_details(req.body, await response.user_id(res));
-        response.successful(res, status.CREATED, 'Address Added successfully');
+        const address = await orderService.userAddress(await response.user_id(res));
+        if (address.length === 0) {
+            await orderService.address_details(req.body, await response.user_id(res), true);
+            response.successful(res, status.CREATED, 'Address Added successfully');
+        }
+        if (address.length > 0) {
+            await orderService.address_details(req.body, await response.user_id(res), false);
+            response.successful(res, status.CREATED, 'Address Added successfully');
+        }
     } catch (error) {
         return res.status(status.INTERNAL_SERVER_ERROR).send({ message: status[500] });
     }

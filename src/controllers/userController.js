@@ -1,7 +1,8 @@
 import status from 'http-status';
+import jwt from 'jsonwebtoken';
 import { userService } from '../services';
 import { hash } from '../utils';
-import { mailing } from '../config';
+import { mailing, client } from '../config';
 
 const createUsers = async(req, res) => {
     try {
@@ -9,6 +10,7 @@ const createUsers = async(req, res) => {
             id, first_name, email, created_at
         } = await userService.createUser(req.body);
         const token = await hash.generateToken(first_name, email);
+        await hash.refresh_token(first_name, email);
         mailing.signupMail(email, first_name, token);
         return id ?
             res.status(status.CREATED).send({
@@ -72,6 +74,9 @@ const login = async(req, res) => {
     try {
         const user = await userService.checkIfUserExist(email);
         const token = await hash.generateToken(user.first_name, user.email);
+        await hash.refresh_token(user.first_name, user.email);
+        // const refresh_token = jwt.sign({ first_name: user.first_name, email: user.email }, process.env.REFRESH_TOKEN_SECRET);
+        // client.set('refresh_token', refresh_token);
         return res.status(status.OK).send({
             message: 'login successful',
             data: {
@@ -90,6 +95,29 @@ const login = async(req, res) => {
     }
 };
 
+const refresh_token = async(req, res) => {
+    try {
+        client.get('refresh_token', async(error, result) => {
+            if (error) {
+                return res.status(status.FORBIDDEN).send(status[403]);
+            }
+            if (result === null) {
+                return res.status(status.UNAUTHORIZED).send(status[401]);
+            }
+            if (result) {
+                jwt.verify(result, process.env.REFRESH_TOKEN_SECRET, async(err, user) => {
+                    if (err) { return res.status(status.FORBIDDEN); }
+                    const token = await hash.generateToken(user.first_name, user.email);
+                    return res.status(status.OK).send({
+                        token
+                    });
+                });
+            }
+        });
+    } catch (error) {
+
+    }
+};
 const activateUser = async(req, res) => {
     const { email } = res.locals.user;
     try {
@@ -166,5 +194,6 @@ export default {
     activateUser,
     confirmationToken,
     forgetPassword,
-    resetPassword
+    resetPassword,
+    refresh_token
 };

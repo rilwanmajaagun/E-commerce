@@ -1,9 +1,12 @@
 import status from 'http-status';
 // eslint-disable-next-line import/no-cycle
+import jwt from 'jsonwebtoken';
+// eslint-disable-next-line import/no-cycle
+import { client } from '../config';
 import { userService } from '../services';
 import { hash } from '../utils';
 
-const signup = async (req, res, next) => {
+const signup = async(req, res, next) => {
     const { email } = req.body;
     try {
         const data = await userService.checkIfUserExist(email);
@@ -18,7 +21,7 @@ const signup = async (req, res, next) => {
     }
 };
 
-const login = async (req, res, next) => {
+const login = async(req, res, next) => {
     const { email, password } = req.body;
     try {
         const user = await userService.checkIfUserExist(email);
@@ -45,7 +48,7 @@ const login = async (req, res, next) => {
     next();
 };
 
-const confirmationToken = async (req, res, next) => {
+const confirmationToken = async(req, res, next) => {
     const { email } = req.body;
     try {
         const user = await userService.checkIfUserExist(email);
@@ -65,7 +68,7 @@ const confirmationToken = async (req, res, next) => {
     next();
 };
 
-const is_active = async (req, res, next) => {
+const is_active = async(req, res, next) => {
     const { email } = res.locals.user;
     try {
         const user = await userService.checkIfUserExist(email);
@@ -80,7 +83,7 @@ const is_active = async (req, res, next) => {
     next();
 };
 
-const verifyToken = async (req, res, next) => {
+const verifyToken = async(req, res, next) => {
     const token = req.query.token || req.headers.token;
     if (!token) {
         return res.status(status.BAD_REQUEST).send({
@@ -102,7 +105,7 @@ const verifyToken = async (req, res, next) => {
     next();
 };
 
-const adminAuthorization = async (req, res, next) => {
+const adminAuthorization = async(req, res, next) => {
     const { email } = res.locals.user;
     try {
         const user = await userService.checkIfUserExist(email);
@@ -119,7 +122,7 @@ const adminAuthorization = async (req, res, next) => {
     next();
 };
 
-const socialMeadiAuth = async (request) => {
+const socialMediaAuth = async(request) => {
     const token = await hash.generateToken(request.user.first_name, request.user.email);
     return token;
     // res.status(status.OK).send({
@@ -133,6 +136,10 @@ const socialMeadiAuth = async (request) => {
     //     }
     // });
 };
+const socialMediaRefresh_token = async(request) => {
+    const refresh_token = jwt.sign({ first_name: request.user.first_name, email: request.user.email }, process.env.REFRESH_TOKEN_SECRET);
+    client.set('refresh_token', refresh_token);
+};
 
 export default {
     signup,
@@ -141,5 +148,6 @@ export default {
     verifyToken,
     is_active,
     adminAuthorization,
-    socialMeadiAuth
+    socialMediaAuth,
+    socialMediaRefresh_token
 };

@@ -217,6 +217,7 @@ const updateShippingAddress = async(req, res) => {
         const shipping_name = `${shipping_address[0].first_name} ${shipping_address[0].last_name}`;
         const shipping_phone_number = shipping_address[0].mobile_number;
         await orderService.updateShippingDetails(shipping_add, shipping_name, shipping_phone_number, req.params);
+        response.successful(res, status.OK, 'Shipping Address updated successfully');
     } catch (error) {
         return res.status(status.INTERNAL_SERVER_ERROR).send({ message: status[500] });
     }

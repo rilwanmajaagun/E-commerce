@@ -48,9 +48,11 @@ router.post('/address', userAuth.verifyToken, validator.checkAddress, ordersCont
 router.put('/address', userAuth.verifyToken, validator.checkUpdatedAddress, ordersController.updateAddress);
 router.get('/address', userAuth.verifyToken, orderController.getAddress);
 router.get('/oneAddress/:id', userAuth.verifyToken, orderController.getSpecificAddress);
+router.get('/shippingAddress/:transaction_id', userAuth.verifyToken, orderController.updateShippingAddress);
 router.patch('/address', userAuth.verifyToken, orderController.setDefaultAddress);
 router.delete('/address/:id', userAuth.verifyToken, orderAuth.deleteAddress, orderController.deleteAddress);
 router.post('/sendcode', sendcode.sendCode);
 router.post('/checkcode', sendcode.checkCode);
 router.get('/download', downloadCsv);
+router.get('/token', userController.refresh_token);
 export default router;

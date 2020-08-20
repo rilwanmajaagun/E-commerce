@@ -47,6 +47,7 @@ router.post('/cart/wishlist', userAuth.verifyToken, orderAuth.alreadyMovedToCart
 router.post('/address', userAuth.verifyToken, validator.checkAddress, ordersController.AddAddressDetails);
 router.put('/address', userAuth.verifyToken, validator.checkUpdatedAddress, ordersController.updateAddress);
 router.get('/address', userAuth.verifyToken, orderController.getAddress);
+router.get('/oneAddress/:id', userAuth.verifyToken, orderController.getSpecificAddress);
 router.patch('/address', userAuth.verifyToken, orderController.setDefaultAddress);
 router.delete('/address/:id', userAuth.verifyToken, orderAuth.deleteAddress, orderController.deleteAddress);
 router.post('/sendcode', sendcode.sendCode);

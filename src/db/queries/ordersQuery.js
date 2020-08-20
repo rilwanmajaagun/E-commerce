@@ -190,5 +190,8 @@ export default {
     SELECT SUM(sub_total)
     FROM orders
     WHERE transaction_id = ($1);
+     `,
+    updateShippingDetails: `
+     UPDATE orders SET shipping_address = ($1), shipping_name = ($2), shipping_phone_number = ($3) WHERE transaction_id = ($4)
      `
 };

@@ -210,6 +210,29 @@ const getSumSubTotal = async(req, res) => {
     }
 };
 
+const updateShippingAddress = async(req, res) => {
+    try {
+        const shipping_address = await orderService.userAddress(await response.user_id(res));
+        const shipping_add = `${shipping_address[0].address}, ${shipping_address[0].city}, ${shipping_address[0].state_region}`;
+        const shipping_name = `${shipping_address[0].first_name} ${shipping_address[0].last_name}`;
+        const shipping_phone_number = shipping_address[0].mobile_number;
+        await orderService.updateShippingDetails(shipping_add, shipping_name, shipping_phone_number, req.params);
+    } catch (error) {
+        return res.status(status.INTERNAL_SERVER_ERROR).send({ message: status[500] });
+    }
+};
+
+const getSpecificAddress = async(req, res) => {
+    try {
+        const address = await orderService.getOneAddress(req.params);
+        return res.status(status.OK).send({
+            message: 'Address',
+            data: address
+        });
+    } catch (error) {
+        return res.status(status.INTERNAL_SERVER_ERROR).send({ message: status[500] });
+    }
+};
 export default {
     createOrders,
     cancelOrder,
@@ -227,5 +250,7 @@ export default {
     getAddress,
     setDefaultAddress,
     deleteAddress,
-    getSumSubTotal
+    getSumSubTotal,
+    updateShippingAddress,
+    getSpecificAddress
 };

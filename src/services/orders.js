@@ -210,5 +210,9 @@ export default {
         db.none(ordersQuery.updateTransactionTableId, [transaction_table_id, transaction_id]);
     },
 
+    updateShippingDetails: async(address, name, phone_number, params) => {
+        const { transaction_id } = params;
+        db.none(ordersQuery.updateShippingDetails, [address, name, phone_number, transaction_id]);
+    },
     sumSubTotal: async(transaction_id) => db.one(ordersQuery.sumSubTotal, [transaction_id])
 };

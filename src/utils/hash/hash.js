@@ -18,7 +18,7 @@ const Helpers = {
             first_name,
             email
         }, key,
-        { expiresIn: '1h' });
+        { expiresIn: '1d' });
         return token;
     },
     async comparePassword(password, hash) {

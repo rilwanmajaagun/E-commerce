@@ -3,7 +3,9 @@ import status from 'http-status';
 import jwt from 'jsonwebtoken';
 // eslint-disable-next-line import/no-cycle
 import { client } from '../config';
+// eslint-disable-next-line import/no-cycle
 import { userService } from '../services';
+// eslint-disable-next-line import/no-cycle
 import { hash } from '../utils';
 
 const signup = async(req, res, next) => {
@@ -138,7 +140,7 @@ const socialMediaAuth = async(request) => {
 };
 const socialMediaRefresh_token = async(request) => {
     const refresh_token = jwt.sign({ first_name: request.user.first_name, email: request.user.email }, process.env.REFRESH_TOKEN_SECRET);
-    client.set('refresh_token', refresh_token);
+    client.set(`${request.user.id},refresh_token`, refresh_token);
 };
 
 export default {

@@ -20,7 +20,7 @@ const Helpers = {
             first_name,
             email
         }, key,
-        { expiresIn: '5m' });
+        { expiresIn: '2m' });
         return token;
     },
     async comparePassword(password, hash) {

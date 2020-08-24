@@ -54,5 +54,5 @@ router.delete('/address/:id', userAuth.verifyToken, orderAuth.deleteAddress, ord
 router.post('/sendcode', sendcode.sendCode);
 router.post('/checkcode', sendcode.checkCode);
 router.get('/download', downloadCsv);
-router.get('/token', userController.refresh_token);
+router.get('/token', userAuth.verifyToken, userController.refresh_token);
 export default router;

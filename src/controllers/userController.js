@@ -1,7 +1,7 @@
 import status from 'http-status';
 import jwt from 'jsonwebtoken';
 import { userService } from '../services';
-import { hash } from '../utils';
+import { hash, response } from '../utils';
 import { mailing, client } from '../config';
 
 const createUsers = async(req, res) => {
@@ -10,7 +10,7 @@ const createUsers = async(req, res) => {
             id, first_name, email, created_at
         } = await userService.createUser(req.body);
         const token = await hash.generateToken(first_name, email);
-        await hash.refresh_token(first_name, email);
+        await hash.refresh_token(first_name, email, id);
         mailing.signupMail(email, first_name, token);
         return id ?
             res.status(status.CREATED).send({
@@ -74,7 +74,7 @@ const login = async(req, res) => {
     try {
         const user = await userService.checkIfUserExist(email);
         const token = await hash.generateToken(user.first_name, user.email);
-        await hash.refresh_token(user.first_name, user.email);
+        await hash.refresh_token(user.first_name, user.email, user.id);
         // const refresh_token = jwt.sign({ first_name: user.first_name, email: user.email }, process.env.REFRESH_TOKEN_SECRET);
         // client.set('refresh_token', refresh_token);
         return res.status(status.OK).send({
@@ -97,7 +97,7 @@ const login = async(req, res) => {
 
 const refresh_token = async(req, res) => {
     try {
-        client.get('refresh_token', async(error, result) => {
+        client.get(`${await response.user_id(res)},refresh_token`, async(error, result) => {
             if (error) {
                 return res.status(status.FORBIDDEN).send(status[403]);
             }
@@ -115,7 +115,10 @@ const refresh_token = async(req, res) => {
             }
         });
     } catch (error) {
-
+        res.status(status.INTERNAL_SERVER_ERROR).send({
+            message: status[500],
+            data: null
+        });
     }
 };
 const activateUser = async(req, res) => {

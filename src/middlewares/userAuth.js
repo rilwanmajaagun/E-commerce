@@ -127,16 +127,6 @@ const adminAuthorization = async(req, res, next) => {
 const socialMediaAuth = async(request) => {
     const token = await hash.generateToken(request.user.first_name, request.user.email);
     return token;
-    // res.status(status.OK).send({
-    //     message: 'successful',
-    //     data: {
-    //         id: request.user.id,
-    //         first_name: request.user.first_name,
-    //         last_name: request.user.last_name,
-    //         email: request.user.email,
-    //         token
-    //     }
-    // });
 };
 const socialMediaRefresh_token = async(request) => {
     const refresh_token = jwt.sign({ first_name: request.user.first_name, email: request.user.email }, process.env.REFRESH_TOKEN_SECRET);
